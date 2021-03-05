@@ -13,7 +13,7 @@ public class Title extends JFrame{
         this.setSize(1050,640);
         this.setResizable(false);
         this.setLocation(120,20);
-        this.setVisible(true);
+
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.setLayout(null);
@@ -23,18 +23,18 @@ public class Title extends JFrame{
         firstPanel.setVisible(true);
 
         firstPanel.setLayout(null);
-        JLabel affBackground = new JLabel (new ImageIcon("../items/papiers-peints-solar-system.jpg"));
+        JLabel affBackground = new JLabel (new ImageIcon("items/papiers-peints-solar-system.jpg"));
         affBackground.setBounds(0,0,1050,640);
         // affBackground.setVisible(true);
         firstPanel.add(affBackground);
 
-        this.add(firstPanel);
-
         JLabel txtLabel = new JLabel();
         txtLabel.setText("How many planet do you want to add?");
-        txtLabel.setBounds(70,10,120,20);
-        this.add(txtLabel);
+        txtLabel.setBounds(500,10,300,20);
+        firstPanel.add(txtLabel);
 
+        this.add(firstPanel);
+        this.setVisible(true);
 
         JButton launchButton = new JButton("Start");
 
