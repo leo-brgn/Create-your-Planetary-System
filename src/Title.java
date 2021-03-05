@@ -28,19 +28,30 @@ public class Title extends JFrame{
         firstPanel.add(affBackground);
 
         JLabel txtLabel = new JLabel();
-        txtLabel.setText("How many planet do you want to add?");
+        txtLabel.setText("How many planet do you want to add ?");
         txtLabel.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,30));
         txtLabel.setForeground(Color.WHITE);
-        txtLabel.setBounds(475,500,300,20);
+        txtLabel.setBounds(295,425,600,50);
         affBackground.add(txtLabel);
+
+        JTextField nbPlanetLabel= new JTextField();
+        nbPlanetLabel.setBounds(495,495,100,35);
+        nbPlanetLabel.setBackground(Color.BLACK);
+        nbPlanetLabel.setForeground(Color.WHITE);
+        affBackground.add(nbPlanetLabel);
+
+        JButton launchButton = new JButton("Start");
+        launchButton.setBounds(505,535,80,25);
+        launchButton.setForeground(Color.WHITE);
+        launchButton.setBackground(Color.GRAY);
+        affBackground.add(launchButton);
 
         this.add(firstPanel);
         this.setVisible(true);
 
-        JButton launchButton = new JButton("Start");
 
 
-        JTextField nbPlanetLabel= new JTextField();
+
 
 
     }
