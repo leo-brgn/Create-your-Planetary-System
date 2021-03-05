@@ -43,6 +43,7 @@ public class Title extends JFrame{
 
         JTextField nbPlanetLabel= new JTextField();
         nbPlanetLabel.setBounds(495,495,100,35);
+        nbPlanetLabel.setHorizontalAlignment(SwingConstants.CENTER);
         nbPlanetLabel.setBackground(Color.BLACK);
         nbPlanetLabel.setForeground(Color.WHITE);
         affBackground.add(nbPlanetLabel);
