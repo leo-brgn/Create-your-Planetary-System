@@ -9,7 +9,7 @@ public class Title extends JFrame{
 
     public Title() {
         
-        this.setTitle("Create my Solar System");
+        this.setTitle("Create your Solar System");
         this.setSize(1050,640);
         this.setResizable(false);
         this.setLocation(120,20);
@@ -25,13 +25,14 @@ public class Title extends JFrame{
         firstPanel.setLayout(null);
         JLabel affBackground = new JLabel (new ImageIcon("items/papiers-peints-solar-system.jpg"));
         affBackground.setBounds(0,0,1050,640);
-        // affBackground.setVisible(true);
         firstPanel.add(affBackground);
 
         JLabel txtLabel = new JLabel();
         txtLabel.setText("How many planet do you want to add?");
-        txtLabel.setBounds(500,10,300,20);
-        firstPanel.add(txtLabel);
+        txtLabel.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,30));
+        txtLabel.setForeground(Color.WHITE);
+        txtLabel.setBounds(475,500,300,20);
+        affBackground.add(txtLabel);
 
         this.add(firstPanel);
         this.setVisible(true);
