@@ -3,8 +3,7 @@ import javax.swing.*;
 public class Title extends JFrame{
 
     public static void main(String[] args) {
-
-
+        new Title();
     }
 
     public Title() {
