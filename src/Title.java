@@ -28,11 +28,18 @@ public class Title extends JFrame{
         firstPanel.add(affBackground);
 
         JLabel txtLabel = new JLabel();
-        txtLabel.setText("How many planet do you want to add ?");
-        txtLabel.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,30));
+        txtLabel.setText("CREATE YOUR PLANETARY SYSTEM");
+        txtLabel.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,45));
         txtLabel.setForeground(Color.WHITE);
-        txtLabel.setBounds(295,425,600,50);
+        txtLabel.setBounds(90,25,900,50);
         affBackground.add(txtLabel);
+
+        JLabel titleLabel = new JLabel();
+        titleLabel.setText("How many planet do you want to add ?");
+        titleLabel.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,30));
+        titleLabel.setForeground(Color.WHITE);
+        titleLabel.setBounds(295,425,600,50);
+        affBackground.add(titleLabel);
 
         JTextField nbPlanetLabel= new JTextField();
         nbPlanetLabel.setBounds(495,495,100,35);
@@ -48,12 +55,6 @@ public class Title extends JFrame{
 
         this.add(firstPanel);
         this.setVisible(true);
-
-
-
-
-
-
     }
 
     private void ActionPerformed(){
