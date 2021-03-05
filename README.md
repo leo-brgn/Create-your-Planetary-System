@@ -1,4 +1,4 @@
-# Foobar
+# Create your planetary system
 
 Foobar is a Python library for dealing with word pluralization.
 
