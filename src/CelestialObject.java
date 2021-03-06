@@ -1,6 +1,7 @@
+import javax.swing.*;
 import java.awt.*;
 
-public abstract class CelestialObject {
+public abstract class CelestialObject extends JComponent {
     protected Color[] colorRange = new Color[8];
     protected float mass;
     protected int radius;
@@ -12,4 +13,5 @@ public abstract class CelestialObject {
 
     public abstract String toString();
     public abstract void computeMass();
+
 }
