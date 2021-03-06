@@ -1,10 +1,8 @@
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.LinkedList;
 
 public class PlanetarySystem extends JPanel  {
-    public LinkedList<Planet> planets;
+    public LinkedList<CelestialObject> planets;
     public float deltaT;
 
     public PlanetarySystem () {
