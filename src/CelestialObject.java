@@ -12,13 +12,16 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     protected float distanceToStar;
     final public float G = (float) (6.67430 * Math.pow(10, -11));
 
-    protected float[] initialVelocity = new float[2];
-    protected Point position;
+    protected Point initialVelocity = new Point(0,0);
+    protected Point velocity = new Point(initialVelocity.x,initialVelocity.y);
+    protected Point position = new Point(0,0);
 
     /**
      * Abstract methods
      */
     public abstract String toString();
     public abstract void computeMass();
+    public abstract void updatePosition();
+    public abstract void velocity();
 
 }

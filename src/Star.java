@@ -1,11 +1,15 @@
+import javax.swing.*;
 import java.awt.*;
 
 public class Star extends CelestialObject{
+    public boolean shinning = true;
+    private int size;
 
     public Star(){
-        position = new Point(390-50, 320-50);
+        position = new Point(390-25, 320-25);
+        size = 50;
         this.setLocation(position);
-        this.setSize(100,100);
+        this.setSize(size,size);
     }
     @Override
     public String toString() {
@@ -16,20 +20,23 @@ public class Star extends CelestialObject{
     public void computeMass() {
     }
 
-    public void paint(Graphics g){
-        long time = System.currentTimeMillis();
-        for(int i = 0; i<=4; i++){
-            g.setColor(new Color(100,100,100,(255*(4-i))/5+50));
-            g.fillOval(50-10*i,50-10*i,20*i,20*i);
-        }
+    @Override
+    public void velocity() {
+        velocity.x = 1;
     }
 
-    public void updatePos(float dt){
-       // this.setBounds(X,Y,180,180);
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        Graphics2D g2D = (Graphics2D)g;
+        Color color = new Color((float)1.0,(float)1.0,(float)1.0,(float)1.0);
+        g2D.setColor(color);
+        g2D.fillOval(0,0,size,size);
     }
 
-    public void updatePos(){
-        this.setBounds(position.x, position.y, 180,180);
+    public void updatePosition(){
+        size = 50 + (int)(10 * Math.cos(100_000_000 * System.currentTimeMillis()));
+        this.setBounds(position.x - size/2, position.y - size /2 , size,size);
+        //velocity();
     }
 
     @Override

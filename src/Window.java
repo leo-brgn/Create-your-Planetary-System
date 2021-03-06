@@ -33,6 +33,7 @@ public class Window extends JFrame implements MouseListener {
         this.setLayout(null);
         this.setBackground(Color.BLUE);
         this.addMouseListener(this);
+        new Thread().start(); // Send the following on another thread
         this.add(planetarySystem);
         this.setVisible(true);
         // Creation of the panel
