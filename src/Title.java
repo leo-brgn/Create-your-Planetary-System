@@ -66,7 +66,7 @@ public class Title extends JFrame implements ActionListener{
         nbPlanetArea.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,20));
         nbPlanetArea.setBackground(Color.BLACK);
         nbPlanetArea.setForeground(Color.WHITE);
-        nbPlanetArea.setBounds(525,495,10,35);
+        nbPlanetArea.setBounds(520,495,10,35);
         affBackground.add(nbPlanetArea);
 
         launchButton = new JButton("Start");
