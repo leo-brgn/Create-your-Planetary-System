@@ -35,7 +35,7 @@ public class Star extends CelestialObject{
     }
 
     public void updatePosition(){
-        size = 50 + (int)(10 * Math.cos(100_000_000 * System.currentTimeMillis()));
+        size = 50 + (int)(10 * Math.cos(5*100_000_000 * System.currentTimeMillis()));
         this.setBounds(position.x - size/2, position.y - size /2 , size,size);
         //velocity();
     }
