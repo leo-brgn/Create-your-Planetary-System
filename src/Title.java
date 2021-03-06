@@ -1,7 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class Title extends JFrame{
+public class Title extends JFrame implements ActionListener{
 
     public static void main(String[] args) {
         new Title();
@@ -13,7 +14,6 @@ public class Title extends JFrame{
         this.setSize(1050,640);
         this.setResizable(false);
         this.setLocation(120,20);
-
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.setLayout(null);
@@ -41,11 +41,12 @@ public class Title extends JFrame{
         titleLabel.setBounds(270,425,510,50);
         affBackground.add(titleLabel);
 
-        JTextField nbPlanetLabel= new JTextField();
-        nbPlanetLabel.setBounds(475,495,100,35);
-        nbPlanetLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        nbPlanetLabel.setBackground(Color.BLACK);
+        JLabel nbPlanetLabel= new JLabel();
+        nbPlanetLabel.setText("1");
+        nbPlanetLabel.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,20));
         nbPlanetLabel.setForeground(Color.WHITE);
+        nbPlanetLabel.setBounds(525,495,100,35);
+        // nbPlanetLabel.setHorizontalAlignment(SwingConstants.CENTER);
         affBackground.add(nbPlanetLabel);
 
         JButton launchButton = new JButton("Start");
@@ -56,19 +57,20 @@ public class Title extends JFrame{
 
         JButton plusButton = new JButton(new ImageIcon("items/logo-plus.png"));
         plusButton.setBounds(585,500,25,25);
-        // plusButton.setForeground(Color.WHITE);
+        plusButton.addActionListener(this);
         affBackground.add(plusButton);
 
         JButton minusButton = new JButton(new ImageIcon("items/logo-minus.png"));
         minusButton.setBounds(440,500,25,25);
-        // plusButton.setForeground(Color.WHITE);
         affBackground.add(minusButton);
 
         this.add(firstPanel);
         this.setVisible(true);
     }
 
-    private void ActionPerformed(){
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource()==plusButton){
 
+        }
     }
 }
