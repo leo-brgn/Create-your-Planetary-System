@@ -69,19 +69,19 @@ public class Title extends JFrame implements ActionListener{
         nbPlanetArea.setBounds(525,495,10,35);
         affBackground.add(nbPlanetArea);
 
-        launchButton = new JButton("Start"); //ATTRIBUT
+        launchButton = new JButton("Start");
         launchButton.setBounds(485,535,80,25);
         launchButton.setForeground(Color.WHITE);
         launchButton.setBackground(Color.GRAY);
         launchButton.addActionListener(this);
         affBackground.add(launchButton);
 
-        JButton plusButton = new JButton(new ImageIcon("items/logo-plus.png")); //ATTRIBUT
+        plusButton = new JButton(new ImageIcon("items/logo-plus.png"));
         plusButton.setBounds(585,500,25,25);
         plusButton.addActionListener(this);
         affBackground.add(plusButton);
 
-        JButton minusButton = new JButton(new ImageIcon("items/logo-minus.png")); //ATTRIBUT
+        minusButton = new JButton(new ImageIcon("items/logo-minus.png"));
         minusButton.setBounds(440,500,25,25);
         affBackground.add(minusButton);
 
@@ -91,7 +91,6 @@ public class Title extends JFrame implements ActionListener{
 
     public void actionPerformed(ActionEvent e){
         if(e.getSource()==plusButton && nbInitial<5){
-            System.out.println("djshdjhs");
             nbInitial++;
         } else if(e.getSource()==minusButton && nbInitial>=1){
             nbInitial--;
