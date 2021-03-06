@@ -2,18 +2,32 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * Class containing the main method (main thread) which creates the title scene
+ * This class allows us to choose the number of planets to create and open the new Window
+ */
 public class Title extends JFrame implements ActionListener{
 
+    /**
+     * Attributes
+     */
     private JLabel nbPlanetLabel;
     private JButton plusButton;
     private JButton minusButton;
     private int nbInitial = 1;
 
+    /**
+     * Main method
+     * @param args
+     */
     public static void main(String[] args) {
         new Title();
         new Window(2);
     }
 
+    /**
+     * Constructor
+     */
     public Title() {
         
         this.setTitle("Create your Solar System");
@@ -80,7 +94,7 @@ public class Title extends JFrame implements ActionListener{
         }else if(e.getSource()==minusButton && nbInitial>1){
             nbInitial= nbInitial-1;
         }else{
-
+            //
         }
         nbPlanetLabel.setText(String.valueOf(nbInitial));
     }

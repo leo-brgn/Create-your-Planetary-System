@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class Window extends JFrame {
     public int[] dimensions;
@@ -15,14 +17,20 @@ public class Window extends JFrame {
 
     public Window(int p){
         nbPlanets = p;
-        planetarySystem = new PlanetarySystem(new Star());
+        planetarySystem = new PlanetarySystem();
+
         this.setTitle("Create your Solar System");
         this.setSize(1050,640);
         this.setResizable(false);
         this.setLocation(120,20);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
-        this.add(planetarySystem);
+        this.setBackground(Color.BLACK);
         this.setVisible(true);
     }
+
+    public void addObjectToSystem(CelestialObject co){
+        planetarySystem.addCelestialObj(co);
+    }
+
 }

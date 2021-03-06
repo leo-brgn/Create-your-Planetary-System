@@ -8,4 +8,9 @@ public class Gazeous extends CelestialObject {
     public void computeMass() {
 
     }
+
+    @Override
+    public int compareTo(CelestialObject celestialObject) {
+        return 0;
+    }
 }
