@@ -1,20 +1,33 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.rmi.NotBoundException;
 
+/**
+ * Class containing the main method (main thread) which creates the title scene
+ * This class allows us to choose the number of planets to create and open the new Window
+ */
 public class Title extends JFrame implements ActionListener{
 
-    private JTextArea nbPlanetLabel;
+    /**
+     * Attributes
+     */
+    private JLabel nbPlanetLabel;
     private JButton plusButton;
     private JButton minusButton;
     private int nbInitial = 1;
 
+    /**
+     * Main method
+     * @param args
+     */
     public static void main(String[] args) {
         new Title();
         new Window(2);
     }
 
+    /**
+     * Constructor
+     */
     public Title() {
         
         this.setTitle("Create your Solar System");
@@ -42,19 +55,18 @@ public class Title extends JFrame implements ActionListener{
         affBackground.add(txtLabel);
 
         JLabel titleLabel = new JLabel(); //ATTRIBUT
-        titleLabel.setText("How many planet do you want to create ?");
+        titleLabel.setText("How many planet do you want to add ?");
         titleLabel.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,30));
         titleLabel.setForeground(Color.WHITE);
-        titleLabel.setBounds(255,425,540,50);
+        titleLabel.setBounds(270,425,510,50);
         affBackground.add(titleLabel);
 
-        JTextArea nbPlanetLabel= new JTextArea(); //ATTRIBUT
+        JLabel nbPlanetLabel= new JLabel(); //ATTRIBUT
         nbPlanetLabel.setText(String.valueOf(nbInitial));
         nbPlanetLabel.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,20));
-        nbPlanetLabel.setBackground(Color.BLACK);
         nbPlanetLabel.setForeground(Color.WHITE);
-        nbPlanetLabel.setBounds(520,495,40,35);
-        //nbPlanetLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        nbPlanetLabel.setBounds(525,495,100,35);
+        // nbPlanetLabel.setHorizontalAlignment(SwingConstants.CENTER);
         affBackground.add(nbPlanetLabel);
 
         JButton launchButton = new JButton("Start"); //ATTRIBUT
@@ -79,8 +91,10 @@ public class Title extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e){
         if(e.getSource()==plusButton && nbInitial<5){
             nbInitial=nbInitial+1;
-        }else if(e.getSource()==minusButton && nbInitial>1) {
-            nbInitial = nbInitial - 1;
+        }else if(e.getSource()==minusButton && nbInitial>1){
+            nbInitial= nbInitial-1;
+        }else{
+            //
         }
         nbPlanetLabel.setText(String.valueOf(nbInitial));
     }

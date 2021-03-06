@@ -16,4 +16,9 @@ public class Telluric extends CelestialObject {
     public void paint(Graphics g){
 
     }
+
+    @Override
+    public int compareTo(CelestialObject celestialObject) {
+        return 0;
+    }
 }

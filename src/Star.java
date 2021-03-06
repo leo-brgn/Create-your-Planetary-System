@@ -2,8 +2,13 @@ import java.awt.*;
 
 public class Star extends CelestialObject{
 
+    private int X;
+    private int Y;
+
     public Star(){
-        this.setBounds(390-40,320-40,180,180);
+        X = 390-40;
+        Y = 320-40;
+        this.setBounds(X,Y,180,180);
     }
     @Override
     public String toString() {
@@ -12,7 +17,6 @@ public class Star extends CelestialObject{
 
     @Override
     public void computeMass() {
-
     }
 
     public void paint(Graphics g){
@@ -21,5 +25,16 @@ public class Star extends CelestialObject{
         g.fillOval(0,0,100,100);
         g.setColor(new Color(255,255,255,255));
         g.fillOval(0,0,80,80);
+    }
+
+    public void updatePos(float dt){
+        X += dt * X;
+        Y += dt * Y;
+        this.setBounds(X,Y,180,180);
+    }
+
+    @Override
+    public int compareTo(CelestialObject celestialObject) {
+        return 0;
     }
 }
