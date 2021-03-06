@@ -1,10 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.rmi.NotBoundException;
 
 public class Title extends JFrame implements ActionListener{
 
-    private JLabel nbPlanetLabel;
+    private JTextArea nbPlanetLabel;
     private JButton plusButton;
     private JButton minusButton;
     private int nbInitial = 1;
@@ -41,18 +42,19 @@ public class Title extends JFrame implements ActionListener{
         affBackground.add(txtLabel);
 
         JLabel titleLabel = new JLabel(); //ATTRIBUT
-        titleLabel.setText("How many planet do you want to add ?");
+        titleLabel.setText("How many planet do you want to create ?");
         titleLabel.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,30));
         titleLabel.setForeground(Color.WHITE);
-        titleLabel.setBounds(270,425,510,50);
+        titleLabel.setBounds(255,425,540,50);
         affBackground.add(titleLabel);
 
-        JLabel nbPlanetLabel= new JLabel(); //ATTRIBUT
+        JTextArea nbPlanetLabel= new JTextArea(); //ATTRIBUT
         nbPlanetLabel.setText(String.valueOf(nbInitial));
         nbPlanetLabel.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,20));
+        nbPlanetLabel.setBackground(Color.BLACK);
         nbPlanetLabel.setForeground(Color.WHITE);
-        nbPlanetLabel.setBounds(525,495,100,35);
-        // nbPlanetLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        nbPlanetLabel.setBounds(520,495,40,35);
+        //nbPlanetLabel.setHorizontalAlignment(SwingConstants.CENTER);
         affBackground.add(nbPlanetLabel);
 
         JButton launchButton = new JButton("Start"); //ATTRIBUT
@@ -77,10 +79,8 @@ public class Title extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e){
         if(e.getSource()==plusButton && nbInitial<5){
             nbInitial=nbInitial+1;
-        }else if(e.getSource()==minusButton && nbInitial>1){
-            nbInitial= nbInitial-1;
-        }else{
-
+        }else if(e.getSource()==minusButton && nbInitial>1) {
+            nbInitial = nbInitial - 1;
         }
         nbPlanetLabel.setText(String.valueOf(nbInitial));
     }
