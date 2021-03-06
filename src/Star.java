@@ -3,8 +3,9 @@ import java.awt.*;
 public class Star extends CelestialObject{
 
     public Star(){
-        position = new Point(390-40, 320-40);
-        this.setBounds(position.x, position.y, 180,180);
+        position = new Point(390-50, 320-50);
+        this.setLocation(position);
+        this.setSize(100,100);
     }
     @Override
     public String toString() {
@@ -17,10 +18,10 @@ public class Star extends CelestialObject{
 
     public void paint(Graphics g){
         long time = System.currentTimeMillis();
-        g.setColor(new Color(100,100,100,80));
-        g.fillOval(0,0,100,100);
-        g.setColor(new Color(255,255,255,255));
-        g.fillOval(0,0,80,80);
+        for(int i = 0; i<=4; i++){
+            g.setColor(new Color(100,100,100,(255*(4-i))/5+50));
+            g.fillOval(50-10*i,50-10*i,20*i,20*i);
+        }
     }
 
     public void updatePos(float dt){
