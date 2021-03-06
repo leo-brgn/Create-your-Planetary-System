@@ -10,7 +10,15 @@ public class Telluric extends CelestialObject {
     }
 
     public void computeMass() {
+    }
 
+    @Override
+    public void updatePosition() {
+        velocity();
+    }
+
+    @Override
+    public void velocity() {
     }
 
     public void paint(Graphics g){

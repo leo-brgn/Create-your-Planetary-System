@@ -11,9 +11,11 @@ public class Title extends JFrame implements ActionListener{
     /**
      * Attributes
      */
+    private Window window;
     private JLabel nbPlanetLabel;
     private JButton plusButton;
     private JButton minusButton;
+    private JButton launchButton;
     private int nbInitial = 1;
 
     /**
@@ -22,7 +24,6 @@ public class Title extends JFrame implements ActionListener{
      */
     public static void main(String[] args) {
         new Title();
-        new Window(2);
     }
 
     /**
@@ -35,14 +36,14 @@ public class Title extends JFrame implements ActionListener{
         this.setResizable(false);
         this.setLocation(120,20);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         this.setLayout(null);
+
         JPanel firstPanel = new JPanel(); //ATTRIBUT
         firstPanel.setBackground(Color.BLACK);
         firstPanel.setBounds(0,0,1050,640);
         firstPanel.setVisible(true);
-
         firstPanel.setLayout(null);
+
         JLabel affBackground = new JLabel (new ImageIcon("items/wallpaper-HD.jpg"));
         affBackground.setBounds(0,0,1050,640);
         firstPanel.add(affBackground);
@@ -69,10 +70,11 @@ public class Title extends JFrame implements ActionListener{
         // nbPlanetLabel.setHorizontalAlignment(SwingConstants.CENTER);
         affBackground.add(nbPlanetLabel);
 
-        JButton launchButton = new JButton("Start"); //ATTRIBUT
+        launchButton = new JButton("Start"); //ATTRIBUT
         launchButton.setBounds(485,535,80,25);
         launchButton.setForeground(Color.WHITE);
         launchButton.setBackground(Color.GRAY);
+        launchButton.addActionListener(this);
         affBackground.add(launchButton);
 
         JButton plusButton = new JButton(new ImageIcon("items/logo-plus.png")); //ATTRIBUT
@@ -93,8 +95,9 @@ public class Title extends JFrame implements ActionListener{
             nbInitial=nbInitial+1;
         }else if(e.getSource()==minusButton && nbInitial>1){
             nbInitial= nbInitial-1;
-        }else{
-            //
+        }else if(e.getSource()==launchButton){
+            window = new Window(nbInitial);
+            System.out.println("Let's go");
         }
         nbPlanetLabel.setText(String.valueOf(nbInitial));
     }

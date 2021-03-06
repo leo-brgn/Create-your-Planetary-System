@@ -10,6 +10,16 @@ public class Gazeous extends CelestialObject {
     }
 
     @Override
+    public void updatePosition() {
+        velocity();
+    }
+
+    @Override
+    public void velocity() {
+
+    }
+
+    @Override
     public int compareTo(CelestialObject celestialObject) {
         return 0;
     }
