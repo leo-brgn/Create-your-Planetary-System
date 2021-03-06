@@ -2,13 +2,9 @@ import java.awt.*;
 
 public class Star extends CelestialObject{
 
-    private int X;
-    private int Y;
-
     public Star(){
-        X = 390-40;
-        Y = 320-40;
-        this.setBounds(X,Y,180,180);
+        position = new Point(390-40, 320-40);
+        this.setBounds(position.x, position.y, 180,180);
     }
     @Override
     public String toString() {
@@ -28,9 +24,11 @@ public class Star extends CelestialObject{
     }
 
     public void updatePos(float dt){
-        X += dt * X;
-        Y += dt * Y;
-        this.setBounds(X,Y,180,180);
+       // this.setBounds(X,Y,180,180);
+    }
+
+    public void updatePos(){
+        this.setBounds(position.x, position.y, 180,180);
     }
 
     @Override

@@ -17,20 +17,17 @@ public class PlanetarySystem extends JPanel implements Runnable{
      * Constructor
      */
     public PlanetarySystem () {
+        // Creation of the pane
+        this.setBounds(0,0,780,640);
+        this.setBackground(Color.BLACK);
+        this.setLayout(null);
+        this.setVisible(true);
         // Creation of the set of celestial objects shown in the panel
         celestialObjects = new LinkedList<CelestialObject>();
         // Adding the sun, the first element of the set of celestial objects, no interactions on it in this version
         celestialObjects.add(new Star());
         // New thread for the planets to move on the side
         new Thread(this).start();
-    }
-
-    /**
-     * Method to add the celestial objects in the planetary system
-     * @param co
-     */
-    public void addCelestialObj(CelestialObject co){
-        celestialObjects.add(co);
     }
 
     /**
@@ -41,18 +38,18 @@ public class PlanetarySystem extends JPanel implements Runnable{
         float dt = time;
         while(running = true){
             dt = System.currentTimeMillis() - time;
-            updateSystem(dt);
+            updateSystem();
             time = System.currentTimeMillis();
         }
     }
 
     /**
      * Method to update the system each delta of time
-     * @param dt
      */
-    public void updateSystem(float dt){
+    public void updateSystem(){
        for(CelestialObject c : celestialObjects){
-           c.repaint((long) dt);
+           c.position.x += 1;
+           this.add(c);
        }
     }
 }

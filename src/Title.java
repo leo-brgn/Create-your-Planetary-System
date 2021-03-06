@@ -35,14 +35,14 @@ public class Title extends JFrame implements ActionListener{
         this.setResizable(false);
         this.setLocation(120,20);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         this.setLayout(null);
+
         JPanel firstPanel = new JPanel(); //ATTRIBUT
         firstPanel.setBackground(Color.BLACK);
         firstPanel.setBounds(0,0,1050,640);
         firstPanel.setVisible(true);
-
         firstPanel.setLayout(null);
+
         JLabel affBackground = new JLabel (new ImageIcon("items/wallpaper-HD.jpg"));
         affBackground.setBounds(0,0,1050,640);
         firstPanel.add(affBackground);
