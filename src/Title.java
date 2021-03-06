@@ -23,8 +23,8 @@ public class Title extends JFrame{
         firstPanel.setVisible(true);
 
         firstPanel.setLayout(null);
-        JLabel affBackground = new JLabel (new ImageIcon("items/papiers-peints-solar-system.jpg"));
-        affBackground.setBounds(0,0,1050,640);
+        JLabel affBackground = new JLabel (new ImageIcon("wallpaper HD.jpg"));
+        affBackground.setBounds(0,25,1050,590);
         firstPanel.add(affBackground);
 
         JLabel txtLabel = new JLabel();
