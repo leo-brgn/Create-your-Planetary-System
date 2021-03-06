@@ -11,9 +11,11 @@ public class Title extends JFrame implements ActionListener{
     /**
      * Attributes
      */
+    private Window window;
     private JLabel nbPlanetLabel;
     private JButton plusButton;
     private JButton minusButton;
+    private JButton launchButton;
     private int nbInitial = 1;
 
     /**
@@ -22,7 +24,6 @@ public class Title extends JFrame implements ActionListener{
      */
     public static void main(String[] args) {
         new Title();
-        new Window(2);
     }
 
     /**
@@ -69,7 +70,7 @@ public class Title extends JFrame implements ActionListener{
         // nbPlanetLabel.setHorizontalAlignment(SwingConstants.CENTER);
         affBackground.add(nbPlanetLabel);
 
-        JButton launchButton = new JButton("Start"); //ATTRIBUT
+        launchButton = new JButton("Start"); //ATTRIBUT
         launchButton.setBounds(485,535,80,25);
         launchButton.setForeground(Color.WHITE);
         launchButton.setBackground(Color.GRAY);
@@ -93,8 +94,8 @@ public class Title extends JFrame implements ActionListener{
             nbInitial=nbInitial+1;
         }else if(e.getSource()==minusButton && nbInitial>1){
             nbInitial= nbInitial-1;
-        }else{
-            //
+        }else if(e.getSource()==launchButton){
+            window = new Window(nbInitial);
         }
         nbPlanetLabel.setText(String.valueOf(nbInitial));
     }

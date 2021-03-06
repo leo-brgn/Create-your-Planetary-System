@@ -21,8 +21,8 @@ public class Window extends JFrame implements MouseListener {
     public int nbPlanets;
     public PlanetarySystem planetarySystem;
 
-    public Window(int p){
-        nbPlanets = p;
+    public Window(int nbPlanets){
+        this.nbPlanets = nbPlanets;
         planetarySystem = new PlanetarySystem();
         // Creation of the window
         this.setTitle("Create your Solar System");
