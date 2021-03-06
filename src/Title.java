@@ -51,7 +51,7 @@ public class Title extends JFrame implements ActionListener{
         txtLabel.setText("CREATE YOUR PLANETARY SYSTEM");
         txtLabel.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,45));
         txtLabel.setForeground(Color.WHITE);
-        txtLabel.setBounds(110,35,830,50);
+        txtLabel.setBounds(110,55,830,50);
         affBackground.add(txtLabel);
 
         JLabel titleLabel = new JLabel(); //ATTRIBUT
