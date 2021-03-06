@@ -4,7 +4,9 @@ import java.awt.event.*;
 
 public class Title extends JFrame implements ActionListener{
 
-
+    private JLabel nbPlanetLabel;
+    private JButton plusButton;
+    private int nbInitial = 1;
 
     public static void main(String[] args) {
         new Title();
@@ -45,7 +47,7 @@ public class Title extends JFrame implements ActionListener{
         affBackground.add(titleLabel);
 
         JLabel nbPlanetLabel= new JLabel(); //ATTRIBUT
-        nbPlanetLabel.setText("1");
+        nbPlanetLabel.setText(String.valueOf(nbInitial));
         nbPlanetLabel.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,20));
         nbPlanetLabel.setForeground(Color.WHITE);
         nbPlanetLabel.setBounds(525,495,100,35);
@@ -73,7 +75,8 @@ public class Title extends JFrame implements ActionListener{
 
     public void actionPerformed(ActionEvent e){
         if(e.getSource()==plusButton){
-
+            nbInitial=nbInitial+1;
+            nbPlanetLabel.setText();
         }
     }
 }
