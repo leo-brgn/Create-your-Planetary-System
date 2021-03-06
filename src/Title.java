@@ -6,6 +6,7 @@ public class Title extends JFrame implements ActionListener{
 
     private JLabel nbPlanetLabel;
     private JButton plusButton;
+    private JButton minusButton;
     private int nbInitial = 1;
 
     public static void main(String[] args) {
@@ -74,9 +75,13 @@ public class Title extends JFrame implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e){
-        if(e.getSource()==plusButton){
+        if(e.getSource()==plusButton && nbInitial<5){
             nbInitial=nbInitial+1;
-            nbPlanetLabel.setText();
+        }else if(e.getSource()==minusButton && nbInitial>1){
+            nbInitial= nbInitial-1;
+        }else{
+
         }
+        nbPlanetLabel.setText(String.valueOf(nbInitial));
     }
 }
