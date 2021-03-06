@@ -6,6 +6,7 @@ public class Star extends CelestialObject{
     private int size;
 
     public Star(){
+        distanceToStar = 0;
         position = new Point(390-25, 320-25);
         size = 50;
         this.setLocation(position);

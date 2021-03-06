@@ -74,6 +74,7 @@ public class Title extends JFrame implements ActionListener{
         launchButton.setBounds(485,535,80,25);
         launchButton.setForeground(Color.WHITE);
         launchButton.setBackground(Color.GRAY);
+        launchButton.addActionListener(this);
         affBackground.add(launchButton);
 
         JButton plusButton = new JButton(new ImageIcon("items/logo-plus.png")); //ATTRIBUT
@@ -96,6 +97,7 @@ public class Title extends JFrame implements ActionListener{
             nbInitial= nbInitial-1;
         }else if(e.getSource()==launchButton){
             window = new Window(nbInitial);
+            System.out.println("Let's go");
         }
         nbPlanetLabel.setText(String.valueOf(nbInitial));
     }
