@@ -3,7 +3,7 @@ import java.awt.*;
 public class Star extends CelestialObject{
 
     public Star(){
-        this.setBounds(390-50,320-50,200,200);
+        this.setBounds(390-40,320-40,180,180);
     }
     @Override
     public String toString() {
@@ -16,7 +16,10 @@ public class Star extends CelestialObject{
     }
 
     public void paint(Graphics g){
-        g.setColor(Color.YELLOW);
+        long time = System.currentTimeMillis();
+        g.setColor(new Color(100,100,100,80));
         g.fillOval(0,0,100,100);
+        g.setColor(new Color(255,255,255,255));
+        g.fillOval(0,0,80,80);
     }
 }

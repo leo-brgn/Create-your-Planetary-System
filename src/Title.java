@@ -74,9 +74,9 @@ public class Title extends JFrame implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e){
-        if(e.getSource()==plusButton){
+       /* if(e.getSource()==plusButton){
             nbInitial=nbInitial+1;
             nbPlanetLabel.setText();
-        }
+        }*/
     }
 }
