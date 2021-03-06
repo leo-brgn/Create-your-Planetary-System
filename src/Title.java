@@ -83,6 +83,7 @@ public class Title extends JFrame implements ActionListener{
 
         minusButton = new JButton(new ImageIcon("items/logo-minus.png"));
         minusButton.setBounds(440,500,25,25);
+        minusButton.addActionListener(this);
         affBackground.add(minusButton);
 
         this.add(firstPanel);
@@ -92,8 +93,8 @@ public class Title extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e){
         if(e.getSource()==plusButton && nbInitial<5){
             nbInitial++;
-        } else if(e.getSource()==minusButton && nbInitial>=1){
-            nbInitial--;
+        } else if(e.getSource()==minusButton && nbInitial>1){
+            nbInitial=nbInitial-1;
         } else if(e.getSource()==launchButton){
             window = new Window(nbInitial);
             System.out.println("Let's go");
