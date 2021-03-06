@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Telluric extends Planet {
+public class Telluric extends CelestialObject {
 
     public Telluric () {
     }

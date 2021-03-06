@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public abstract class Planet {
+public abstract class CelestialObject {
     protected Color[] colorRange = new Color[8];
     protected float mass;
     protected int radius;
