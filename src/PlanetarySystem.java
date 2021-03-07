@@ -9,9 +9,8 @@ public class PlanetarySystem extends JPanel implements Runnable{
     /**
      * Attributes
      */
-    public LinkedList<CelestialObject> addedObj;
-    public LinkedList<CelestialObject> celestialObjects;
-    public boolean running = true;
+    private LinkedList<CelestialObject> addedObj;
+    private LinkedList<CelestialObject> celestialObjects;
 
     /**
      * Constructor
@@ -35,7 +34,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
 
     @Override
     public void run() {
-        while(running){
+        while(true){
             if(!celestialObjects.isEmpty()){
                 for(CelestialObject c : celestialObjects){
                     if(!addedObj.contains(c)){
@@ -54,5 +53,21 @@ public class PlanetarySystem extends JPanel implements Runnable{
             }
         }
 
+    }
+
+    public void addCelestialObject(CelestialObject celestialObject){
+        celestialObjects.add(celestialObject);
+    }
+
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        Graphics2D g2D = (Graphics2D) g;
+        g2D.setColor(Color.WHITE);
+        for (int i = 0; i<100; i++){
+            double a = Math.random();
+            double b = Math.random();
+            double c = Math.random();
+            g2D.fillOval((int) (a*780),(int) (b*640),(int) (2*c+1),(int) (2*c+1));
+        }
     }
 }

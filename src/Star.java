@@ -3,18 +3,18 @@ import java.awt.*;
 
 public class Star extends CelestialObject{
     public boolean shinning = true;
-    private int size;
 
     public Star(){
+        //super(25);
+        radius = 25;
         distanceToStar = 0;
         position = new Point(390-25, 320-25);
-        size = 50;
         this.setLocation(position);
-        this.setSize(size,size);
+        this.setSize(2*radius,2*radius);
     }
     @Override
     public String toString() {
-        return null;
+        return "Sun of mass: ";
     }
 
     @Override
@@ -31,12 +31,12 @@ public class Star extends CelestialObject{
         Graphics2D g2D = (Graphics2D)g;
         Color color = new Color((float)1.0,(float)1.0,(float)1.0,(float)1.0);
         g2D.setColor(color);
-        g2D.fillOval(0,0,size,size);
+        g2D.fillOval(0,0,2*radius,2*radius);
     }
 
     public void updatePosition(){
-        size = 50 + (int)(10 * Math.cos(5*100_000_000 * System.currentTimeMillis()));
-        this.setBounds(position.x - size/2, position.y - size /2 , size,size);
+        //size = 50 + (int)(10 * Math.cos(5*100_000_000 * System.currentTimeMillis()));
+        //this.setBounds(position.x - size/2, position.y - size /2 , size,size);
         //velocity();
     }
 

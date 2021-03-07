@@ -1,4 +1,12 @@
+import java.awt.*;
+
 public class Gazeous extends CelestialObject {
+
+    public Gazeous(int radius, Point position) {
+        this.radius = radius;
+        this.position = position;
+    }
+
     @Override
     public String toString() {
         return null;
