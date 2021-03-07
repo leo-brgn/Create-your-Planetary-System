@@ -59,6 +59,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
     public void addCelestialObject(CelestialObject celestialObject){
         celestialObjects.add(celestialObject);
     }
+
     /*
     public void paintComponent(Graphics g){
         super.paintComponent(g);

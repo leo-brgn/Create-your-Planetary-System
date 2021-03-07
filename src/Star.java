@@ -8,8 +8,9 @@ public class Star extends CelestialObject{
         //super(25);
         radius = 25;
         distanceToStar = 0;
-        position = new Point(365, 295);
-        this.setLocation(position);
+        initialPosition = new Point(390, 320);
+        leftUpSquare = new Point(365, 295);
+        this.setLocation(leftUpSquare);
         this.setSize(2*radius,2*radius);
     }
     @Override

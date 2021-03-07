@@ -4,7 +4,7 @@ public class Gazeous extends CelestialObject {
 
     public Gazeous(int radius, Point position) {
         this.radius = radius;
-        this.position = position;
+        this.initialPosition = position;
     }
 
     @Override
