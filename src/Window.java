@@ -32,9 +32,9 @@ public class Window extends JFrame implements MouseListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
         this.setBackground(Color.BLUE);
-        this.addMouseListener(this);
+        this.getContentPane().addMouseListener(this);
         new Thread().start(); // Send the following on another thread
-        this.add(planetarySystem);
+        this.getContentPane().add(planetarySystem);
         this.setVisible(true);
         // Creation of the panel
     }
@@ -45,7 +45,7 @@ public class Window extends JFrame implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
         if(mouseEvent.getButton() == MouseEvent.BUTTON1){
-            planetarySystem.addCelestialObject(new Telluric(10,mouseEvent.getPoint() ));
+            planetarySystem.addCelestialObject(new Telluric(10,mouseEvent.getPoint()));
         }
 
     }
