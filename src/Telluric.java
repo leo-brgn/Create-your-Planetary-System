@@ -5,12 +5,13 @@ public class Telluric extends CelestialObject {
     public Telluric (int radius, Point position) {
         this.radius = radius;
         this.position = position;
+        computeDistanceToStar();
         this.setLocation(position);
-        this.setSize(2*radius,2*radius);
+        this.setSize((int)distanceToStar+radius,(int)distanceToStar+radius);
     }
 
     public String toString(){
-        return "Telluric planet";
+        return "Telluric planet" + distanceToStar;
     }
 
     public void computeMass() {

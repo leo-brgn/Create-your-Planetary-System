@@ -45,7 +45,7 @@ public class Window extends JFrame implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
         if(mouseEvent.getButton() == MouseEvent.BUTTON1){
-            planetarySystem.addCelestialObject(new Telluric(10,mouseEvent.getPoint()));
+            planetarySystem.addCelestialObject(new Telluric((int)( 10*Math.random()),mouseEvent.getPoint()));
         }
 
     }

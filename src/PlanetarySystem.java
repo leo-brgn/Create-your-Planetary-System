@@ -61,13 +61,13 @@ public class PlanetarySystem extends JPanel implements Runnable{
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        Graphics2D g2D = (Graphics2D) g;
+        /*Graphics2D g2D = (Graphics2D) g;
         g2D.setColor(Color.WHITE);
         for (int i = 0; i<100; i++){
             double a = Math.random();
             double b = Math.random();
             double c = Math.random();
             g2D.fillOval((int) (a*780),(int) (b*640),(int) (2*c+1),(int) (2*c+1));
-        }
+        }*/
     }
 }

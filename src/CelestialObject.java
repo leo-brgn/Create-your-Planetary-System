@@ -8,7 +8,7 @@ import java.awt.*;
 public abstract class CelestialObject extends JComponent implements Comparable<CelestialObject> {
     final public float G = (float) (6.67430 * Math.pow(10, -11));
     protected int radius;
-    protected float distanceToStar;
+    protected double distanceToStar;
     protected Point initialVelocity;
     protected Point velocity;
     protected Point position;
@@ -21,5 +21,8 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     public abstract void computeMass();
     public abstract void updatePosition();
     public abstract void velocity();
+    public void computeDistanceToStar(){
+        distanceToStar = Math.sqrt((position.x - 365)*(position.x-365) + (position.y- 295)*(position.y-295));
+    }
 
 }
