@@ -12,8 +12,7 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     protected Point initialVelocity;
     protected Point velocity;
     protected Point initialPosition;
-    protected Point leftUpSquare;
-    protected Point relativePosition;
+    protected Point updatedPosition;
     protected float mass;
 
     /**
@@ -21,16 +20,13 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
      */
     public abstract String toString();
     public abstract void computeMass();
-    public abstract void updatePosition();
     public abstract void velocity();
     public void computeDistanceToStar(){
         distanceToStar = Math.sqrt((initialPosition.x - 390)*(initialPosition.x-390) + (initialPosition.y- 320)*(initialPosition.y-320));
     }
-    public void setLeftUpSquare(){
-        leftUpSquare = new Point(390-(int)distanceToStar, 320-(int)distanceToStar) ;
-    }
-    public void setRelativePosition(){
-        relativePosition = new Point(initialPosition.x - leftUpSquare.x, initialPosition.y - leftUpSquare.y);
+    public void updatePosition(){
+        updatedPosition.x = updatedPosition.x + velocity.x;
+        updatedPosition.y = updatedPosition.y + velocity.y;
     }
 
 }

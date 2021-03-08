@@ -17,14 +17,14 @@ public class PlanetarySystem extends JPanel implements Runnable{
      * Constructor
      */
     public PlanetarySystem () {
-        addedObj = new LinkedList<CelestialObject>();
+        addedObj = new LinkedList<>();
         // Creation of the pane
         this.setBounds(0,0,780,640);
         this.setBackground(Color.BLACK);
         this.setLayout(null);
         this.setVisible(true);
         // Creation of the set of celestial objects shown in the panel
-        celestialObjects = new LinkedList<CelestialObject>();
+        celestialObjects = new LinkedList<>();
         // Adding the sun, the first element of the set of celestial objects, no interactions on it in this version
         celestialObjects.add(new Star());
         // THREAD
@@ -43,7 +43,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
                         addedObj.add(c);
                         System.out.println("New planet added: " + c);
                     }
-                    c.updatePosition();
+                    //c.updatePosition();
                     c.repaint();
                 }
             }

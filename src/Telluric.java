@@ -5,11 +5,10 @@ public class Telluric extends CelestialObject {
     public Telluric (int radius, Point position) {
         this.radius = radius;
         this.initialPosition = position;
+        this.updatedPosition = position;
         computeDistanceToStar();
-        setLeftUpSquare();
-        setRelativePosition();
-        this.setLocation(leftUpSquare);
-        this.setSize(2* ((int)distanceToStar+radius),2* ((int)distanceToStar+radius));
+        this.setLocation(0,0);
+        this.setSize(780,640);
     }
 
     public String toString(){
@@ -17,11 +16,6 @@ public class Telluric extends CelestialObject {
     }
 
     public void computeMass() {
-    }
-
-    @Override
-    public void updatePosition() {
-        velocity();
     }
 
     @Override
@@ -33,9 +27,9 @@ public class Telluric extends CelestialObject {
         Graphics2D g2D = (Graphics2D)g;
         Color color = new Color((float)1.0,(float)1.0,(float)1.0,(float)1.0);
         g2D.setColor(color);
-        g2D.fillOval(relativePosition.x,relativePosition.y,2*radius,2*radius);
+        g2D.fillOval(updatedPosition.x,updatedPosition.y,2*radius,2*radius);
         //g2D.fillOval(0,0,(int)distanceToStar+radius,(int)distanceToStar+radius);
-        g2D.drawLine(390, 320, 500,500);
+        g2D.drawLine(390, 320, updatedPosition.x + radius ,updatedPosition.y + radius);
     }
 
     @Override

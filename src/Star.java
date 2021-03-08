@@ -6,11 +6,11 @@ public class Star extends CelestialObject{
 
     public Star(){
         //super(25);
-        radius = 25;
-        distanceToStar = 0;
-        initialPosition = new Point(390, 320);
-        leftUpSquare = new Point(365, 295);
-        this.setLocation(leftUpSquare);
+        this.radius = 25;
+        this.distanceToStar = 0;
+        this.initialPosition = new Point(390, 320);
+        this.updatedPosition = initialPosition;
+        this.setLocation(365, 295);
         this.setSize(2*radius,2*radius);
     }
     @Override
@@ -24,7 +24,6 @@ public class Star extends CelestialObject{
 
     @Override
     public void velocity() {
-        velocity.x = 1;
     }
 
     public void paintComponent(Graphics g){
@@ -33,12 +32,6 @@ public class Star extends CelestialObject{
         Color color = new Color((float)1.0,(float)1.0,(float)1.0,(float)1.0);
         g2D.setColor(color);
         g2D.fillOval(0,0,2*radius,2*radius);
-    }
-
-    public void updatePosition(){
-        //size = 50 + (int)(10 * Math.cos(5*100_000_000 * System.currentTimeMillis()));
-        //this.setBounds(position.x - size/2, position.y - size /2 , size,size);
-        //velocity();
     }
 
     @Override
