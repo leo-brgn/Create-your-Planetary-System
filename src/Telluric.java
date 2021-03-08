@@ -4,6 +4,7 @@ public class Telluric extends CelestialObject {
 
     public Telluric (int radius, Point position) {
         super(radius, position);
+        mass = 6 * Math.pow(10,24);
     }
 
     public void paintComponent(Graphics g){
@@ -30,8 +31,13 @@ public class Telluric extends CelestialObject {
 
     @Override
     public void updatePosition(){
+        currentTime = System.currentTimeMillis();
+        deltaT = currentTime - lastTime;
+        double b = (2.0 * G * mass) / (distanceToStar*4000);
+        System.out.println(b);
         updatedPosition.x += velocity.x;
         computeDistanceToStar();
+        lastTime = currentTime;
     }
 
     @Override

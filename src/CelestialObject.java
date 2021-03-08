@@ -6,17 +6,17 @@ import java.awt.*;
  * It allows for the creation of stars, planets and maybe later satellites.
  */
 public abstract class CelestialObject extends JComponent implements Comparable<CelestialObject> {
-    final public float G = (float) (6.67430 * Math.pow(10, -11));
+    final public double G = (double) (6.7 * Math.pow(10, -11));
     protected int radius;
     protected double distanceToStar;
-    protected float currentTime;
-    protected float lastTime;
-    protected float deltaT;
+    protected long currentTime;
+    protected long lastTime;
+    protected long deltaT;
     protected Point initialVelocity;
     protected Point velocity;
     protected Point initialPosition;
     protected Point updatedPosition;
-    protected float mass;
+    protected double mass;
 
     /**
      * Contructor
@@ -33,8 +33,8 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
         this.setSize(780,640);
         computeDistanceToStar();
         setVelocity();
-        this.currentTime = System.nanoTime();
-        this.lastTime = System.nanoTime();
+        this.currentTime = System.currentTimeMillis();
+        this.lastTime = System.currentTimeMillis();
         this.deltaT = 0;
     }
 
