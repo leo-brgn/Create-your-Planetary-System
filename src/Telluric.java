@@ -26,7 +26,7 @@ public class Telluric extends CelestialObject {
     }
 
     public void updatePosition(){
-        updatedPosition.x += velocity.x;
+        //updatedPosition.x += velocity.x;
         computeDistanceToStar();
     }
 
@@ -37,8 +37,8 @@ public class Telluric extends CelestialObject {
         g2D.setColor(color);
         g2D.fillOval(updatedPosition.x,updatedPosition.y,2*radius,2*radius);
         //g2D.fillOval(0,0,(int)distanceToStar+radius,(int)distanceToStar+radius);
-        g2D.drawLine(390, 320, updatedPosition.x + radius ,updatedPosition.y + radius);
-        g2D.drawOval((int) (390-distanceToStar),(int) (320-distanceToStar),(int) (2*distanceToStar),(int)  (2*distanceToStar));
+        //g2D.drawLine(390, 320, updatedPosition.x + radius ,updatedPosition.y + radius);
+        //g2D.drawOval((int) (390-distanceToStar),(int) (320-distanceToStar),(int) (2*distanceToStar),(int)  (2*distanceToStar));
     }
 
     @Override
