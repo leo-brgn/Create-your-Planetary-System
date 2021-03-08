@@ -1,6 +1,12 @@
+import javax.media.CannotRealizeException;
+import javax.media.Manager;
+import javax.media.NoPlayerException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import javax.media.Player;
+import java.io.IOException;
+import java.net.URL;
 
 /**
  * Class containing the main method (main thread) which creates the title scene
@@ -24,12 +30,18 @@ public class Title extends JFrame implements ActionListener{
     public static void main(String[] args) {
         new Title();
     }
+    /*
+    public static void playSong(URL media) throws CannotRealizeException, IOException, NoPlayerException {
+        Player mediaPlayer = Manager.createRealizedPlayer(media);
+        mediaPlayer.start();
+    }*/
 
     /**
      * Constructor
      */
     public Title() {
-        
+
+        //playSong(new URL("/items/sounds/cavern-starting-area-sans-percussion-actionloop-royalty-free-music.mp3"));
         this.setTitle("Create your Solar System");
         this.setSize(1050,640);
         this.setResizable(false);
@@ -37,13 +49,14 @@ public class Title extends JFrame implements ActionListener{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
 
+
         JPanel firstPanel = new JPanel(); //ATTRIBUT
         firstPanel.setBackground(Color.BLACK);
         firstPanel.setBounds(0,0,1050,640);
         firstPanel.setVisible(true);
         firstPanel.setLayout(null);
 
-        JLabel affBackground = new JLabel (new ImageIcon("items/wallpaper-HD.jpg"));
+        JLabel affBackground = new JLabel (new ImageIcon("items/images/wallpaper-HD.jpg"));
         affBackground.setBounds(0,0,1050,640);
         firstPanel.add(affBackground);
 
@@ -76,12 +89,12 @@ public class Title extends JFrame implements ActionListener{
         launchButton.addActionListener(this);
         affBackground.add(launchButton);
 
-        plusButton = new JButton(new ImageIcon("items/logo-plus.png"));
+        plusButton = new JButton(new ImageIcon("items/images/logo-plus.png"));
         plusButton.setBounds(585,500,25,25);
         plusButton.addActionListener(this);
         affBackground.add(plusButton);
 
-        minusButton = new JButton(new ImageIcon("items/logo-minus.png"));
+        minusButton = new JButton(new ImageIcon("items/images/logo-minus.png"));
         minusButton.setBounds(440,500,25,25);
         minusButton.addActionListener(this);
         affBackground.add(minusButton);
