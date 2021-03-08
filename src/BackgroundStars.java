@@ -2,9 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 
 public class BackgroundStars extends JComponent {
+
     private double[] a = new double[100];
     private double[] b = new double[100];
     private double[] c = new double[100];
+
     public BackgroundStars(){
         this.setBounds(0,0,780,640);
         for (int i = 0; i<100; i++){
@@ -12,7 +14,6 @@ public class BackgroundStars extends JComponent {
             this.b[i] = Math.random();
             this.c[i] = Math.random();
         }
-
     }
 
     public void paintComponent(Graphics g){
