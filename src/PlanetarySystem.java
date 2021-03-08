@@ -9,9 +9,8 @@ public class PlanetarySystem extends JPanel implements Runnable{
     /**
      * Attributes
      */
-    private LinkedList<CelestialObject> addedObj;
-    private LinkedList<CelestialObject> celestialObjects;
-    private boolean stared = false;
+    private final LinkedList<CelestialObject> addedObj;
+    private final LinkedList<CelestialObject> celestialObjects;
 
     /**
      * Constructor

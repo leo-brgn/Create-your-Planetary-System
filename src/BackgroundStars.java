@@ -3,9 +3,9 @@ import java.awt.*;
 
 public class BackgroundStars extends JComponent {
 
-    private double[] a = new double[100];
-    private double[] b = new double[100];
-    private double[] c = new double[100];
+    private final double[] a = new double[100];
+    private final double[] b = new double[100];
+    private final double[] c = new double[100];
 
     public BackgroundStars(){
         this.setBounds(0,0,780,640);

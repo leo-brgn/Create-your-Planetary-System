@@ -1,10 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.EventListener;
-import java.util.Vector;
 
 public class Window extends JFrame implements MouseListener {
     // GUI attributes
@@ -46,7 +43,7 @@ public class Window extends JFrame implements MouseListener {
     public void mouseClicked(MouseEvent mouseEvent) {
         if(mouseEvent.getButton() == MouseEvent.BUTTON1){
             if(planetarySystem.getAddedSize() < 10+1){
-                planetarySystem.addCelestialObject(new Telluric((int)( 10*Math.random()),mouseEvent.getPoint()));
+                planetarySystem.addCelestialObject(new Rocky((int)( 10*Math.random()),mouseEvent.getPoint()));
             }
         }
 

@@ -1,12 +1,7 @@
-import javax.media.CannotRealizeException;
-import javax.media.Manager;
-import javax.media.NoPlayerException;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import javax.media.Player;
-import java.io.IOException;
-import java.net.URL;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Class containing the main method (main thread) which creates the title scene
@@ -14,34 +9,24 @@ import java.net.URL;
  */
 public class Title extends JFrame implements ActionListener{
 
-    /**
-     * Attributes
-     */
-    private Window window;
-    private JTextArea nbPlanetArea;
-    private JButton plusButton;
-    private JButton minusButton;
-    private JButton launchButton;
+    private final JTextArea nbPlanetArea;
+    private final JButton plusButton;
+    private final JButton minusButton;
+    private final JButton launchButton;
     private int nbInitial = 1;
 
     /**
      * Main method
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         new Title();
     }
-    /*
-    public static void playSong(URL media) throws CannotRealizeException, IOException, NoPlayerException {
-        Player mediaPlayer = Manager.createRealizedPlayer(media);
-        mediaPlayer.start();
-    }*/
 
     /**
      * Constructor
      */
-    public Title() {
-
-        //playSong(new URL("/items/sounds/cavern-starting-area-sans-percussion-actionloop-royalty-free-music.mp3"));
+    public Title() throws Exception {
+        new TitleMusic();
         this.setTitle("Create your Solar System");
         this.setSize(1050,640);
         this.setResizable(false);
@@ -49,8 +34,7 @@ public class Title extends JFrame implements ActionListener{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
 
-
-        JPanel firstPanel = new JPanel(); //ATTRIBUT
+        JPanel firstPanel = new JPanel();
         firstPanel.setBackground(Color.BLACK);
         firstPanel.setBounds(0,0,1050,640);
         firstPanel.setVisible(true);
@@ -60,14 +44,14 @@ public class Title extends JFrame implements ActionListener{
         affBackground.setBounds(0,0,1050,640);
         firstPanel.add(affBackground);
 
-        JLabel txtLabel = new JLabel(); //ATTRIBUT
+        JLabel txtLabel = new JLabel();
         txtLabel.setText("CREATE YOUR PLANETARY SYSTEM");
         txtLabel.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,45));
         txtLabel.setForeground(Color.WHITE);
         txtLabel.setBounds(110,55,830,50);
         affBackground.add(txtLabel);
 
-        JLabel titleLabel = new JLabel(); //ATTRIBUT
+        JLabel titleLabel = new JLabel();
         titleLabel.setText("How many planet do you want to add ?");
         titleLabel.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,30));
         titleLabel.setForeground(Color.WHITE);
@@ -109,7 +93,7 @@ public class Title extends JFrame implements ActionListener{
         } else if(e.getSource()==minusButton && nbInitial>1){
             nbInitial=nbInitial-1;
         } else if(e.getSource()==launchButton){
-            window = new Window(nbInitial);
+            new Window(nbInitial);
             System.out.println("Let's go");
         }
         nbPlanetArea.setText(String.valueOf(nbInitial));
