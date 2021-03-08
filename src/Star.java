@@ -23,7 +23,12 @@ public class Star extends CelestialObject{
     }
 
     @Override
-    public void velocity() {
+    public void updatePosition() {
+    }
+
+    @Override
+    public void setVelocity() {
+
     }
 
     public void paintComponent(Graphics g){

@@ -20,13 +20,10 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
      */
     public abstract String toString();
     public abstract void computeMass();
-    public abstract void velocity();
+    public abstract void updatePosition();
+    public abstract void setVelocity();
     public void computeDistanceToStar(){
         distanceToStar = Math.sqrt((initialPosition.x - 390)*(initialPosition.x-390) + (initialPosition.y- 320)*(initialPosition.y-320));
-    }
-    public void updatePosition(){
-        updatedPosition.x = updatedPosition.x + velocity.x;
-        updatedPosition.y = updatedPosition.y + velocity.y;
     }
 
 }

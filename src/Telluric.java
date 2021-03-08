@@ -6,6 +6,8 @@ public class Telluric extends CelestialObject {
         this.radius = radius;
         this.initialPosition = position;
         this.updatedPosition = position;
+        this.velocity = new Point(0,0);
+        setVelocity();
         computeDistanceToStar();
         this.setLocation(0,0);
         this.setSize(780,640);
@@ -19,7 +21,12 @@ public class Telluric extends CelestialObject {
     }
 
     @Override
-    public void velocity() {
+    public void setVelocity() {
+        velocity.x = 1;
+    }
+
+    public void updatePosition(){
+        updatedPosition.x += velocity.x;
     }
 
     public void paintComponent(Graphics g){

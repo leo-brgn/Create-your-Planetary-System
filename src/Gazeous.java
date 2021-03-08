@@ -19,11 +19,11 @@ public class Gazeous extends CelestialObject {
 
     @Override
     public void updatePosition() {
-        velocity();
+
     }
 
     @Override
-    public void velocity() {
+    public void setVelocity() {
 
     }
 

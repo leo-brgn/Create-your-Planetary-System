@@ -44,7 +44,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
                         addedObj.add(c);
                         System.out.println("New planet added: " + c);
                     }
-                    //c.updatePosition();
+                    c.updatePosition();
                     c.repaint();
                 }
             }
