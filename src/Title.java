@@ -18,15 +18,15 @@ public class Title extends JFrame implements ActionListener{
     /**
      * Main method
      */
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         new Title();
     }
 
     /**
      * Constructor
      */
-    public Title() throws Exception {
-        new TitleMusic();
+    public Title() {
+
         this.setTitle("Create your Solar System");
         this.setSize(1050,640);
         this.setResizable(false);
