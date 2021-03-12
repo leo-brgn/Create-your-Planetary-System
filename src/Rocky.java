@@ -33,8 +33,6 @@ public class Rocky extends CelestialObject {
     public void updatePosition(){
         currentTime = System.currentTimeMillis();
         deltaT = currentTime - lastTime;
-        double b = (2.0 * G * mass) / (distanceToStar*4000);
-        System.out.println(b);
         updatedPosition.x += velocity.x;
         computeDistanceToStar();
         lastTime = currentTime;
