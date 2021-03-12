@@ -56,7 +56,7 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     }// Method to compute the mass based on an average density for each planet type
 
      // Method to update the position with the velocity
-    public abstract void setVelocity(); // Method to set the velocity
+    public abstract void setVelocity();// Method to set the velocity
 
     /**
      * Mother's methods
@@ -73,5 +73,8 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
         lastTime = currentTime;
     }
 
+    public void updateVelocity(){
+        velocity.x = velocity.x + gravitationalForce;
 
+    }
 }
