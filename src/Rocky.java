@@ -4,7 +4,7 @@ public class Rocky extends CelestialObject {
 
     public Rocky(int radius, Point position) {
         super(radius, position);
-        density = 2000;
+        density = 5000; // Density in kg/m3
         computeMass();
     }
 

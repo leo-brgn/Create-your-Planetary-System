@@ -6,6 +6,7 @@ import java.util.LinkedList;
  * Class for the planetary system inheriting from JPanel implementing Runnable for multi-threading practice
  */
 public class PlanetarySystem extends JPanel implements Runnable{
+
     /**
      * Attributes
      */
@@ -16,21 +17,19 @@ public class PlanetarySystem extends JPanel implements Runnable{
      * Constructor
      */
     public PlanetarySystem () {
-        addedObj = new LinkedList<>();
+        this.addedObj = new LinkedList<>();
+        this.celestialObjects = new LinkedList<>();
         // Creation of the pane
         this.setBounds(0,0,780,640);
         this.setBackground(Color.BLACK);
         this.setLayout(null);
         this.setVisible(true);
-        // Creation of the set of celestial objects shown in the panel
-        celestialObjects = new LinkedList<>();
         // Adding the sun, the first element of the set of celestial objects, no interactions on it in this version
         celestialObjects.add(new Star());
         // THREAD
         Thread t = new Thread(this);
         t.start();
     }
-
 
     @Override
     public void run() {
@@ -46,7 +45,6 @@ public class PlanetarySystem extends JPanel implements Runnable{
                     c.computeDistanceToStar();
                     c.setGravitationalForce();
                     c.updateVelocity();
-                    System.out.println(c.velocity);
                     c.updatePosition();
                     c.repaint();
                 }
