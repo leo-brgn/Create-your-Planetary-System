@@ -18,22 +18,25 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     protected Point updatedPosition;
     protected double density;
     protected double mass;
+    protected double gravitationalForce;
 
     /**
      * Contructor
-     * @param radius, radius of the planet
+     *
+     * @param radius,   radius of the planet
      * @param position, initial position of the planets
      */
-    public CelestialObject(int radius, Point position){
+    public CelestialObject(int radius, Point position) {
         this.radius = radius;
         // Initialize the position
         this.initialPosition = position;
         this.updatedPosition = position;
         // Set the JComponent coordinate system
-        this.setLocation(0,0);
-        this.setSize(780,640);
+        this.setLocation(0, 0);
+        this.setSize(780, 640);
         computeDistanceToStar();
         setVelocity();
+        computeMass();
         this.currentTime = System.currentTimeMillis();
         this.lastTime = System.currentTimeMillis();
         this.deltaT = 0;
@@ -43,6 +46,11 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
      * Abstract methods
      */
     public abstract String toString(); // Method to return a string when we call the class directly
+
+    public void setGravitationalForce(){ // we do not use the mss of the central sun because it will cancel afterward
+        this.gravitationalForce = (G *  this.mass)/Math.pow(radius, 2);
+    }
+
     public void computeMass() {
         this.mass = density*Math.PI*(4f/3f)*Math.pow(radius,3);
     }// Method to compute the mass based on an average density for each planet type
