@@ -16,6 +16,7 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     protected Point velocity;
     protected Point initialPosition;
     protected Point updatedPosition;
+    protected double density;
     protected double mass;
 
     /**
@@ -42,7 +43,10 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
      * Abstract methods
      */
     public abstract String toString(); // Method to return a string when we call the class directly
-    public abstract void computeMass(); // Method to compute the mass based on an average density for each planet type
+    public void computeMass() {
+        this.mass = density*Math.PI*(4f/3f)*Math.pow(radius,3);
+    }// Method to compute the mass based on an average density for each planet type
+
      // Method to update the position with the velocity
     public abstract void setVelocity(); // Method to set the velocity
 
@@ -60,5 +64,6 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
         computeDistanceToStar();
         lastTime = currentTime;
     }
+
 
 }
