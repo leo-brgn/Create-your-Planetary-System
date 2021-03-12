@@ -36,6 +36,7 @@ public class Window extends JFrame implements MouseListener {
         // Creation of the panel
     }
 
+
     /**
      * Method to handle the action on the mouse
      */
