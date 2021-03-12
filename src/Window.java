@@ -9,6 +9,7 @@ public class Window extends JFrame implements MouseListener {
     // GUI attributes
     public JPanel rightPanel;
     public JPanel line;
+    public JPanel backPlanetNb;
     public JLabel planetNb;
     public JButton telluric;
     public JButton gazeous;
@@ -19,6 +20,7 @@ public class Window extends JFrame implements MouseListener {
     public Point mouseLocation;
     // System attributes
     public int nbPlanets;
+    public int currentPlanet=1;
     public PlanetarySystem planetarySystem;
 
     public Window(int nbPlanets){
@@ -50,19 +52,38 @@ public class Window extends JFrame implements MouseListener {
         line.setBounds(0, 0, 2, 640 );
         rightPanel.add(line);
 
-        planetNb = new JLabel();
-        planetNb.setText("Planet: 1/" + nbPlanets);
-        planetNb.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,30));
-        planetNb.setBounds(60,35,150,50);
-        planetNb.setForeground(Color.WHITE);
-        rightPanel.add(planetNb);
+        backPlanetNb = new JPanel();
+        backPlanetNb.setBackground(new Color(51,48,51));
+        backPlanetNb.setBounds(0,20,270,60);
+        rightPanel.add(backPlanetNb);
 
-        telluric = new JButton("Telluric");
-        telluric.setBounds(50,100,80,25);
+        planetNb = new JLabel();
+        planetNb.setText("PLANET: " + currentPlanet + "/" + nbPlanets);
+        planetNb.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,28));
+        //planetNb.setBorder(BorderFactory.createLineBorder(Color.white));
+        planetNb.setBounds(35,10,165,50);
+        planetNb.setForeground(Color.WHITE);
+        backPlanetNb.add(planetNb);
+
+        telluric = new JButton("TELLURIC");
+        telluric.setBounds(30,100,100,25);
         telluric.setForeground(Color.WHITE);
         telluric.setBackground(Color.BLACK);
         //telluric.addActionListener(this);
         rightPanel.add(telluric);
+
+        gazeous = new JButton("GAZEOUS");
+        gazeous.setBounds(140,100,100,25);
+        gazeous.setForeground(Color.WHITE);
+        gazeous.setBackground(Color.BLACK);
+        //telluric.addActionListener(this);
+        rightPanel.add(gazeous);
+
+        size = new JLabel("SIZE");
+        size.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
+        size.setBounds(30, 150, 100, 25);
+        size.setForeground(Color.WHITE);
+        rightPanel.add(size);
 
         this.add(rightPanel);
 
