@@ -36,10 +36,6 @@ public class Star extends CelestialObject{
     public void updatePosition() {
     }
 
-    @Override
-    public void setVelocity() {
-
-    }
 
     @Override
     public int compareTo(CelestialObject celestialObject) {

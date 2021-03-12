@@ -4,7 +4,6 @@ public class Rocky extends CelestialObject {
 
     public Rocky(int radius, Point position) {
         super(radius, position);
-        mass = 6 * Math.pow(10,24);
     }
 
     public void paintComponent(Graphics g){
@@ -17,7 +16,7 @@ public class Rocky extends CelestialObject {
 
     @Override
     public String toString(){
-        return "Rocky planet" + distanceToStar;
+        return "Rocky planet" ;
     }
 
     @Override
@@ -25,17 +24,7 @@ public class Rocky extends CelestialObject {
     }
 
     @Override
-    public void setVelocity() {
-        velocity = new Point(1,0);
-    }
-
-    @Override
     public void updatePosition(){
-        currentTime = System.currentTimeMillis();
-        deltaT = currentTime - lastTime;
-        updatedPosition.x += velocity.x;
-        computeDistanceToStar();
-        lastTime = currentTime;
     }
 
     @Override

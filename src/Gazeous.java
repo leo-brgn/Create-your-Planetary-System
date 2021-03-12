@@ -20,10 +20,6 @@ public class Gazeous extends CelestialObject {
     }
 
     @Override
-    public void setVelocity() {
-    }
-
-    @Override
     public int compareTo(CelestialObject celestialObject) {
         return 0;
     }
