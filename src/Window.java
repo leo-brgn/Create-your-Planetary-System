@@ -97,7 +97,7 @@ public class Window extends JFrame implements MouseListener {
     public void mouseClicked(MouseEvent mouseEvent) {
         if(mouseEvent.getButton() == MouseEvent.BUTTON1) {
             if (planetarySystem.getAddedSize() < 10 + 1) {
-                planetarySystem.addCelestialObject(new Rocky((int) (10 * Math.random()), mouseEvent.getPoint()));
+                planetarySystem.addCelestialObject(new Rocky((int) (5 * Math.random()), mouseEvent.getPoint()));
             }
         }
     }

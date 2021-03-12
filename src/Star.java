@@ -11,7 +11,7 @@ public class Star extends CelestialObject{
     };
 
     public Star(){
-        super(25, new Point(390,320));
+        super(20, new Point(390,320));
     }
 
     public void paintComponent(Graphics g){
@@ -25,7 +25,7 @@ public class Star extends CelestialObject{
 
     @Override
     public String toString() {
-        return "Sun";
+        return "Sun of radius: " + radiusKm;
     }
 
     @Override
@@ -34,7 +34,7 @@ public class Star extends CelestialObject{
     }
 
     @Override
-    public void updatePosition() {
+    public void updatePosition(float deltaT) {
         // No need for updating position
     }
 
