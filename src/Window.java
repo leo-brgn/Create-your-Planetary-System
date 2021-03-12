@@ -6,7 +6,7 @@ import java.awt.event.MouseListener;
 public class Window extends JFrame implements MouseListener {
     // GUI attributes
     public JPanel rightPanel;
-    public JLabel nbPlanet;
+    public JLabel planetNb;
     public JButton telluric;
     public JButton gazeous;
     public JLabel size;
@@ -34,6 +34,10 @@ public class Window extends JFrame implements MouseListener {
         this.getContentPane().add(planetarySystem);
         this.setVisible(true);
         // Creation of the panel
+
+        planetNb = new JLabel();
+        planetNb.setText("Planet 1/" + nbPlanets);
+
     }
 
 
