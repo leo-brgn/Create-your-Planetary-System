@@ -16,7 +16,7 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     protected Point velocity;
     protected Point initialPosition;
     protected Point updatedPosition;
-    protected double density;
+    protected double density = 3000;
     protected double mass;
     protected double gravitationalForce;
 
@@ -35,8 +35,8 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
         this.setLocation(0, 0);
         this.setSize(780, 640);
         computeDistanceToStar();
-        setVelocity();
         computeMass();
+        this.velocity = new Point(100,200);
         this.currentTime = System.currentTimeMillis();
         this.lastTime = System.currentTimeMillis();
         this.deltaT = 0;
@@ -46,17 +46,11 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
      * Abstract methods
      */
     public abstract String toString(); // Method to return a string when we call the class directly
-
-    public void setGravitationalForce(){ // we do not use the mss of the central sun because it will cancel afterward
-        this.gravitationalForce = (G *  this.mass)/Math.pow(radius, 2);
-    }
-
+    // Method to compute the mass based on an average density for each planet type
     public void computeMass() {
         this.mass = density*Math.PI*(4f/3f)*Math.pow(radius,3);
-    }// Method to compute the mass based on an average density for each planet type
-
-     // Method to update the position with the velocity
-    public abstract void setVelocity();// Method to set the velocity
+        System.out.println("Mass");
+    }
 
     /**
      * Mother's methods
@@ -65,16 +59,23 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
         distanceToStar = Math.sqrt((initialPosition.x - 390)*(initialPosition.x-390) + (initialPosition.y- 320)*(initialPosition.y-320));
     }
 
-    public void updatePosition(){
-        currentTime = System.currentTimeMillis();
-        deltaT = currentTime - lastTime;
-        updatedPosition.x += velocity.x;
-        computeDistanceToStar();
-        lastTime = currentTime;
+    public void setGravitationalForce(){ // we do not use the mss of the central sun because it will cancel afterward
+        this.gravitationalForce = - (G *  this.mass)/Math.pow(radius, 2);
     }
 
     public void updateVelocity(){
-        velocity.x = velocity.x + gravitationalForce;
+        setGravitationalForce();
+        velocity.x += (int)(gravitationalForce * (390 - updatedPosition.x) / distanceToStar);
+        velocity.y += (int)(gravitationalForce * (320 - updatedPosition.y) / distanceToStar);
+    }
 
+    public void updatePosition(){
+        updateVelocity();
+        currentTime = System.currentTimeMillis();
+        deltaT = currentTime - lastTime;
+        updatedPosition.x += velocity.x;
+        updatedPosition.y += velocity.y;
+        computeDistanceToStar();
+        lastTime = currentTime;
     }
 }

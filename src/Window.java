@@ -83,6 +83,7 @@ public class Window extends JFrame implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
+
     }
 
     @Override
