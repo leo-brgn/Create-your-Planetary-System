@@ -6,7 +6,7 @@ import java.awt.event.MouseListener;
 public class Window extends JFrame implements MouseListener {
     // GUI attributes
     public JPanel rightPanel;
-    public JLabel nbPlanet;
+    public JLabel planetNb;
     public JButton telluric;
     public JButton gazeous;
     public JLabel size;
@@ -34,34 +34,38 @@ public class Window extends JFrame implements MouseListener {
         this.getContentPane().add(planetarySystem);
         this.setVisible(true);
         // Creation of the panel
+
+        planetNb = new JLabel();
+        planetNb.setText("Planet 1/" + nbPlanets);
+
     }
+
 
     /**
      * Method to handle the action on the mouse
      */
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
-        if(mouseEvent.getButton() == MouseEvent.BUTTON1){
-            if(planetarySystem.getAddedSize() < 10+1){
-                planetarySystem.addCelestialObject(new Rocky((int)( 10*Math.random()),mouseEvent.getPoint()));
+        if(mouseEvent.getButton() == MouseEvent.BUTTON1) {
+            if (planetarySystem.getAddedSize() < 10 + 1) {
+                planetarySystem.addCelestialObject(new Rocky((int) (10 * Math.random()), mouseEvent.getPoint()));
             }
         }
-
     }
 
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
-
     }
 
     @Override
-    public void mouseReleased(MouseEvent mouseEvent) {}
+    public void mouseReleased(MouseEvent mouseEvent) {
+    }
 
     @Override
     public void mouseEntered(MouseEvent mouseEvent) {
-
     }
 
     @Override
-    public void mouseExited(MouseEvent mouseEvent) {}
+    public void mouseExited(MouseEvent mouseEvent) {
+    }
 }
