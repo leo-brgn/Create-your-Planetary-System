@@ -43,6 +43,10 @@ public class PlanetarySystem extends JPanel implements Runnable{
                         addedObj.add(c);
                         System.out.println("New planet added: " + c);
                     }
+                    c.computeDistanceToStar();
+                    c.setGravitationalForce();
+                    c.updateVelocity();
+                    System.out.println(c.velocity);
                     c.updatePosition();
                     c.repaint();
                 }

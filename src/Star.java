@@ -18,24 +18,25 @@ public class Star extends CelestialObject{
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D)g;
         float[] dist = {0.2f, 0.4f, 0.7f, 0.8f, 0.9f, 1.0f};
-        RadialGradientPaint p = new RadialGradientPaint(initialPosition, radius, dist, colors);
+        RadialGradientPaint p = new RadialGradientPaint(position, radius, dist, colors);
         g2D.setPaint(p);
-        g2D.fillOval(initialPosition.x-radius-15,initialPosition.y-radius-15,2*radius + 30,2*radius + 30);
+        g2D.fillOval(position.x-radius-15,position.y-radius-15,2*radius + 30,2*radius + 30);
     }
 
     @Override
     public String toString() {
-        return "Sun of mass: ";
+        return "Sun";
     }
 
     @Override
     public void computeMass() {
+        //No need for mass
     }
 
     @Override
     public void updatePosition() {
+        // No need for updating position
     }
-
 
     @Override
     public int compareTo(CelestialObject celestialObject) {
