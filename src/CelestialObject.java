@@ -46,7 +46,7 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     public abstract String toString(); // Method to return a string when we call the class directly
 
     public void computeMass() {
-        this.mass = density*Math.PI*(4/3)*Math.pow(radius* scaleSizes * 1000,3);
+        this.mass = density*Math.PI*(4f/3f)*Math.pow(radius* scaleSizes * 1000,3);
     }
 
     public void computeDistanceToStar(){
@@ -61,7 +61,6 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     public void updateVelocity(float deltaT){
         velocityX += deltaT * gravitationalForce * ((390 - position.x)/distanceToStar);
         velocityY += deltaT * gravitationalForce * ((320 - position.y)/distanceToStar);
-        System.out.println(-velocityX + "  " + -velocityY + "  " + distanceToStar);
     }
 
     public void updatePosition(float deltaT){

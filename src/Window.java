@@ -11,7 +11,7 @@ public class Window extends JFrame implements MouseListener {
     private JPanel line;
     private JPanel backPlanetNb;
     private JLabel planetNb;
-    private JButton telluric;
+    private JButton rocky;
     private JButton gazeous;
     private JLabel size;
     private JLabel  color;
@@ -65,12 +65,12 @@ public class Window extends JFrame implements MouseListener {
         planetNb.setForeground(Color.WHITE);
         backPlanetNb.add(planetNb);
 
-        telluric = new JButton("TELLURIC");
-        telluric.setBounds(30,100,100,25);
-        telluric.setForeground(Color.WHITE);
-        telluric.setBackground(Color.BLACK);
+        rocky = new JButton("ROCKY");
+        rocky.setBounds(30,100,100,25);
+        rocky.setForeground(Color.WHITE);
+        rocky.setBackground(Color.BLACK);
         //telluric.addActionListener(this);
-        rightPanel.add(telluric);
+        rightPanel.add(rocky);
 
         gazeous = new JButton("GAZEOUS");
         gazeous.setBounds(140,100,100,25);

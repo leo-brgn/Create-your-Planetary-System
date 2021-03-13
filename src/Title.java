@@ -20,6 +20,7 @@ public class Title extends JFrame implements ActionListener{
      */
     public static void main(String[] args) {
         new Title();
+        System.out.println(Thread.activeCount());
     }
 
     /**
@@ -94,7 +95,6 @@ public class Title extends JFrame implements ActionListener{
             nbInitial=nbInitial-1;
         } else if(e.getSource()==launchButton){
             new Window(nbInitial);
-            System.out.println("Let's go");
         }
         nbPlanetArea.setText(String.valueOf(nbInitial));
     }

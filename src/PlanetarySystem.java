@@ -12,7 +12,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
      */
     private final LinkedList<CelestialObject> addedObj;
     private final LinkedList<CelestialObject> celestialObjects;
-    private JLabel FPSText;
+    private final JLabel FPSText;
     private float FPS;
     /**
      * Constructor
@@ -23,7 +23,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
         // Creation of the pane
         this.setBounds(0,0,780,640);
         this.setBackground(Color.BLACK);
-        FPSText = new JLabel(String.valueOf(FPS));
+        FPSText = new JLabel(String.valueOf(Math.ceil(FPS)));
         FPSText.setBounds(20,20,830,50);
         FPSText.setForeground(Color.WHITE);
         FPSText.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,10));
@@ -40,6 +40,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
     @Override
     public void run() {
         this.add(new BackgroundStars());
+        System.out.println(Thread.currentThread());
         while(true){
             long timeA = System.currentTimeMillis();
             long timeB = System.currentTimeMillis();
@@ -67,7 +68,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
             timeB = System.currentTimeMillis();
             deltaT = timeB - timeA;
             FPS = 1/((float)deltaT/1000);
-            this.FPSText.setText(String.valueOf(FPS));
+            //this.FPSText.setText(String.valueOf(FPS));
         }
 
     }
