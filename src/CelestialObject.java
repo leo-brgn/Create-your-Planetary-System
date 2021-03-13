@@ -6,9 +6,9 @@ import java.awt.*;
  * It allows for the creation of stars, planets and maybe later satellites.
  */
 public abstract class CelestialObject extends JComponent implements Comparable<CelestialObject> {
-    final public double G; // Universal gravity constant in m3/kg/s2
-    final public long scaleDst; // Scale of distances km/px
-    final public long scaleSizes; // Scale of the sizes km/px
+    final private double G; // Universal gravity constant in m3/kg/s2
+    final private long scaleDst; // Scale of distances km/px
+    final private long scaleSizes; // Scale of the sizes km/px
     protected int radius; // Radius of the planet in px
     protected long radiusKm; // Radius of the planet in px
     protected double density; // Density of the planet in kg/m3

@@ -7,21 +7,21 @@ import java.awt.event.ActionListener;
 
 public class Window extends JFrame implements MouseListener {
     // GUI attributes
-    public JPanel rightPanel;
-    public JPanel line;
-    public JPanel backPlanetNb;
-    public JLabel planetNb;
-    public JButton telluric;
-    public JButton gazeous;
-    public JLabel size;
-    public JLabel  color;
-    public JLabel preview;
-    public JButton validate;
-    public Point mouseLocation;
+    private JPanel rightPanel;
+    private JPanel line;
+    private JPanel backPlanetNb;
+    private JLabel planetNb;
+    private JButton telluric;
+    private JButton gazeous;
+    private JLabel size;
+    private JLabel  color;
+    private JLabel preview;
+    private JButton validate;
+    private Point mouseLocation;
     // System attributes
-    public int nbPlanets;
-    public int currentPlanet=1;
-    public PlanetarySystem planetarySystem;
+    private int nbPlanets;
+    private int currentPlanet=1;
+    private PlanetarySystem planetarySystem;
 
     public Window(int nbPlanets){
         this.nbPlanets = nbPlanets;
