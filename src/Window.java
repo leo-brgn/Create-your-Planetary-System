@@ -1,9 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 public class Window extends JFrame implements MouseListener {
     // GUI attributes
@@ -32,13 +29,18 @@ public class Window extends JFrame implements MouseListener {
         this.setSize(1050,640);
         this.setResizable(false);
         this.setLocation(120,20);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
         this.setBackground(Color.BLUE);
         this.getContentPane().addMouseListener(this);
-        new Thread().start();
+        System.out.println(Thread.activeCount());
         this.getContentPane().add(planetarySystem);
         this.setVisible(true);
+        this.addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+                dispose();
+                new Title();
+            }
+        });
 
         // Creation of the panel
         rightPanel = new JPanel();

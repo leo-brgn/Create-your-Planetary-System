@@ -40,6 +40,6 @@ public class Star extends CelestialObject{
 
     @Override
     public int compareTo(CelestialObject celestialObject) {
-        return 0;
+        return 1;
     }
 }

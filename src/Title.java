@@ -94,6 +94,7 @@ public class Title extends JFrame implements ActionListener{
         } else if(e.getSource()==minusButton && nbInitial>1){
             nbInitial=nbInitial-1;
         } else if(e.getSource()==launchButton){
+            dispose(); // Closes the Title window
             new Window(nbInitial);
         }
         nbPlanetArea.setText(String.valueOf(nbInitial));

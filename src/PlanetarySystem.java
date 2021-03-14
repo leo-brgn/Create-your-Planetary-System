@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 
 /**
@@ -40,7 +42,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
     @Override
     public void run() {
         this.add(new BackgroundStars());
-        System.out.println(Thread.currentThread());
+        System.out.println(Thread.activeCount());
         while(true){
             long timeA = System.currentTimeMillis();
             long timeB = System.currentTimeMillis();
@@ -59,6 +61,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
                     c.updatePosition(scaleTime*(float)deltaT / 1000);
                     c.repaint();
                 }
+                Collections.sort(celestialObjects);
             }
             try {
                 Thread.sleep(15);

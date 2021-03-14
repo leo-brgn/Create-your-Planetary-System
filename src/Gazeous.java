@@ -11,8 +11,4 @@ public class Gazeous extends CelestialObject {
         return null;
     }
 
-    @Override
-    public int compareTo(CelestialObject celestialObject) {
-        return 0;
-    }
 }

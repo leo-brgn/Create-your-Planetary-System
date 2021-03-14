@@ -21,8 +21,4 @@ public class Rocky extends CelestialObject {
         return "Rocky planet of radius: " + radiusKm + " and mass: " + mass + " at " + distanceToStarKm + "km from the star." ;
     }
 
-    @Override
-    public int compareTo(CelestialObject celestialObject) {
-        return 0;
-    }
 }
