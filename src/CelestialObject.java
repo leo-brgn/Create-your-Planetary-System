@@ -5,7 +5,7 @@ import java.awt.*;
  * Abstract class that defines the general idea of a celestial object.
  * It allows for the creation of stars, planets and maybe later satellites.
  */
-public abstract class CelestialObject extends JComponent implements Comparable<CelestialObject>, Runnable {
+public abstract class CelestialObject extends JComponent implements Comparable<CelestialObject> {
     final private double G; // Universal gravity constant in m3/kg/s2
     final private long scaleDst; // Scale of distances km/px
     final private long scaleSizes; // Scale of the sizes km/px
@@ -44,18 +44,6 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
      * Abstract methods
      */
     public abstract String toString(); // Method to return a string when we call the class directly
-
-    public void run(){
-        long timeA = System.currentTimeMillis();
-        long timeB = System.currentTimeMillis();
-        long deltaT = 1;
-        long scaleTime = 12*30*24*3600;
-        this.computeDistanceToStar();
-        this.setGravitationalForce();
-        this.updateVelocity(scaleTime*(float)deltaT / 1000);
-        this.updatePosition(scaleTime*(float)deltaT / 1000);
-        this.repaint();
-    }
 
     public int compareTo(CelestialObject celestialObject){
         if(this.distanceToStar < celestialObject.distanceToStar){
