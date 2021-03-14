@@ -14,8 +14,9 @@ public class PlanetarySystem extends JPanel implements Runnable{
      */
     private final LinkedList<CelestialObject> addedObj;
     private final LinkedList<CelestialObject> celestialObjects;
-    private final JLabel FPSText;
-    private float FPS;
+    private final int MAX_FPS = 60;
+    private final int MAX_TICKS = 5;
+    private final float timeScale;
     /**
      * Constructor
      */
@@ -25,15 +26,12 @@ public class PlanetarySystem extends JPanel implements Runnable{
         // Creation of the pane
         this.setBounds(0,0,780,640);
         this.setBackground(Color.BLACK);
-        FPSText = new JLabel(String.valueOf(Math.ceil(FPS)));
-        FPSText.setBounds(20,20,830,50);
-        FPSText.setForeground(Color.WHITE);
-        FPSText.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,10));
-        this.add(FPSText);
         this.setLayout(null);
+        this.add(new BackgroundStars());
         this.setVisible(true);
         // Adding the sun, the first element of the set of celestial objects, no interactions on it in this version
         celestialObjects.add(new Star());
+        this.timeScale = 12*30*24*3600;
         // THREAD
         Thread t = new Thread(this);
         t.start();
@@ -41,39 +39,37 @@ public class PlanetarySystem extends JPanel implements Runnable{
 
     @Override
     public void run() {
-        this.add(new BackgroundStars());
-        System.out.println(Thread.activeCount());
+        long timeA = System.currentTimeMillis();
+        long deltaT = 0;
         while(true){
-            long timeA = System.currentTimeMillis();
             long timeB = System.currentTimeMillis();
-            long deltaT = 1;
-            long scaleTime = 12*30*24*3600;
-            if(!celestialObjects.isEmpty()){
-                for(CelestialObject c : celestialObjects){
-                    if(!addedObj.contains(c)){
-                        this.add(c);
-                        addedObj.add(c);
-                        System.out.println("New planet added: " + c);
-                    }
-                    c.computeDistanceToStar();
-                    c.setGravitationalForce();
-                    c.updateVelocity(scaleTime*(float)deltaT / 1000);
-                    c.updatePosition(scaleTime*(float)deltaT / 1000);
-                    c.repaint();
-                }
-                Collections.sort(celestialObjects);
-            }
+            deltaT = timeB - timeA;
+            timeA = timeB;
+            update(deltaT);
+            Collections.sort(celestialObjects);
             try {
                 Thread.sleep(15);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            timeB = System.currentTimeMillis();
-            deltaT = timeB - timeA;
-            FPS = 1/((float)deltaT/1000);
-            //this.FPSText.setText(String.valueOf(FPS));
         }
+    }
 
+    public void update(float deltaT){
+        if(!celestialObjects.isEmpty()) {
+            for (CelestialObject c : celestialObjects) {
+                if (!addedObj.contains(c)) {
+                    this.add(c);
+                    addedObj.add(c);
+                    System.out.println("New planet added: " + c);
+                }
+                c.computeDistanceToStar();
+                c.setGravitationalForce();
+                c.updateVelocity(timeScale * (float) deltaT / 1000);
+                c.updatePosition(timeScale * (float) deltaT / 1000);
+                c.repaint();
+            }
+        }
     }
 
     public void addCelestialObject(CelestialObject celestialObject){
