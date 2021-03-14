@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 
@@ -15,7 +14,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
     private final LinkedList<CelestialObject> addedObj;
     private final LinkedList<CelestialObject> celestialObjects;
     private final float timeScale;
-    private final Thread simulationThread;
+
     /**
      * Constructor
      */
@@ -32,13 +31,13 @@ public class PlanetarySystem extends JPanel implements Runnable{
         celestialObjects.add(new Star());
         this.timeScale = 12*30*24*3600;
         // THREAD
-        simulationThread = new Thread(this, "Simulation Thread");
+        Thread simulationThread = new Thread(this, "Simulation Thread");
         simulationThread.start();
     }
 
     @Override
     public void run() {
-        long deltaT = 0;
+        long deltaT;
         long lastTime = System.currentTimeMillis();
         long timeNow;
         while(isRunning()) {
@@ -66,8 +65,8 @@ public class PlanetarySystem extends JPanel implements Runnable{
                 }
                 c.computeDistanceToStar();
                 c.setGravitationalForce();
-                c.updateVelocity(timeScale * (float) deltaT / 1000);
-                c.updatePosition(timeScale * (float) deltaT / 1000);
+                c.updateVelocity(timeScale *deltaT / 1000);
+                c.updatePosition(timeScale * deltaT / 1000);
             }
             Collections.sort(celestialObjects);
         }
