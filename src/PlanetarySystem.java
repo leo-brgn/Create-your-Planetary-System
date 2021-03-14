@@ -11,7 +11,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
     /**
      * Attributes
      */
-    private final LinkedList<CelestialObject> addedObj;
+    private final LinkedList<CelestialObject> addedCelestialObjects;
     private final LinkedList<CelestialObject> celestialObjects;
     private final float timeScale;
 
@@ -19,7 +19,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
      * Constructor
      */
     public PlanetarySystem () {
-        this.addedObj = new LinkedList<>();
+        this.addedCelestialObjects = new LinkedList<>();
         this.celestialObjects = new LinkedList<>();
         // Creation of the pane
         this.setBounds(0,0,780,640);
@@ -58,15 +58,16 @@ public class PlanetarySystem extends JPanel implements Runnable{
     public void update(float deltaT){
         if(!celestialObjects.isEmpty()) {
             for (CelestialObject c : celestialObjects) {
-                if (!addedObj.contains(c)) {
-                    this.add(c);
-                    addedObj.add(c);
-                    System.out.println("New planet added: " + c);
+                if (!addedCelestialObjects.contains(c)) {
+                    drawCelestialObject(c);
                 }
                 c.computeDistanceToStar();
                 c.setGravitationalForce();
                 c.updateVelocity(timeScale *deltaT / 1000);
                 c.updatePosition(timeScale * deltaT / 1000);
+                if(c.isTooFar()){
+                    removeCelestialObject(c);
+                }
             }
             Collections.sort(celestialObjects);
         }
@@ -87,9 +88,20 @@ public class PlanetarySystem extends JPanel implements Runnable{
     public void addCelestialObject(CelestialObject celestialObject){
         celestialObjects.add(celestialObject);
     }
+    public void drawCelestialObject(CelestialObject celestialObject) {
+        this.add(celestialObject);
+        addedCelestialObjects.add(celestialObject);
+        System.out.println("New planet added: " + celestialObject);
+    }
+    public void removeCelestialObject(CelestialObject celestialObject){
+        celestialObjects.remove(celestialObject);
+        addedCelestialObjects.remove(celestialObject);
+        this.remove(celestialObject);
+        System.out.println("Planet got too far and removed: " + celestialObject);
+    }
 
     public int getAddedSize(){
-        return this.addedObj.size();
+        return this.addedCelestialObjects.size();
     }
 
 }

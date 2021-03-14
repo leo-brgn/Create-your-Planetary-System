@@ -18,7 +18,7 @@ public class Title extends JFrame implements ActionListener{
     /**
      * Main method
      */
-    public static void main(String[] args) {
+    public static void main(String[] args){
         new Title();
         System.out.println(Thread.activeCount());
     }
@@ -27,7 +27,6 @@ public class Title extends JFrame implements ActionListener{
      * Constructor
      */
     public Title() {
-
         this.setTitle("Create your Solar System");
         this.setSize(1050,640);
         this.setResizable(false);
