@@ -14,9 +14,8 @@ public class PlanetarySystem extends JPanel implements Runnable{
      */
     private final LinkedList<CelestialObject> addedObj;
     private final LinkedList<CelestialObject> celestialObjects;
-    private final int MAX_FPS = 60;
-    private final int MAX_TICKS = 5;
     private final float timeScale;
+    private final Thread simulationThread;
     /**
      * Constructor
      */
@@ -33,26 +32,28 @@ public class PlanetarySystem extends JPanel implements Runnable{
         celestialObjects.add(new Star());
         this.timeScale = 12*30*24*3600;
         // THREAD
-        Thread t = new Thread(this);
-        t.start();
+        simulationThread = new Thread(this, "Simulation Thread");
+        simulationThread.start();
     }
 
     @Override
     public void run() {
-        long timeA = System.currentTimeMillis();
         long deltaT = 0;
-        while(true){
-            long timeB = System.currentTimeMillis();
-            deltaT = timeB - timeA;
-            timeA = timeB;
+        long lastTime = System.currentTimeMillis();
+        long timeNow;
+        while(isRunning()) {
+            timeNow = System.currentTimeMillis();
+            deltaT = timeNow - lastTime;
+            lastTime = timeNow;
             update(deltaT);
-            Collections.sort(celestialObjects);
-            try {
-                Thread.sleep(15);
-            } catch (InterruptedException e) {
+            render();
+            try{
+                Thread.sleep(50);
+            } catch (InterruptedException e){
                 e.printStackTrace();
             }
         }
+
     }
 
     public void update(float deltaT){
@@ -67,9 +68,21 @@ public class PlanetarySystem extends JPanel implements Runnable{
                 c.setGravitationalForce();
                 c.updateVelocity(timeScale * (float) deltaT / 1000);
                 c.updatePosition(timeScale * (float) deltaT / 1000);
+            }
+            Collections.sort(celestialObjects);
+        }
+    }
+
+    public void render(){
+        if(!celestialObjects.isEmpty()) {
+            for (CelestialObject c : celestialObjects) {
                 c.repaint();
             }
         }
+    }
+
+    public boolean isRunning(){
+        return true;
     }
 
     public void addCelestialObject(CelestialObject celestialObject){
