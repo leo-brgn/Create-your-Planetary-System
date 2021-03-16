@@ -61,9 +61,9 @@ public class Window extends JFrame implements MouseListener {
 
         planetNb = new JLabel();
         planetNb.setText("PLANET: " + currentPlanet + "/" + nbPlanets);
-        planetNb.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,28));
+        planetNb.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,32));
         //planetNb.setBorder(BorderFactory.createLineBorder(Color.white));
-        planetNb.setBounds(35,10,165,50);
+        planetNb.setBounds(30,20,165,40);
         planetNb.setForeground(Color.WHITE);
         backPlanetNb.add(planetNb);
 
