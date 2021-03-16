@@ -56,7 +56,7 @@ public class Window extends JFrame implements MouseListener {
 
         backPlanetNb = new JPanel();
         backPlanetNb.setBackground(new Color(51,48,51));
-        backPlanetNb.setBounds(0,20,270,60);
+        backPlanetNb.setBounds(0,25,270,60);
         rightPanel.add(backPlanetNb);
 
         planetNb = new JLabel();
@@ -68,14 +68,14 @@ public class Window extends JFrame implements MouseListener {
         backPlanetNb.add(planetNb);
 
         rocky = new JButton("ROCKY");
-        rocky.setBounds(30,100,100,25);
+        rocky.setBounds(20,115,100,25);
         rocky.setForeground(Color.WHITE);
         rocky.setBackground(Color.BLACK);
         //telluric.addActionListener(this);
         rightPanel.add(rocky);
 
         gazeous = new JButton("GAZEOUS");
-        gazeous.setBounds(140,100,100,25);
+        gazeous.setBounds(140,115,100,25);
         gazeous.setForeground(Color.WHITE);
         gazeous.setBackground(Color.BLACK);
         //telluric.addActionListener(this);
@@ -83,9 +83,27 @@ public class Window extends JFrame implements MouseListener {
 
         size = new JLabel("SIZE");
         size.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
-        size.setBounds(30, 150, 100, 25);
+        size.setBounds(30, 170, 100, 25);
         size.setForeground(Color.WHITE);
         rightPanel.add(size);
+
+        color = new JLabel("COLOR");
+        color.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
+        color.setBounds(100, 230, 100,25);
+        color.setForeground(Color.WHITE);
+        rightPanel.add(color);
+
+        preview = new JLabel("PREVIEW");
+        preview.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
+        preview.setBounds(95, 320, 100,25);
+        preview.setForeground(Color.WHITE);
+        rightPanel.add(preview);
+
+        validate = new JButton("VALIDATE");
+        validate.setBounds(85, 550, 100,25);
+        validate.setForeground(Color.WHITE);
+        validate.setBackground(Color.BLACK);
+        rightPanel.add(validate);
 
         this.add(rightPanel);
 
