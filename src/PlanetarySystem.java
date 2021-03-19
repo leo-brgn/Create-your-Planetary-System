@@ -14,6 +14,10 @@ public class PlanetarySystem extends JPanel implements Runnable{
     private final LinkedList<CelestialObject> addedCelestialObjects;
     private final LinkedList<CelestialObject> celestialObjects;
     private final float timeScale;
+    private Color[] colors = {
+            new Color(21,23,12),
+            new Color(25,12,36)
+    };
 
     /**
      * Constructor

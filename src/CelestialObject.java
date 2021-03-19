@@ -74,8 +74,8 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     }
 
     public void updatePosition(float deltaT){
-        position.x += Math.ceil(deltaT * (velocityX / (scaleDst*1000)));
-        position.y += Math.ceil(deltaT * (velocityY / (scaleDst*1000)));
+        position.x += 1+Math.ceil(deltaT * (velocityX / (scaleDst*1000)));
+        position.y += 1+Math.ceil(deltaT * (velocityY / (scaleDst*1000)));
     }
 
     public boolean isTooFar(){
