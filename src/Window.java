@@ -21,6 +21,22 @@ public class Window extends JFrame implements MouseListener {
     private PlanetarySystem planetarySystem;
     private JButton[] listButton;
 
+    private Color[] listColor={
+            new Color(195, 155, 211),
+            new Color(187, 143, 206),
+            new Color(),
+            new Color(),
+            new Color(),
+            new Color(),
+
+            new Color(),
+            new Color(),
+            new Color(),
+            new Color(),
+            new Color(),
+            new Color(),
+    }
+
     public Window(int nbPlanets){
         this.nbPlanets = nbPlanets;
         planetarySystem = new PlanetarySystem();
@@ -106,13 +122,22 @@ public class Window extends JFrame implements MouseListener {
         validate.setBackground(Color.BLACK);
         rightPanel.add(validate);
 
-        listButton = new JButton[6];
-        for(int i=0; i<6; i++){
-            listButton[i] = new JButton();
-            listButton[i].setBounds(15*i*40,260,40,50);
-            listButton[i].setBackground(Color.GRAY);
-            rightPanel.add(listButton[i]);
-        }
+        listButton = new JButton[12];
+
+        //if(TypePlanet == gazeous)
+            for(int i=0; i<6; i++){
+                listButton[i] = new JButton();
+                listButton[i].setBounds(i*43,260,43,50);
+                listButton[i].setBackground(listColor[i]);
+                rightPanel.add(listButton[i]);
+            }
+            // if rocky
+            for(int i=6; i<12; i++){
+                listButton[i] = new JButton();
+                listButton[i].setBounds(i*43,260,43,50);
+                listButton[i].setBackground(listColor[i]);
+                rightPanel.add(listButton[i]);
+            }
 
         this.add(rightPanel);
 
