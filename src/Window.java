@@ -14,7 +14,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
     private JLabel  color;
     private JLabel preview;
     private JButton create;
-    private J
+    private JPanel slider;
 
     private Point mouseLocation;
     // System attributes
@@ -79,6 +79,12 @@ public class Window extends JFrame implements ActionListener, MouseListener {
         backPlanetNb.setBackground(new Color(51,48,51));
         backPlanetNb.setBounds(0,25,270,60);
         rightPanel.add(backPlanetNb);
+
+        slider = new JPanel();
+        slider.setBackground(new Color(51,48,51));
+        backPlanetNb.setBounds(100,170,150,50);
+        rightPanel.add(slider);
+
 
         planetNb = new JLabel();
         planetNb.setText("PLANET: " + currentPlanet + "/" + nbPlanets);

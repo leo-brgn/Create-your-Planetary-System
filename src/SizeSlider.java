@@ -1,4 +1,7 @@
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import java.awt.*;
 
 public class SizeSlider extends JPanel{
     public SizeSlider() {
