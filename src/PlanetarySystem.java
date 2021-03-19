@@ -40,7 +40,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
         long deltaT;
         long lastTime = System.currentTimeMillis();
         long timeNow;
-        while(isRunning()) {
+        while(true) {
             timeNow = System.currentTimeMillis();
             deltaT = timeNow - lastTime;
             lastTime = timeNow;
@@ -79,10 +79,6 @@ public class PlanetarySystem extends JPanel implements Runnable{
                 c.repaint();
             }
         }
-    }
-
-    public boolean isRunning(){
-        return true;
     }
 
     public void addCelestialObject(CelestialObject celestialObject){
