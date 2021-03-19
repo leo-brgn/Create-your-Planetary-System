@@ -49,7 +49,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
         this.setLocation(120,20);
         this.setLayout(null);
         this.setBackground(Color.BLUE);
-        //this.getContentPane().addMouseListener(this);
+        this.getContentPane().addMouseListener(this);
         System.out.println(Thread.activeCount());
         this.getContentPane().add(planetarySystem);
         this.setVisible(true);
