@@ -107,8 +107,9 @@ public class Window extends JFrame implements MouseListener {
         rightPanel.add(validate);
 
         listButton = new JButton[6];
-        for(int i=0; i<5; i++){
-            listButton[i].setBounds(15,260,40+i*40,50);
+        for(int i=0; i<6; i++){
+            listButton[i] = new JButton();
+            listButton[i].setBounds(15*i*40,260,40,50);
             listButton[i].setBackground(Color.GRAY);
             rightPanel.add(listButton[i]);
         }
