@@ -149,9 +149,11 @@ public class Window extends JFrame implements ActionListener, MouseListener {
             }
         }
 
-        if(e.getSource()==create && currentPlanet<nbPlanets && !planetToAdd){
+        if(e.getSource()==create && currentPlanet<=nbPlanets && !planetToAdd){
+            if (currentPlanet != nbPlanets){
+                planetNb.setText("PLANET: " + currentPlanet + "/" + nbPlanets);
+            }
             currentPlanet++;
-            planetNb.setText("PLANET: " + currentPlanet + "/" + nbPlanets);
             planetToAdd = true;
         }
     }
