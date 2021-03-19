@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Window extends JFrame implements MouseListener {
+public class Window extends JFrame implements ActionListener {
     // GUI attributes
     private JPanel rightPanel;
     private JPanel line;
@@ -20,6 +20,7 @@ public class Window extends JFrame implements MouseListener {
     private int currentPlanet=1;
     private PlanetarySystem planetarySystem;
     private JButton[] listButton;
+
 
     private Color[] listColor={
             new Color(195, 155, 211),
@@ -48,7 +49,7 @@ public class Window extends JFrame implements MouseListener {
         this.setLocation(120,20);
         this.setLayout(null);
         this.setBackground(Color.BLUE);
-        this.getContentPane().addMouseListener(this);
+        //this.getContentPane().addMouseListener(this);
         System.out.println(Thread.activeCount());
         this.getContentPane().add(planetarySystem);
         this.setVisible(true);
@@ -88,14 +89,14 @@ public class Window extends JFrame implements MouseListener {
         rocky.setBounds(20,115,100,25);
         rocky.setForeground(Color.WHITE);
         rocky.setBackground(Color.BLACK);
-        //telluric.addActionListener(this);
+        rocky.addActionListener(this);
         rightPanel.add(rocky);
 
         gazeous = new JButton("GAZEOUS");
         gazeous.setBounds(140,115,100,25);
         gazeous.setForeground(Color.WHITE);
         gazeous.setBackground(Color.BLACK);
-        //telluric.addActionListener(this);
+        gazeous.addActionListener(this);
         rightPanel.add(gazeous);
 
         size = new JLabel("SIZE");
@@ -125,29 +126,37 @@ public class Window extends JFrame implements MouseListener {
         listButton = new JButton[12];
 
         //if(TypePlanet == gazeous)
+
+            // if rocky
+
+
+        this.add(rightPanel);
+
+    }
+
+    public void actionPerformed(ActionEvent e){
+
+        if(e.getSource()==gazeous){
             for(int i=0; i<6; i++){
                 listButton[i] = new JButton();
                 listButton[i].setBounds(i*43,260,43,50);
                 listButton[i].setBackground(listColor[i]);
                 rightPanel.add(listButton[i]);
             }
-            // if rocky
+        }else if (e.getSource()==rocky){
             for(int i=6; i<12; i++){
                 listButton[i] = new JButton();
                 listButton[i].setBounds(i*43,260,43,50);
                 listButton[i].setBackground(listColor[i]);
                 rightPanel.add(listButton[i]);
             }
-
-        this.add(rightPanel);
-
+        }
     }
-
 
     /**
      * Method to handle the action on the mouse
      */
-    @Override
+    /*@Override
     public void mouseClicked(MouseEvent mouseEvent) {
         if(mouseEvent.getButton() == MouseEvent.BUTTON1) {
             if(mouseEvent.getX() < 780){
@@ -173,9 +182,6 @@ public class Window extends JFrame implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent mouseEvent) {
-    }
+    }*/
 
-    public void actionPerformed(ActionEvent e){
-
-    }
 }
