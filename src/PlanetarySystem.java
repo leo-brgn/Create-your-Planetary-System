@@ -29,7 +29,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
         this.setVisible(true);
         // Adding the sun, the first element of the set of celestial objects, no interactions on it in this version
         celestialObjects.add(new Star());
-        this.timeScale = 12*30*24*3600;
+        this.timeScale = 6*30*24*3600;
         // THREAD
         Thread simulationThread = new Thread(this, "Simulation Thread");
         simulationThread.start();
