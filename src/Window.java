@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Window extends JFrame implements ActionListener {
+public class Window extends JFrame implements ActionListener, MouseListener {
     // GUI attributes
     private JPanel rightPanel;
     private JPanel line;
@@ -125,11 +125,6 @@ public class Window extends JFrame implements ActionListener {
 
         listButton = new JButton[12];
 
-        //if(TypePlanet == gazeous)
-
-            // if rocky
-
-
         this.add(rightPanel);
 
     }
@@ -143,20 +138,22 @@ public class Window extends JFrame implements ActionListener {
                 listButton[i].setBackground(listColor[i]);
                 rightPanel.add(listButton[i]);
             }
-        }else if (e.getSource()==rocky){
+        }else if(e.getSource()==rocky){
             for(int i=6; i<12; i++){
                 listButton[i] = new JButton();
-                listButton[i].setBounds(i*43,260,43,50);
+                listButton[i].setBounds((i-6)*43,260,43,50);
                 listButton[i].setBackground(listColor[i]);
                 rightPanel.add(listButton[i]);
             }
         }
+
+        if(e.getSource)
     }
 
     /**
      * Method to handle the action on the mouse
      */
-    /*@Override
+    @Override
     public void mouseClicked(MouseEvent mouseEvent) {
         if(mouseEvent.getButton() == MouseEvent.BUTTON1) {
             if(mouseEvent.getX() < 780){
@@ -182,6 +179,6 @@ public class Window extends JFrame implements ActionListener {
 
     @Override
     public void mouseExited(MouseEvent mouseEvent) {
-    }*/
+    }
 
 }
