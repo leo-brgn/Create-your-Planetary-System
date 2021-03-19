@@ -147,7 +147,10 @@ public class Window extends JFrame implements ActionListener, MouseListener {
             }
         }
 
-        if(e.getSource)
+        if(e.getSource()==validate){
+            currentPlanet++;
+            planetNb.setText("PLANET: " + currentPlanet + "/" + nbPlanets);
+        }
     }
 
     /**
