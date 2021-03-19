@@ -166,6 +166,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
                 if (planetarySystem.getAddedSize() < 10 + 1) {
                     planetarySystem.addCelestialObject(new Rocky((int) (5 * Math.random() +1), mouseEvent.getPoint()));
                 }
+                planetToAdd = false;
             }
         }
     }
