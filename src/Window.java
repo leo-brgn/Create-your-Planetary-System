@@ -19,6 +19,7 @@ public class Window extends JFrame implements MouseListener {
     private int nbPlanets;
     private int currentPlanet=1;
     private PlanetarySystem planetarySystem;
+    private JButton[] listButton;
 
     public Window(int nbPlanets){
         this.nbPlanets = nbPlanets;
@@ -99,11 +100,18 @@ public class Window extends JFrame implements MouseListener {
         preview.setForeground(Color.WHITE);
         rightPanel.add(preview);
 
-        validate = new JButton("VALIDATE");
+        validate = new JButton("CREATE");
         validate.setBounds(85, 550, 100,25);
         validate.setForeground(Color.WHITE);
         validate.setBackground(Color.BLACK);
         rightPanel.add(validate);
+
+        listButton = new JButton[6];
+        for(int i=0; i<5; i++){
+            listButton[i].setBounds(15,260,40+i*40,50);
+            listButton[i].setBackground(Color.GRAY);
+            rightPanel.add(listButton[i]);
+        }
 
         this.add(rightPanel);
 
