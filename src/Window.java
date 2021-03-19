@@ -34,8 +34,8 @@ public class Window extends JFrame implements MouseListener {
             new Color(243, 156, 18),
             new Color(230, 126, 34),
             new Color(231, 76, 60),
-            new Color(192, 57, 43),
-    }
+            new Color(192, 57, 43)
+    };
 
     public Window(int nbPlanets){
         this.nbPlanets = nbPlanets;
