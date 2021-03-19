@@ -20,6 +20,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
     private int currentPlanet=1;
     private PlanetarySystem planetarySystem;
     private JButton[] listButton;
+    private boolean planetToAdd = false;
 
 
     private Color[] listColor={
@@ -148,9 +149,10 @@ public class Window extends JFrame implements ActionListener, MouseListener {
             }
         }
 
-        if(e.getSource()==create && currentPlanet<5){
+        if(e.getSource()==create && currentPlanet<5 && !planetToAdd){
             currentPlanet++;
             planetNb.setText("PLANET: " + currentPlanet + "/" + nbPlanets);
+            planetToAdd = true;
         }
     }
 
@@ -159,7 +161,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
      */
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
-        if(mouseEvent.getButton() == MouseEvent.BUTTON1) {
+        if(mouseEvent.getButton() == MouseEvent.BUTTON1 && planetToAdd) {
             if(mouseEvent.getX() < 780){
                 if (planetarySystem.getAddedSize() < 10 + 1) {
                     planetarySystem.addCelestialObject(new Rocky((int) (5 * Math.random() +1), mouseEvent.getPoint()));
