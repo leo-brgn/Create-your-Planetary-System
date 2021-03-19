@@ -17,7 +17,6 @@ public class SizeSlider extends JPanel{
     }
     public static void main(String[] s) {
         SizeSlider frame = new SizeSlider();
-        frame.pack();
         frame.setVisible(true);
     }
 }
