@@ -13,7 +13,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
     private JLabel size;
     private JLabel  color;
     private JLabel preview;
-    private JButton validate;
+    private JButton create;
     private Point mouseLocation;
     // System attributes
     private int nbPlanets;
@@ -117,12 +117,12 @@ public class Window extends JFrame implements ActionListener, MouseListener {
         preview.setForeground(Color.WHITE);
         rightPanel.add(preview);
 
-        validate = new JButton("CREATE");
-        validate.setBounds(85, 550, 100,25);
-        validate.setForeground(Color.WHITE);
-        validate.setBackground(Color.BLACK);
-        validate.addActionListener(this);
-        rightPanel.add(validate);
+        create = new JButton("CREATE");
+        create.setBounds(85, 550, 100,25);
+        create.setForeground(Color.WHITE);
+        create.setBackground(Color.BLACK);
+        create.addActionListener(this);
+        rightPanel.add(create);
 
         listButton = new JButton[12];
 
@@ -148,7 +148,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
             }
         }
 
-        if(e.getSource()==validate && currentPlanet<5){
+        if(e.getSource()==create && currentPlanet<5){
             currentPlanet++;
             planetNb.setText("PLANET: " + currentPlanet + "/" + nbPlanets);
         }
