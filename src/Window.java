@@ -121,6 +121,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
         validate.setBounds(85, 550, 100,25);
         validate.setForeground(Color.WHITE);
         validate.setBackground(Color.BLACK);
+        validate.addActionListener(this);
         rightPanel.add(validate);
 
         listButton = new JButton[12];
@@ -134,20 +135,20 @@ public class Window extends JFrame implements ActionListener, MouseListener {
         if(e.getSource()==gazeous){
             for(int i=0; i<6; i++){
                 listButton[i] = new JButton();
-                listButton[i].setBounds(i*43,260,43,50);
+                listButton[i].setBounds(i*45,260,45,50);
                 listButton[i].setBackground(listColor[i]);
                 rightPanel.add(listButton[i]);
             }
         }else if(e.getSource()==rocky){
             for(int i=6; i<12; i++){
                 listButton[i] = new JButton();
-                listButton[i].setBounds((i-6)*43,260,43,50);
+                listButton[i].setBounds((i-6)*45,260,45,50);
                 listButton[i].setBackground(listColor[i]);
                 rightPanel.add(listButton[i]);
             }
         }
 
-        if(e.getSource()==validate){
+        if(e.getSource()==validate && currentPlanet<5){
             currentPlanet++;
             planetNb.setText("PLANET: " + currentPlanet + "/" + nbPlanets);
         }
