@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-public class SizeSlider extends JFrame{
+public class SizeSlider extends JPanel{
     public SizeSlider() {
         JSlider slider = new JSlider(JSlider.HORIZONTAL, 0, 50, 25);
         slider.setMinorTickSpacing(2);

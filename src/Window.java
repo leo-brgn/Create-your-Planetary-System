@@ -14,6 +14,8 @@ public class Window extends JFrame implements ActionListener, MouseListener {
     private JLabel  color;
     private JLabel preview;
     private JButton create;
+    private J
+
     private Point mouseLocation;
     // System attributes
     private int nbPlanets;
