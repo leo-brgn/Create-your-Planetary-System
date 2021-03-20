@@ -153,10 +153,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
         }
 
         if(e.getSource()==create && currentPlanet<=nbPlanets && !planetToAdd){
-            if (currentPlanet != nbPlanets){
-                planetNb.setText("PLANET: " + currentPlanet + "/" + nbPlanets);
-            }
-            currentPlanet++;
+
             planetToAdd = true;
         }
     }
@@ -172,6 +169,10 @@ public class Window extends JFrame implements ActionListener, MouseListener {
                     planetarySystem.addCelestialObject(new Rocky((int) (5 * Math.random() +1), mouseEvent.getPoint()));
                 }
                 planetToAdd = false;
+            }
+            if (currentPlanet != nbPlanets){
+                currentPlanet++;
+                planetNb.setText("PLANET: " + currentPlanet + "/" + nbPlanets);
             }
         }
     }
