@@ -123,7 +123,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
 
         preview = new JLabel("P R E V I E W");
         preview.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
-        preview.setBounds(85, 320, 100,25);
+        preview.setBounds(85, 330, 100,25);
         preview.setForeground(Color.WHITE);
         rightPanel.add(preview);
 
