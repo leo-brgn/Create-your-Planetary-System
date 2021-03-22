@@ -183,7 +183,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         if(mouseEvent.getButton() == MouseEvent.BUTTON1 && planetToAdd) {
             if(mouseEvent.getX() < 780){
                 if (planetarySystem.getAddedSize() < 10 + 1) {
-                    planetarySystem.addCelestialObject(typeToCreate, mouseEvent.getPoint(), colorSelected);
+                    planetarySystem.addCelestialObject(typeToCreate, mouseEvent.getPoint(), sizeSelected, colorSelected);
                 }
                 planetToAdd = false;
             }
