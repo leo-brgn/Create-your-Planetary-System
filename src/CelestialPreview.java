@@ -13,7 +13,7 @@ public class CelestialPreview extends JPanel{
         this.setVisible(true);
         this.setLayout(null);
         this.size = (int) size;
-        this.color = new Color(123,125,125);
+        this.color = new Color(95,106,106);
     }
 
     public CelestialPreview(float size, Color color){
