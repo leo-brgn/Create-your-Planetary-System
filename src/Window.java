@@ -212,6 +212,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
         slider.setMajorTickSpacing(10);
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
+        slider.setBackground(Color.BLACK);
         rightPanel.add(slider);
     }
 
