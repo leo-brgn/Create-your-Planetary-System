@@ -14,10 +14,6 @@ public class PlanetarySystem extends JPanel implements Runnable{
     private final LinkedList<CelestialObject> addedCelestialObjects;
     private final LinkedList<CelestialObject> celestialObjects;
     private final float timeScale;
-    private Color[] colors = {
-            new Color(21,23,12),
-            new Color(25,12,36)
-    };
 
     /**
      * Constructor
@@ -85,8 +81,13 @@ public class PlanetarySystem extends JPanel implements Runnable{
         }
     }
 
-    public void addCelestialObject(CelestialObject celestialObject){
-        celestialObjects.add(celestialObject);
+    public void addCelestialObject(Window.TypePlanet typePlanet, Point position, Color color){
+        if (typePlanet == Window.TypePlanet.GASEOUS){
+            celestialObjects.add(new Gaseous((int) (5 * Math.random() +1), position,color));
+        } else if (typePlanet == Window.TypePlanet.ROCKY){
+            celestialObjects.add(new Rocky((int) (5 * Math.random() +1),position,color));
+        }
+
     }
     public void drawCelestialObject(CelestialObject celestialObject) {
         this.add(celestialObject);

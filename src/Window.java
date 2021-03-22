@@ -24,6 +24,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
     private final JButton[] colorButtonsGaseous;
     private final JButton[] colorButtonsRocky;
     private TypePlanet typeToCreate;
+    private Color colorSelected;
     // Booleans
     private boolean planetToAdd = false;
     private boolean stopAdding = false;
@@ -165,7 +166,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
         if(mouseEvent.getButton() == MouseEvent.BUTTON1 && planetToAdd) {
             if(mouseEvent.getX() < 780){
                 if (planetarySystem.getAddedSize() < 10 + 1) {
-                    planetarySystem.addCelestialObject(new Rocky((int) (5 * Math.random() +1), mouseEvent.getPoint()));
+                    planetarySystem.addCelestialObject(typeToCreate, mouseEvent.getPoint(), colorSelected);
                 }
                 planetToAdd = false;
             }
