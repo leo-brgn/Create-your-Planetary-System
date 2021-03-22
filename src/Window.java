@@ -174,29 +174,18 @@ public class Window extends JFrame implements ActionListener, MouseListener {
     }
 
     public void updateColorButtons(TypePlanet tp){
-        if (tp == TypePlanet.GASEOUS && buttonsAdded){
-            for(int i=0; i<colorButtonsRocky.length; i++){
-                rightPanel.remove(colorButtonsRocky[i]);
+        if (buttonsAdded) {
+            if(tp == TypePlanet.GASEOUS){
+                for(int i=0; i<colorButtonsRocky.length; i++){
+                    rightPanel.remove(colorButtonsRocky[i]);
+                }
+            } else if (tp == TypePlanet.ROCKY){
+                for(int i=0; i<colorButtonsGaseous.length; i++){
+                    rightPanel.remove(colorButtonsGaseous[i]);
+                }
             }
-            for(int i=0; i<6; i++){
-                colorButtonsGaseous[i] = new JButton();
-                colorButtonsGaseous[i].setBounds(i*45,260,45,50);
-                colorButtonsGaseous[i].setBackground(listColor[i]);
-                rightPanel.add(colorButtonsGaseous[i]);
-                buttonsAdded=true;
-            }
-        } else if (tp == TypePlanet.ROCKY && buttonsAdded){
-            for(int i=0; i<colorButtonsGaseous.length; i++){
-                rightPanel.remove(colorButtonsGaseous[i]);
-            }
-            for(int i=0; i<6; i++){
-                colorButtonsRocky[i] = new JButton();
-                colorButtonsRocky[i].setBounds(i*45,260,45,50);
-                colorButtonsRocky[i].setBackground(listColor[(i+6)]);
-                rightPanel.add(colorButtonsRocky[i]);
-                buttonsAdded=true;
-            }
-        } else if (tp == TypePlanet.GASEOUS) {
+        }
+        if (tp == TypePlanet.GASEOUS){
             for(int i=0; i<6; i++){
                 colorButtonsGaseous[i] = new JButton();
                 colorButtonsGaseous[i].setBounds(i*45,260,45,50);
