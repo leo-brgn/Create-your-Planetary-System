@@ -150,9 +150,9 @@ public class Window extends JFrame implements ActionListener, MouseListener {
         }else if(e.getSource() == rocky){
             typeToCreate = TypePlanet.GASEOUS;
             updateColorButtons();
-        }else if(e.getSource()==create && currentPlanet<nbPlanets && !planetToAdd && !stopAdding){
+        }else if(e.getSource()==create && currentPlanet<nbPlanets && !planetToAdd && !stopAdding && canCreate()){
             planetToAdd = true;
-        }else if(e.getSource()==create && currentPlanet==nbPlanets && !planetToAdd && !stopAdding){
+        }else if(e.getSource()==create && currentPlanet==nbPlanets && !planetToAdd && !stopAdding && canCreate()){
             planetToAdd = true;
             stopAdding = true;
         }
@@ -207,6 +207,11 @@ public class Window extends JFrame implements ActionListener, MouseListener {
             }
         }
         this.rightPanel.repaint();
+    }
+
+    // Create popup in case something is wrong
+    public boolean canCreate(){
+        return true;
     }
 
     public void createSlider(){
