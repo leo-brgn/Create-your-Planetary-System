@@ -17,6 +17,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     private final JLabel preview;
     private final JButton create;
     private final JSlider slider;
+    private CelestialPreview celestialPreview;
     private JPanel sliderPanel;
     // Position of the mouse
     private Point mouseLocation;
@@ -259,6 +260,8 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     public void stateChanged(ChangeEvent e) {
         if(e.getSource() == slider){
             sizeSelected = slider.getValue();
+            celestialPreview = new CelestialPreview(sizeSelected);
+            this.add(celestialPreview);
         }
     }
 
