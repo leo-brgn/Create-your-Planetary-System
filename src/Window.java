@@ -137,10 +137,6 @@ public class Window extends JFrame implements ActionListener, MouseListener {
 
         createSlider();
 
-        SizeSlider frame = new SizeSlider();
-        frame.setVisible(true);
-
-        rightPanel.add(frame);
         this.add(rightPanel);
 
     }
@@ -226,10 +222,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
         slider.setMajorTickSpacing(10);
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
-
-        JPanel panel=new JPanel();
-        panel.add(slider);
-        add(panel);
+        rightPanel.add(slider);
     }
 
     public enum TypePlanet {
