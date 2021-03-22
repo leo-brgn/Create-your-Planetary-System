@@ -21,7 +21,7 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     protected Color color;
     protected Point position; // Position of the planet in px
 
-    public CelestialObject(int radius, Point position, Color color) {
+    public CelestialObject(int radius, Point position) {
         // Set the universe constants
         this.scaleDst = 4_687_500; // Scale km/px
         this.scaleSizes = 34_817; // Scale km/px
@@ -31,8 +31,6 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
         radiusKm = scaleSizes * radius;
         // Initialize the position
         this.position = position;
-        // Color set
-        this.color = color;
         // Set the JComponent coordinate system
         this.setLocation(0, 0);
         this.setSize(780, 640);
@@ -41,6 +39,11 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
         // Set the initial velocity
         this.velocityX = 10; // m/s
         this.velocityY = 10;
+    }
+
+    public CelestialObject(int radius, Point position, Color color) {
+        this(radius, position);
+        this.color = color;
     }
 
     /**
