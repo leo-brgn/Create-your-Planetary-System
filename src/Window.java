@@ -14,7 +14,8 @@ public class Window extends JFrame implements ActionListener, MouseListener {
     private final JLabel  color;
     private final JLabel preview;
     private final JButton create;
-    private JPanel slider;
+    private final JSlider slider;
+    private JPanel sliderPanel;
     // Position of the mouse
     private Point mouseLocation;
     // System attributes
@@ -25,6 +26,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
     private final JButton[] colorButtonsRocky;
     private TypePlanet typeToCreate;
     private Color colorSelected;
+    private int sizeSelected;
     // Booleans
     private boolean planetToAdd = false;
     private boolean stopAdding = false;
@@ -134,10 +136,18 @@ public class Window extends JFrame implements ActionListener, MouseListener {
         create.addActionListener(this);
         rightPanel.add(create);
 
+        slider = new JSlider(JSlider.HORIZONTAL, 0, 50, 25);
+        slider.setBounds(140,160,100,50);
+        slider.setMinorTickSpacing(2);
+        slider.setMajorTickSpacing(10);
+        slider.setPaintTicks(true);
+        slider.setPaintLabels(true);
+        slider.setBackground(Color.BLACK);
+        slider.setForeground(Color.WHITE);
+        rightPanel.add(slider);
+
         colorButtonsGaseous = new JButton[6];
         colorButtonsRocky = new JButton[6];
-
-        createSlider();
 
         this.add(rightPanel);
 
@@ -155,7 +165,11 @@ public class Window extends JFrame implements ActionListener, MouseListener {
         }else if(e.getSource()==create && currentPlanet==nbPlanets && !planetToAdd && !stopAdding && canCreate()){
             planetToAdd = true;
             stopAdding = true;
-        }if(e.getSource() == colorButtonsGaseous)
+        } else if (e.getSource() == slider){
+            sizeSelected = slider.getX();
+        } else {
+            colorButtonClicked(e);
+        }
     }
 
     /**
@@ -211,23 +225,31 @@ public class Window extends JFrame implements ActionListener, MouseListener {
 
     // Create popup in case something is wrong
     public boolean canCreate(){
-        return true;
+        if (sizeSelected == 0){
+            JOptionPane.showMessageDialog(this, "Planet cannot have no size.");
+            return false;
+        } else if (colorSelected == null){
+            JOptionPane.showMessageDialog(this, "Planet cannot have no color.");
+            return false;
+        } else {
+            return true;
+        }
     }
 
-    public boolean colorButtonClicked(){
-
-    }
-
-    public void createSlider(){
-        JSlider slider = new JSlider(JSlider.HORIZONTAL, 0, 50, 25);
-        slider.setBounds(140,160,100,50);
-        slider.setMinorTickSpacing(2);
-        slider.setMajorTickSpacing(10);
-        slider.setPaintTicks(true);
-        slider.setPaintLabels(true);
-        slider.setBackground(Color.BLACK);
-        slider.setForeground(Color.WHITE);
-        rightPanel.add(slider);
+    public void colorButtonClicked(ActionEvent e){
+        if(typeToCreate == TypePlanet.GASEOUS){
+            for(int i=0; i<colorButtonsGaseous.length; i++){
+                if(e.getSource()==colorButtonsGaseous[i]){
+                    colorSelected=listColor[i];
+                }
+            }
+        }else if(typeToCreate == TypePlanet.ROCKY){
+            for(int i=0; i<colorButtonsRocky.length; i++){
+                if(e.getSource()==colorButtonsRocky[i]){
+                    colorSelected=listColor[i+6];
+                }
+            }
+        }
     }
 
     public enum TypePlanet {
