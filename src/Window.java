@@ -4,12 +4,12 @@ import java.awt.event.*;
 
 public class Window extends JFrame implements ActionListener, MouseListener {
     // GUI attributes
-    private JPanel rightPanel;
+    private JPanel rightPanel; // The panel on the right
     private JPanel line;
-    private JPanel backPlanetNb;
+    private JPanel backPlanetNb; // JPanel of the planets to add
     private JLabel planetNb;
     private JButton rocky;
-    private JButton gazeous;
+    private JButton gaseous;
     private JLabel size;
     private JLabel  color;
     private JLabel preview;
@@ -21,9 +21,12 @@ public class Window extends JFrame implements ActionListener, MouseListener {
     private int nbPlanets;
     private int currentPlanet=1;
     private PlanetarySystem planetarySystem;
-    private JButton[] colorButtons;
+    private JButton[] colorButtonsGazeous;
+    private JButton[] colorButtonsRocky;
+    // Booleans
     private boolean planetToAdd = false;
     private boolean stopAdding = false;
+    private boolean buttonsAdded = false;
 
 
     private Color[] listColor={
@@ -97,12 +100,12 @@ public class Window extends JFrame implements ActionListener, MouseListener {
         rocky.addActionListener(this);
         rightPanel.add(rocky);
 
-        gazeous = new JButton("GAZEOUS");
-        gazeous.setBounds(140,115,100,25);
-        gazeous.setForeground(Color.WHITE);
-        gazeous.setBackground(Color.BLACK);
-        gazeous.addActionListener(this);
-        rightPanel.add(gazeous);
+        gaseous = new JButton("GASEOUS");
+        gaseous.setBounds(140,115,100,25);
+        gaseous.setForeground(Color.WHITE);
+        gaseous.setBackground(Color.BLACK);
+        gaseous.addActionListener(this);
+        rightPanel.add(gaseous);
 
         size = new JLabel("SIZE");
         size.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
@@ -129,14 +132,15 @@ public class Window extends JFrame implements ActionListener, MouseListener {
         create.addActionListener(this);
         rightPanel.add(create);
 
-        colorButtons = new JButton[12];
+        colorButtonsGazeous = new JButton[6];
+        colorButtonsRocky = new JButton[6];
 
         this.add(rightPanel);
 
     }
 
     public void actionPerformed(ActionEvent e){
-        if(e.getSource()==gazeous){
+        if(e.getSource()== gaseous){
             updateColorButtons(TypePlanet.GASEOUS);
         }else if(e.getSource()==rocky){
             updateColorButtons(TypePlanet.ROCKY);
@@ -168,24 +172,30 @@ public class Window extends JFrame implements ActionListener, MouseListener {
     }
 
     public void updateColorButtons(TypePlanet tp){
-        if (colorButtons != null){
+        if (buttonsAdded){
             for(int i=0; i<colorButtons.length; i++){
-                this.remove(colorButtons[i]);
+                if(){
+                    rightPanel.remove(colorButtons[i]);
+                }
             }
+            buttonsAdded=false;
         }
         if (tp == TypePlanet.GASEOUS){
             for(int i=0; i<6; i++){
-                colorButtons[i] = new JButton();
-                colorButtons[i].setBounds(i*45,260,45,50);
-                colorButtons[i].setBackground(listColor[i]);
-                rightPanel.add(colorButtons[i]);
+                colorButtonsGazeous[i] = new JButton();
+                colorButtonsGazeous[i].setBounds(i*45,260,45,50);
+                colorButtonsGazeous[i].setBackground(listColor[i]);
+                rightPanel.add(colorButtonsGazeous[i]);
+                buttonsAdded=true;
             }
+
         } else if (tp == TypePlanet.ROCKY){
-                for(int i=6; i<12; i++){
-                colorButtons[i] = new JButton();
-                colorButtons[i].setBounds((i-6)*45,260,45,50);
-                colorButtons[i].setBackground(listColor[i]);
-                rightPanel.add(colorButtons[i]);
+                for(int i=0; i<6; i++){
+                colorButtonsRocky[i] = new JButton();
+                colorButtonsRocky[i].setBounds(i*45,260,45,50);
+                colorButtonsRocky[i].setBackground(listColor[(i+6)]);
+                rightPanel.add(colorButtonsRocky[i]);
+                buttonsAdded=true;
             }
         }
     }
