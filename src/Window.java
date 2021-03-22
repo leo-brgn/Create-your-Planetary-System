@@ -15,7 +15,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
     private JLabel preview;
     private JButton create;
     private JPanel slider;
-
+    // Position of the mouse
     private Point mouseLocation;
     // System attributes
     private int nbPlanets;
@@ -104,7 +104,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
         gazeous.addActionListener(this);
         rightPanel.add(gazeous);
 
-        size = new JLabel("SIZE");Button
+        size = new JLabel("SIZE");
         size.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
         size.setBounds(30, 170, 100, 25);
         size.setForeground(Color.WHITE);
@@ -136,7 +136,6 @@ public class Window extends JFrame implements ActionListener, MouseListener {
     }
 
     public void actionPerformed(ActionEvent e){
-
         if(e.getSource()==gazeous){
             updateColorButtons(TypePlanet.GASEOUS);
         }else if(e.getSource()==rocky){
@@ -168,24 +167,12 @@ public class Window extends JFrame implements ActionListener, MouseListener {
         }
     }
 
-    @Override
-    public void mousePressed(MouseEvent mouseEvent) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent mouseEvent) {
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent mouseEvent) {
-    }
-
-    @Override
-    public void mouseExited(MouseEvent mouseEvent) {
-    }
-
     public void updateColorButtons(TypePlanet tp){
+        if (colorButtons != null){
+            for(int i=0; i<colorButtons.length; i++){
+                this.remove(colorButtons[i]);
+            }
+        }
         if (tp == TypePlanet.GASEOUS){
             for(int i=0; i<6; i++){
                 colorButtons[i] = new JButton();
@@ -205,6 +192,22 @@ public class Window extends JFrame implements ActionListener, MouseListener {
 
     public enum TypePlanet {
         GASEOUS, ROCKY
+    }
+
+    @Override
+    public void mousePressed(MouseEvent mouseEvent) {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent mouseEvent) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent mouseEvent) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent mouseEvent) {
     }
 
 }
