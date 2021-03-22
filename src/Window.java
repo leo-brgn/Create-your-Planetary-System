@@ -132,7 +132,8 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         preview.setForeground(Color.WHITE);
         rightPanel.add(preview);
 
-        rightPanel.add(new CelestialPreview(25));
+        celestialPreview = new CelestialPreview(25);
+        rightPanel.add(celestialPreview);
 
         create = new JButton("CREATE");
         create.setBounds(85, 550, 100,25);
@@ -256,14 +257,16 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
                 }
             }
         }
+        this.celestialPreview.setColor(colorSelected);
+        this.celestialPreview.repaint();
     }
 
     @Override
     public void stateChanged(ChangeEvent e) {
         if(e.getSource() == slider){
             sizeSelected = slider.getValue();
-            celestialPreview = new CelestialPreview(sizeSelected);
-            this.add(celestialPreview);
+            this.celestialPreview.setSize(sizeSelected);
+            this.celestialPreview.repaint();
         }
     }
 
