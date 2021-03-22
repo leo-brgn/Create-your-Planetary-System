@@ -21,7 +21,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
     private int nbPlanets;
     private int currentPlanet=1;
     private PlanetarySystem planetarySystem;
-    private JButton[] listButton;
+    private JButton[] colorButtons;
     private boolean planetToAdd = false;
     private boolean stopAdding = false;
 
@@ -104,7 +104,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
         gazeous.addActionListener(this);
         rightPanel.add(gazeous);
 
-        size = new JLabel("SIZE");
+        size = new JLabel("SIZE");Button
         size.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
         size.setBounds(30, 170, 100, 25);
         size.setForeground(Color.WHITE);
@@ -129,7 +129,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
         create.addActionListener(this);
         rightPanel.add(create);
 
-        listButton = new JButton[12];
+        colorButtons = new JButton[12];
 
         this.add(rightPanel);
 
@@ -138,25 +138,12 @@ public class Window extends JFrame implements ActionListener, MouseListener {
     public void actionPerformed(ActionEvent e){
 
         if(e.getSource()==gazeous){
-            for(int i=0; i<6; i++){
-                listButton[i] = new JButton();
-                listButton[i].setBounds(i*45,260,45,50);
-                listButton[i].setBackground(listColor[i]);
-                rightPanel.add(listButton[i]);
-            }
+            updateColorButtons(TypePlanet.GASEOUS);
         }else if(e.getSource()==rocky){
-            for(int i=6; i<12; i++){
-                listButton[i] = new JButton();
-                listButton[i].setBounds((i-6)*45,260,45,50);
-                listButton[i].setBackground(listColor[i]);
-                rightPanel.add(listButton[i]);
-            }
-        }
-
-        if(e.getSource()==create && currentPlanet<nbPlanets && !planetToAdd && !stopAdding){
+            updateColorButtons(TypePlanet.ROCKY);
+        }else if(e.getSource()==create && currentPlanet<nbPlanets && !planetToAdd && !stopAdding){
             planetToAdd = true;
-        }
-        if(e.getSource()==create && currentPlanet==nbPlanets && !planetToAdd && !stopAdding){
+        }else if(e.getSource()==create && currentPlanet==nbPlanets && !planetToAdd && !stopAdding){
             planetToAdd = true;
             stopAdding = true;
         }
@@ -196,6 +183,28 @@ public class Window extends JFrame implements ActionListener, MouseListener {
 
     @Override
     public void mouseExited(MouseEvent mouseEvent) {
+    }
+
+    public void updateColorButtons(TypePlanet tp){
+        if (tp == TypePlanet.GASEOUS){
+            for(int i=0; i<6; i++){
+                colorButtons[i] = new JButton();
+                colorButtons[i].setBounds(i*45,260,45,50);
+                colorButtons[i].setBackground(listColor[i]);
+                rightPanel.add(colorButtons[i]);
+            }
+        } else if (tp == TypePlanet.ROCKY){
+                for(int i=6; i<12; i++){
+                colorButtons[i] = new JButton();
+                colorButtons[i].setBounds((i-6)*45,260,45,50);
+                colorButtons[i].setBackground(listColor[i]);
+                rightPanel.add(colorButtons[i]);
+            }
+        }
+    }
+
+    public enum TypePlanet {
+        GASEOUS, ROCKY
     }
 
 }
