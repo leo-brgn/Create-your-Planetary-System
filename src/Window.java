@@ -116,13 +116,13 @@ public class Window extends JFrame implements ActionListener, MouseListener {
 
         color = new JLabel("C O L O R");
         color.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
-        color.setBounds(100, 230, 100,25);
+        color.setBounds(95, 230, 100,25);
         color.setForeground(Color.WHITE);
         rightPanel.add(color);
 
-        preview = new JLabel("PREVIEW");
+        preview = new JLabel("P R E V I E W");
         preview.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
-        preview.setBounds(95, 320, 100,25);
+        preview.setBounds(90, 320, 100,25);
         preview.setForeground(Color.WHITE);
         rightPanel.add(preview);
 
