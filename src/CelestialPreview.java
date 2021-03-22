@@ -8,7 +8,7 @@ public class CelestialPreview extends JPanel{
 
     public CelestialPreview(float size){
         this.setBackground(new Color(28,40,51));
-        this.setBounds(10, 360, 270, 300);
+        this.setBounds(10, 360, 240, 170);
         this.setVisible(true);
         this.setLayout(null);
         this.size = (int) size;
