@@ -194,7 +194,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
                 rightPanel.add(colorButtonsRocky[i]);
                 buttonsAdded=true;
             }
-        } else if (tp == TypePlanet.GASEOUS && !buttonsAdded) {
+        } else if (tp == TypePlanet.GASEOUS) {
             for(int i=0; i<6; i++){
                 colorButtonsGaseous[i] = new JButton();
                 colorButtonsGaseous[i].setBounds(i*45,260,45,50);
@@ -202,7 +202,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
                 rightPanel.add(colorButtonsGaseous[i]);
                 buttonsAdded=true;
             }
-        } else if (tp == TypePlanet.ROCKY && !buttonsAdded){
+        } else if (tp == TypePlanet.ROCKY){
             for(int i=0; i<6; i++){
                 colorButtonsRocky[i] = new JButton();
                 colorButtonsRocky[i].setBounds(i*45,260,45,50);
