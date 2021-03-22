@@ -135,6 +135,12 @@ public class Window extends JFrame implements ActionListener, MouseListener {
         colorButtonsGaseous = new JButton[6];
         colorButtonsRocky = new JButton[6];
 
+        createSlider();
+
+        SizeSlider frame = new SizeSlider();
+        frame.setVisible(true);
+
+        rightPanel.add(frame);
         this.add(rightPanel);
 
     }
@@ -212,6 +218,18 @@ public class Window extends JFrame implements ActionListener, MouseListener {
             }
         }
         this.rightPanel.repaint();
+    }
+
+    public void createSlider(){
+        JSlider slider = new JSlider(JSlider.HORIZONTAL, 0, 50, 25);
+        slider.setMinorTickSpacing(2);
+        slider.setMajorTickSpacing(10);
+        slider.setPaintTicks(true);
+        slider.setPaintLabels(true);
+
+        JPanel panel=new JPanel();
+        panel.add(slider);
+        add(panel);
     }
 
     public enum TypePlanet {
