@@ -132,6 +132,8 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         preview.setForeground(Color.WHITE);
         rightPanel.add(preview);
 
+        rightPanel.add(new CelestialPreview(25));
+
         create = new JButton("CREATE");
         create.setBounds(85, 550, 100,25);
         create.setForeground(Color.WHITE);
