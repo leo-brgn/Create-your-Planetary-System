@@ -155,7 +155,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
         }else if(e.getSource()==create && currentPlanet==nbPlanets && !planetToAdd && !stopAdding && canCreate()){
             planetToAdd = true;
             stopAdding = true;
-        }
+        }if(e.getSource() == colorButtonsGaseous)
     }
 
     /**
@@ -212,6 +212,10 @@ public class Window extends JFrame implements ActionListener, MouseListener {
     // Create popup in case something is wrong
     public boolean canCreate(){
         return true;
+    }
+
+    public boolean colorButtonClicked(){
+
     }
 
     public void createSlider(){
