@@ -23,6 +23,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
     private PlanetarySystem planetarySystem;
     private JButton[] listButton;
     private boolean planetToAdd = false;
+    private boolean stopAdding = false;
 
 
     private Color[] listColor={
@@ -152,9 +153,12 @@ public class Window extends JFrame implements ActionListener, MouseListener {
             }
         }
 
-        if(e.getSource()==create && currentPlanet<=nbPlanets && !planetToAdd){
-
+        if(e.getSource()==create && currentPlanet<nbPlanets && !planetToAdd && !stopAdding){
             planetToAdd = true;
+        }
+        if(e.getSource()==create && currentPlanet==nbPlanets && !planetToAdd && !stopAdding){
+            planetToAdd = true;
+            stopAdding = true;
         }
     }
 
