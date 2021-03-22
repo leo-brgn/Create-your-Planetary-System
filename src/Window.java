@@ -1,8 +1,10 @@
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Window extends JFrame implements ActionListener, MouseListener {
+public class Window extends JFrame implements ActionListener, MouseListener, ChangeListener {
     // GUI attributes
     private final JPanel rightPanel; // The panel on the right
     private final JPanel line;
@@ -144,6 +146,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
         slider.setPaintLabels(true);
         slider.setBackground(Color.BLACK);
         slider.setForeground(Color.WHITE);
+        slider.addChangeListener(this);
         rightPanel.add(slider);
 
         colorButtonsGaseous = new JButton[6];
@@ -165,11 +168,8 @@ public class Window extends JFrame implements ActionListener, MouseListener {
         }else if(e.getSource()==create && currentPlanet==nbPlanets && !planetToAdd && !stopAdding && canCreate()){
             planetToAdd = true;
             stopAdding = true;
-        } else if (e.getSource() == slider){
-            sizeSelected = slider.getX();
-        } else {
-            colorButtonClicked(e);
         }
+        colorButtonClicked(e);
     }
 
     /**
@@ -208,6 +208,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
                 colorButtonsGaseous[i] = new JButton();
                 colorButtonsGaseous[i].setBounds(i*45,260,45,50);
                 colorButtonsGaseous[i].setBackground(listColor[i]);
+                colorButtonsGaseous[i].addActionListener(this);
                 rightPanel.add(colorButtonsGaseous[i]);
                 buttonsAdded=true;
             }
@@ -216,6 +217,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
                 colorButtonsRocky[i] = new JButton();
                 colorButtonsRocky[i].setBounds(i*45,260,45,50);
                 colorButtonsRocky[i].setBackground(listColor[(i+6)]);
+                colorButtonsRocky[i].addActionListener(this);
                 rightPanel.add(colorButtonsRocky[i]);
                 buttonsAdded=true;
             }
@@ -230,6 +232,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
             return false;
         } else if (colorSelected == null){
             JOptionPane.showMessageDialog(this, "Planet cannot have no color.");
+            System.out.println(colorSelected);
             return false;
         } else {
             return true;
@@ -249,6 +252,13 @@ public class Window extends JFrame implements ActionListener, MouseListener {
                     colorSelected=listColor[i+6];
                 }
             }
+        }
+    }
+
+    @Override
+    public void stateChanged(ChangeEvent e) {
+        if(e.getSource() == slider){
+            sizeSelected = slider.getValue();
         }
     }
 
