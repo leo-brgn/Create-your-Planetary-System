@@ -83,12 +83,12 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
         if (Math.abs(deltaT * (velocityX / (scaleDst*1000))) >= 1){
             position.x = (int) (position.x + deltaT * (velocityX / (scaleDst*1000)));
         } else {
-            //position.x = (int) (position.x + deltaT * (velocityX / (scaleDst*1000))) + (int)Math.signum(velocityX);
+            position.x = (int) (position.x + deltaT * (velocityX / (scaleDst*1000))) + (int)Math.signum(velocityX);
         }
         if (Math.abs(deltaT * (velocityY / (scaleDst*1000))) >= 1){
             position.y = (int) (position.y + deltaT * (velocityY / (scaleDst*1000)));
         } else {
-            //position.y = (int) (position.y + deltaT * (velocityY / (scaleDst*1000))) + (int)Math.signum(velocityY);
+            position.y = (int) (position.y + deltaT * (velocityY / (scaleDst*1000))) + (int)Math.signum(velocityY);
         }
     }
 
