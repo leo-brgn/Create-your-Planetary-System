@@ -207,7 +207,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
 
     public void createSlider(){
         JSlider slider = new JSlider(JSlider.HORIZONTAL, 0, 50, 25);
-        slider.setBounds(50,170,100,40);
+        slider.setBounds(120,170,100,40);
         slider.setMinorTickSpacing(2);
         slider.setMajorTickSpacing(10);
         slider.setPaintTicks(true);
