@@ -2,8 +2,8 @@ import java.awt.*;
 
 public class Gaseous extends CelestialObject {
 
-    public Gaseous(int radius, Point position) {
-        super(radius, position);
+    public Gaseous(int radius, Point position, Color color) {
+        super(radius, position, color);
     }
 
     @Override
