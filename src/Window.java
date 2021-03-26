@@ -143,10 +143,10 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         create.addActionListener(this);
         rightPanel.add(create);
 
-        slider = new JSlider(JSlider.HORIZONTAL, 0, 50, 25);
+        slider = new JSlider(JSlider.HORIZONTAL, 0, 20, 10);
         slider.setBounds(140,160,100,50);
-        slider.setMinorTickSpacing(2);
-        slider.setMajorTickSpacing(10);
+        slider.setMinorTickSpacing(1);
+        slider.setMajorTickSpacing(5);
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
         slider.setBackground(Color.BLACK);
@@ -170,9 +170,11 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
             updateColorButtons();
         }else if(e.getSource()==create && currentPlanet<nbPlanets && !planetToAdd && !stopAdding && canCreate()){
             planetToAdd = true;
+            //remettre parametre d'origine
         }else if(e.getSource()==create && currentPlanet==nbPlanets && !planetToAdd && !stopAdding && canCreate()){
             planetToAdd = true;
             stopAdding = true;
+            //remettre parametre d'origine
         }
         colorButtonClicked(e);
     }
