@@ -33,6 +33,10 @@ public class Star extends CelestialObject{
         //No need for mass
     }
 
+    public boolean isTooClose(){
+        return false;
+    }
+
     @Override
     public void updatePosition(float deltaT) {
         // No need for updating position

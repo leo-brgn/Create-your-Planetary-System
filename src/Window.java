@@ -32,7 +32,6 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     private int sizeSelected;
     // Booleans
     private boolean planetToAdd = false;
-    private boolean stopAdding = false;
     private boolean buttonsAdded = false;
 
 
@@ -143,7 +142,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         create.addActionListener(this);
         rightPanel.add(create);
 
-        slider = new JSlider(JSlider.HORIZONTAL, 0, 20, 10);
+        slider = new JSlider(JSlider.HORIZONTAL, 1, 9, 1);
         slider.setBounds(140,160,100,50);
         slider.setMinorTickSpacing(1);
         slider.setMajorTickSpacing(5);
@@ -168,13 +167,8 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         }else if(e.getSource() == rocky){
             typeToCreate = TypePlanet.GASEOUS;
             updateColorButtons();
-        }else if(e.getSource()==create && currentPlanet<nbPlanets && !planetToAdd && !stopAdding && canCreate()){
+        }else if(e.getSource()==create && canCreate()){
             planetToAdd = true;
-            //remettre parametre d'origine
-        }else if(e.getSource()==create && currentPlanet==nbPlanets && !planetToAdd && !stopAdding && canCreate()){
-            planetToAdd = true;
-            stopAdding = true;
-            //remettre parametre d'origine
         }
         colorButtonClicked(e);
     }
@@ -271,6 +265,12 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
             this.celestialPreview.setSize(sizeSelected);
             this.celestialPreview.repaint();
         }
+    }
+
+    public void finishAdding(){
+        this.remove(rightPanel);
+        this.repaint();
+        planetarySystem.resize();
     }
 
     public enum TypePlanet {

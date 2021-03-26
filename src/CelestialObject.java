@@ -95,4 +95,8 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     public boolean isTooFar(){
         return distanceToStar >= 700;
     }
+
+    public boolean isTooClose(){
+        return distanceToStarKm <= radiusKm;
+    }
 }

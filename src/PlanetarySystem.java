@@ -55,6 +55,11 @@ public class PlanetarySystem extends JPanel implements Runnable{
 
     }
 
+    public void resize(){
+        this.setBounds(0,0,1050,640);
+        this.repaint();
+    }
+
     public void update(float deltaT){
         if(!celestialObjects.isEmpty()) {
             for (CelestialObject c : celestialObjects) {
@@ -68,7 +73,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
                 if(c.isTooFar()){
                     removeCelestialObject(c);
                 }
-                if(isCollidingSun(c) && !(c instanceof Star)){
+                if(c.isTooClose()){
                     removeCelestialObject(c);
                     JOptionPane.showMessageDialog(this, "The planet collided with the sun !");
                 }
@@ -105,13 +110,6 @@ public class PlanetarySystem extends JPanel implements Runnable{
         System.out.println("Planet got too far and removed: " + celestialObject);
     }
 
-    public boolean isCollidingSun(CelestialObject celestialObject){
-        if(celestialObject.distanceToStarKm <= celestialObject.radiusKm){
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     public int getAddedSize(){
         return this.addedCelestialObjects.size();
