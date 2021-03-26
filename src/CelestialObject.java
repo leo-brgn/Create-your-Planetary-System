@@ -36,9 +36,7 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
         this.setSize(780, 640);
         // Compute the distance to the star
         computeDistanceToStar();
-        // Set the initial velocity
-        this.velocityX = 10; // m/s
-        this.velocityY = 10;
+        setInitialVelocity();
     }
 
     public CelestialObject(int radius, Point position, Color color) {
@@ -80,16 +78,8 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     }
 
     public void updatePosition(float deltaT){
-        if (Math.abs(deltaT * (velocityX / (scaleDst*1000))) >= 1){
-            position.x = (int) (position.x + deltaT * (velocityX / (scaleDst*1000)));
-        } else {
-            position.x = (int) (position.x + deltaT * (velocityX / (scaleDst*1000))) + (int)Math.signum(velocityX);
-        }
-        if (Math.abs(deltaT * (velocityY / (scaleDst*1000))) >= 1){
-            position.y = (int) (position.y + deltaT * (velocityY / (scaleDst*1000)));
-        } else {
-            position.y = (int) (position.y + deltaT * (velocityY / (scaleDst*1000))) + (int)Math.signum(velocityY);
-        }
+        position.x = (int) (position.x + deltaT * (velocityX / (scaleDst*1000)));
+        position.y = (int) (position.y + deltaT * (velocityY / (scaleDst*1000)));
     }
 
     public boolean isTooFar(){
@@ -98,5 +88,11 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
 
     public boolean isTooClose(){
         return distanceToStarKm <= radiusKm;
+    }
+
+    public void setInitialVelocity(){
+        double magnitude = Math.sqrt((G*mass)/distanceToStarKm*1000);
+        double unitaryVec [] = {(position.x - 390) /distanceToStar, (position.y - 320)/distanceToStar};
+
     }
 }
