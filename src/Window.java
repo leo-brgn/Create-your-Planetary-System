@@ -125,6 +125,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         color.setBounds(95, 230, 100,25);
         color.setForeground(Color.WHITE);
         rightPanel.add(color);
+        colorSelected = new Color(95,106,106);
 
         preview = new JLabel("P R E V I E W");
         preview.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
