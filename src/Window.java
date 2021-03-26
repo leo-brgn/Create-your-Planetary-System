@@ -162,10 +162,10 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
 
     public void actionPerformed(ActionEvent e){
         if(e.getSource() == gaseous){
-            typeToCreate = TypePlanet.ROCKY;
+            typeToCreate = TypePlanet.GASEOUS;
             updateColorButtons();
         }else if(e.getSource() == rocky){
-            typeToCreate = TypePlanet.GASEOUS;
+            typeToCreate = TypePlanet.ROCKY;
             updateColorButtons();
         }else if(e.getSource()==create && canCreate()){
             planetToAdd = true;
