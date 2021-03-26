@@ -71,7 +71,7 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     }
 
     public void setGravitationalForce(){ // we do not use the mss of the central sun because it will cancel afterward
-        this.gravitationalForce = (G*this.mass)/Math.pow(distanceToStar*1000*scaleDst,2); // Around 10-5 since we don't have mass of sun
+        this.gravitationalForce = (G*this.mass)/Math.pow(distanceToStarKm*1000,2); // Around 10-5 since we don't have mass of sun
     }
 
     public void updateVelocity(float deltaT){
