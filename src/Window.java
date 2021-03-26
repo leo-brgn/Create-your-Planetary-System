@@ -27,6 +27,8 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     private final PlanetarySystem planetarySystem;
     private final JButton[] colorButtonsGaseous;
     private final JButton[] colorButtonsRocky;
+    private JButton[] currentColorButtons=new JButton[6];
+
     private TypePlanet typeToCreate;
     private Color colorSelected;
     private int sizeSelected;
@@ -89,7 +91,6 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         backPlanetNb.setBackground(new Color(51,48,51));
         backPlanetNb.setBounds(0,25,270,60);
         rightPanel.add(backPlanetNb);
-
 
         planetNb = new JLabel();
         planetNb.setText("PLANET: " + currentPlanet + "/" + nbPlanets);
@@ -194,13 +195,21 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
 
     public void updateColorButtons(){
         if (buttonsAdded) {
-            if(typeToCreate == TypePlanet.GASEOUS){
-                for(int i=0; i<colorButtonsRocky.length; i++){
+            if(typeToCreate == TypePlanet.GASEOUS && currentColorButtons==colorButtonsRocky){
+                for(int i=0; i<colorButtonsRocky.length; i++) {
                     rightPanel.remove(colorButtonsRocky[i]);
                 }
-            } else if (typeToCreate == TypePlanet.ROCKY){
-                for(int i=0; i<colorButtonsGaseous.length; i++){
+            }else if(typeToCreate == TypePlanet.GASEOUS && currentColorButtons==colorButtonsGaseous){
+                for(int i=0; i<colorButtonsRocky.length; i++){
                     rightPanel.remove(colorButtonsGaseous[i]);
+                }
+            }else if (typeToCreate == TypePlanet.ROCKY && currentColorButtons==colorButtonsGaseous) {
+                for (int i = 0; i < colorButtonsGaseous.length; i++) {
+                   rightPanel.remove(colorButtonsGaseous[i]);
+                }
+            }else if(typeToCreate == TypePlanet.ROCKY && currentColorButtons==colorButtonsRocky) {
+                for (int i = 0; i < colorButtonsRocky.length; i++) {
+                    rightPanel.remove(colorButtonsRocky[i]);
                 }
             }
         }
@@ -212,6 +221,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
                 colorButtonsGaseous[i].addActionListener(this);
                 rightPanel.add(colorButtonsGaseous[i]);
                 buttonsAdded=true;
+                currentColorButtons=colorButtonsGaseous;
             }
         } else if (typeToCreate == TypePlanet.ROCKY){
             for(int i=0; i<6; i++){
@@ -221,6 +231,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
                 colorButtonsRocky[i].addActionListener(this);
                 rightPanel.add(colorButtonsRocky[i]);
                 buttonsAdded=true;
+                currentColorButtons=colorButtonsRocky;
             }
         }
         this.rightPanel.repaint();
