@@ -275,6 +275,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         GASEOUS, ROCKY
     }
 
+
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
     }

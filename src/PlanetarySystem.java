@@ -68,6 +68,10 @@ public class PlanetarySystem extends JPanel implements Runnable{
                 if(c.isTooFar()){
                     removeCelestialObject(c);
                 }
+                if(isCollidingSun(c) && !(c instanceof Star)){
+                    removeCelestialObject(c);
+                    JOptionPane.showMessageDialog(this, "The planet collided with the sun !");
+                }
             }
             Collections.sort(celestialObjects);
         }
@@ -99,6 +103,14 @@ public class PlanetarySystem extends JPanel implements Runnable{
         addedCelestialObjects.remove(celestialObject);
         this.remove(celestialObject);
         System.out.println("Planet got too far and removed: " + celestialObject);
+    }
+
+    public boolean isCollidingSun(CelestialObject celestialObject){
+        if(celestialObject.distanceToStarKm <= celestialObject.radiusKm){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public int getAddedSize(){
