@@ -38,8 +38,8 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
 
     private final Color[] listColor={
             new Color(195, 155, 211),
-            new Color(187, 143, 206),
-            new Color(127, 179, 213),
+            new Color(165, 105, 189),
+            new Color(84, 153, 199),
             new Color(133, 193, 233),
             new Color(115, 198, 182),
             new Color(130, 224, 170),
