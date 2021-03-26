@@ -4,6 +4,9 @@ public class Gaseous extends CelestialObject {
 
     public Gaseous(int radius, Point position, Color color) {
         super(radius, position, color);
+        density = 1; // Density in kg/m3
+        computeMass();
+        setInitialVelocity();
     }
 
     public void paintComponent(Graphics g){
@@ -11,12 +14,11 @@ public class Gaseous extends CelestialObject {
         Graphics2D g2D = (Graphics2D)g;
         g2D.setColor(color);
         g2D.fillOval(position.x, position.y,2*radius,2*radius);
-        //g2D.drawOval((int) (390-distanceToStar),(int) (320-distanceToStar),(int) (2*distanceToStar),(int)  (2*distanceToStar));
     }
 
     @Override
     public String toString() {
-        return null;
+        return "Gaseous planet of radius: " + radiusKm + " and mass: " + mass + " at " + distanceToStarKm + "km from the star." ;
     }
 
 }

@@ -14,10 +14,9 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     private final JButton gaseous;
     private final JLabel size;
     private final JLabel  color;
-    private final JLabel preview;
     private final JButton create;
     private final JSlider slider;
-    private CelestialPreview celestialPreview;
+    private final CelestialPreview celestialPreview;
     private JPanel sliderPanel;
     // Position of the mouse
     private Point mouseLocation;
@@ -127,7 +126,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         rightPanel.add(color);
         colorSelected = new Color(95,106,106);
 
-        preview = new JLabel("P R E V I E W");
+        JLabel preview = new JLabel("P R E V I E W");
         preview.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
         preview.setBounds(85, 330, 100,25);
         preview.setForeground(Color.WHITE);
