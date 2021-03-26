@@ -6,6 +6,7 @@ public class Rocky extends CelestialObject {
         super(radius, position, color);
         density = 5000; // Density in kg/m3
         computeMass();
+        setInitialVelocity();
     }
 
     public void paintComponent(Graphics g){

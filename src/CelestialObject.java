@@ -18,6 +18,7 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     protected double distanceToStarKm; // Distance to star in km
     protected double velocityX; // Speed of the planet in m/s
     protected double velocityY;
+    protected int count;
     protected Color color;
     protected Point position; // Position of the planet in px
 
@@ -36,7 +37,7 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
         this.setSize(780, 640);
         // Compute the distance to the star
         computeDistanceToStar();
-        setInitialVelocity();
+        this.count = 0;
     }
 
     public CelestialObject(int radius, Point position, Color color) {
@@ -60,7 +61,7 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     }
 
     public void computeMass() {
-        this.mass = density*Math.PI*(4f/3f)*Math.pow(radius* scaleSizes * 1000,3);
+        this.mass = density*Math.PI*(4f/3f)*Math.pow(radiusKm * 1000,3);
     }
 
     public void computeDistanceToStar(){
@@ -80,6 +81,14 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     public void updatePosition(float deltaT){
         position.x = (int) (position.x + deltaT * (velocityX / (scaleDst*1000)));
         position.y = (int) (position.y + deltaT * (velocityY / (scaleDst*1000)));
+        if(Math.abs(position.x + deltaT * (velocityX / (scaleDst*1000))) < 1.0 && Math.abs(position.y + deltaT * (velocityY / (scaleDst*1000))) < 1.0){
+            count++;
+            if (count <= 10){
+                position.x = (int) (position.x + deltaT * (velocityX / (scaleDst*1000)) + Math.signum(velocityX));
+            }
+        } else {
+            count = 0;
+        }
     }
 
     public boolean isTooFar(){
@@ -91,8 +100,15 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     }
 
     public void setInitialVelocity(){
-        double magnitude = Math.sqrt((G*mass)/distanceToStarKm*1000);
-        double unitaryVec [] = {(position.x - 390) /distanceToStar, (position.y - 320)/distanceToStar};
-
+        double magnitude = Math.sqrt((G*mass)/(distanceToStarKm*1000));
+        double[] unitaryVec = {(position.x - 390) /distanceToStar, (position.y - 320)/distanceToStar};
+        if(Math.random()>0.5){
+            velocityX = magnitude * unitaryVec[1];
+            velocityY = -magnitude * unitaryVec[0];
+        } else {
+            velocityX = -magnitude * unitaryVec[1];
+            velocityY = magnitude * unitaryVec[0];
+        }
+        System.out.println(magnitude + " " + mass);
     }
 }

@@ -4,6 +4,9 @@ public class Gaseous extends CelestialObject {
 
     public Gaseous(int radius, Point position, Color color) {
         super(radius, position, color);
+        density = 1; // Density in kg/m3
+        computeMass();
+        setInitialVelocity();
     }
 
     public void paintComponent(Graphics g){
