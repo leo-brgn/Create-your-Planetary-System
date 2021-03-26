@@ -109,6 +109,6 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
             velocityX = -magnitude * unitaryVec[1];
             velocityY = magnitude * unitaryVec[0];
         }
-        System.out.println(magnitude + " " + mass);
+        System.out.println(velocityX + " " + velocityY);
     }
 }
