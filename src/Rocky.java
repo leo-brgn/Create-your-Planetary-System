@@ -4,7 +4,7 @@ public class Rocky extends CelestialObject {
 
     public Rocky(int radius, Point position, Color color) {
         super(radius, position, color);
-        density = 5000; // Density in kg/m3
+        density = 5; // Density in kg/m3
         computeMass();
         setInitialVelocity();
     }
@@ -14,7 +14,6 @@ public class Rocky extends CelestialObject {
         Graphics2D g2D = (Graphics2D)g;
         g2D.setColor(color);
         g2D.fillOval(position.x, position.y,2*radius,2*radius);
-        //g2D.drawOval((int) (390-distanceToStar),(int) (320-distanceToStar),(int) (2*distanceToStar),(int)  (2*distanceToStar));
     }
 
     @Override
