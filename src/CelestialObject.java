@@ -8,7 +8,6 @@ import java.awt.*;
 public abstract class CelestialObject extends JComponent implements Comparable<CelestialObject> {
     final private double G; // Universal gravity constant in m3/kg/s2
     final private long scaleDst; // Scale of distances km/px
-    final private long scaleSizes; // Scale of the sizes km/px
     protected int radius; // Radius of the planet in px
     protected long radiusKm; // Radius of the planet in px
     protected double density; // Density of the planet in kg/m3
@@ -25,7 +24,8 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     public CelestialObject(int radius, Point position) {
         // Set the universe constants
         this.scaleDst = 4_687_500; // Scale km/px
-        this.scaleSizes = 34_817; // Scale km/px
+        // Scale of the sizes km/px
+        long scaleSizes = 34_817; // Scale km/px
         this.G = 6.674 * Math.pow(10, -11);
         // Initialize the radius
         this.radius = radius;
@@ -51,17 +51,11 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     public abstract String toString(); // Method to return a string when we call the class directly
 
     public int compareTo(CelestialObject celestialObject){
-        if(this.distanceToStar < celestialObject.distanceToStar){
-            return -1;
-        } else if (this.distanceToStar > celestialObject.distanceToStar){
-            return 1;
-        } else {
-            return 0;
-        }
+        return Double.compare(this.distanceToStar, celestialObject.distanceToStar);
     }
 
     public void computeMass() {
-        this.mass = density*Math.PI*(4f/3f)*Math.pow(radiusKm * 1000,3);
+        this.mass = 1000*density*Math.PI*(4f/3f)*Math.pow(radiusKm * 1000,3);
     }
 
     public void computeDistanceToStar(){
@@ -70,7 +64,7 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     }
 
     public void setGravitationalForce(){ // we do not use the mss of the central sun because it will cancel afterward
-        this.gravitationalForce = (G*this.mass)/Math.pow(distanceToStarKm*1000,2); // Around 10-5 since we don't have mass of sun
+        this.gravitationalForce = (G*mass)/Math.pow(distanceToStarKm*1000,2); // Around 10-5 since we don't have mass of sun
     }
 
     public void updateVelocity(float deltaT){
@@ -83,8 +77,9 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
         position.y = (int) (position.y + deltaT * (velocityY / (scaleDst*1000)));
         if(Math.abs(position.x + deltaT * (velocityX / (scaleDst*1000))) < 1.0 && Math.abs(position.y + deltaT * (velocityY / (scaleDst*1000))) < 1.0){
             count++;
-            if (count <= 10){
+            if (count >= 10){
                 position.x = (int) (position.x + deltaT * (velocityX / (scaleDst*1000)) + Math.signum(velocityX));
+                count = 0;
             }
         } else {
             count = 0;
@@ -109,6 +104,5 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
             velocityX = -magnitude * unitaryVec[1];
             velocityY = magnitude * unitaryVec[0];
         }
-        System.out.println(velocityX + " " + velocityY);
     }
 }

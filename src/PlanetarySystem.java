@@ -14,6 +14,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
     private final LinkedList<CelestialObject> addedCelestialObjects;
     private final LinkedList<CelestialObject> celestialObjects;
     private final float timeScale;
+    private final BackgroundStars backgroundStars;
 
     /**
      * Constructor
@@ -25,7 +26,8 @@ public class PlanetarySystem extends JPanel implements Runnable{
         this.setBounds(0,0,780,640);
         this.setBackground(Color.BLACK);
         this.setLayout(null);
-        this.add(new BackgroundStars());
+        this.backgroundStars = new BackgroundStars(500);
+        this.add(backgroundStars);
         this.setVisible(true);
         // Adding the sun, the first element of the set of celestial objects, no interactions on it in this version
         celestialObjects.add(new Star());
@@ -65,6 +67,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
             for (CelestialObject c : celestialObjects) {
                 if (!addedCelestialObjects.contains(c)) {
                     drawCelestialObject(c);
+                    this.setComponentZOrder(c, 0);
                 }
                 c.computeDistanceToStar();
                 c.setGravitationalForce();
@@ -76,6 +79,9 @@ public class PlanetarySystem extends JPanel implements Runnable{
                 if(c.isTooClose()){
                     removeCelestialObject(c);
                     JOptionPane.showMessageDialog(this, "The planet collided with the sun !");
+                }
+                if(c instanceof Star){
+                    ((Star) c).updateSun(deltaT);
                 }
             }
             Collections.sort(celestialObjects);
