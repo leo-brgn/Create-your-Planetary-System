@@ -28,7 +28,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     private final JButton[] colorButtonsRocky;
     private JButton[] currentColorButtons=new JButton[6];
     private TypePlanet typeToCreate;
-    private Color colorSelected;
+    private int colorSelected;
     private int sizeSelected;
     // Booleans
     private boolean planetToAdd = false;
@@ -108,7 +108,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         color.setBounds(95, 230, 100,25);
         color.setForeground(Color.WHITE);
         rightPanel.add(color);
-        colorSelected = new Color(95,106,106);
+        colorSelected = 0;
 
         JLabel preview = new JLabel("P R E V I E W");
         preview.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
@@ -150,7 +150,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         }else if(e.getSource() == rocky){
             typeToCreate = TypePlanet.ROCKY;
             updateColorButtons();
-        }else if(e.getSource()==create && canCreate()){
+        }else if(e.getSource()==create){
             planetToAdd = true;
         }
         colorButtonClicked(e);
@@ -219,31 +219,17 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         this.rightPanel.repaint();
     }
 
-    // Create popup in case something is wrong
-    public boolean canCreate(){
-        if (sizeSelected == 0){
-            JOptionPane.showMessageDialog(this, "Planet cannot have no size.");
-            return false;
-        } else if (colorSelected == null){
-            JOptionPane.showMessageDialog(this, "Planet cannot have no color.");
-            System.out.println(colorSelected);
-            return false;
-        } else {
-            return true;
-        }
-    }
-
     public void colorButtonClicked(ActionEvent e){
         if(typeToCreate == TypePlanet.GASEOUS){
             for(int i=0; i<colorButtonsGaseous.length; i++){
                 if(e.getSource()==colorButtonsGaseous[i]){
-                    colorSelected=PlanetGradient.getColor(i);
+                    colorSelected=i;
                 }
             }
         }else if(typeToCreate == TypePlanet.ROCKY){
             for(int i=0; i<colorButtonsRocky.length; i++){
                 if(e.getSource()==colorButtonsRocky[i]){
-                    colorSelected=PlanetGradient.getColor(i+6);
+                    colorSelected=i;
                 }
             }
         }

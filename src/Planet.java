@@ -4,8 +4,8 @@ public class Planet extends CelestialObject {
 
     private Color[] colors;
 
-    public Planet(int radius, Point position, Color color, TypePlanet typePlanet) {
-        super(radius, position, color);
+    public Planet(int radius, Point position, int colorIndex, TypePlanet typePlanet) {
+        super(radius, position, colorIndex);
         if (typePlanet == TypePlanet.GASEOUS) {
             density = 1; // Density in kg/m3
             typeStr = "Gaseous";
@@ -13,9 +13,7 @@ public class Planet extends CelestialObject {
             density = 5; // Density in kg/m3
             typeStr = "Rocky";
         }
-        colors = new Color[2];
-        colors[0] = color;
-        colors[1] = Color.WHITE;
+        colors = PlanetGradient.getTwoColors(colorIndex);
         computeMass();
         setInitialVelocity();
     }

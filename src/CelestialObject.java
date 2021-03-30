@@ -21,7 +21,7 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     protected double velocityX; // Speed of the planet in m/s
     protected double velocityY; // Speed of the planet in m/s
     protected int count; // To track the amount of time in which the planet has stopped moving
-    protected Color color; // Color of the planet
+    protected int colorIndex; // Color of the planet
     protected Point position; // Position of the planet in px
     protected String typeStr;
 
@@ -44,9 +44,9 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
         this.count = 0;
     }
 
-    public CelestialObject(int radius, Point position, Color color) {
+    public CelestialObject(int radius, Point position, int colorIndex) {
         this(radius, position);
-        this.color = color;
+        this.colorIndex = colorIndex;
     }
 
     // Method to sort the planets

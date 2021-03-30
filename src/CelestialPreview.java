@@ -29,7 +29,7 @@ public class CelestialPreview extends JPanel{
         this.size = (int) size;
     }
 
-    public void setColor(Color color){
-        this.colors = new Color[]{color, color};
+    public void setColor(int index){
+        this.colors = PlanetGradient.getTwoColors(index);
     }
 }
