@@ -61,7 +61,7 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
 
     // Method to set the initial velocity of the planet to stay in orbit
     public void setInitialVelocity(){
-        double magnitude = Math.sqrt(1.5*(G*mass)/(distanceToStarKm*1000));
+        double magnitude = Math.sqrt((0.5*G*mass)/(distanceToStarKm*1000));
         double[] unitaryVec = {(position.x - 390) /distanceToStar, (position.y - 320)/distanceToStar};
         if(Math.random()>0.5){
             velocityX = magnitude * unitaryVec[1];
@@ -112,7 +112,6 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
 
     // Method to verify if the planet is colliding with the sun
     public boolean isTooClose(long sunRadius){
-        System.out.println(distanceToStarKm + " " + (radiusKm+sunRadius));
         return distanceToStarKm <= (radiusKm+sunRadius*3);
     }
 

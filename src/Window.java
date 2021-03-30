@@ -27,13 +27,13 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     private final JButton[] colorButtonsGaseous;
     private final JButton[] colorButtonsRocky;
     private JButton[] currentColorButtons=new JButton[6];
-
     private TypePlanet typeToCreate;
     private Color colorSelected;
     private int sizeSelected;
     // Booleans
     private boolean planetToAdd = false;
     private boolean buttonsAdded = false;
+    private FinishPanel finishPanel;
 
 
     public Window(int nbPlanets){
@@ -58,7 +58,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
             }
         });
 
-        // Creation of the panel
+        // CREATION OF THE RIGHT PANEL + FILLINGS
         rightPanel = new JPanel();
         rightPanel.setBackground(Color.BLACK);
         rightPanel.setBounds(780, 0, 270, 640);
@@ -136,12 +136,11 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         slider.setForeground(Color.WHITE);
         slider.addChangeListener(this);
         rightPanel.add(slider);
-
+        // END RIGHT PANEL
         colorButtonsGaseous = new JButton[6];
         colorButtonsRocky = new JButton[6];
-
         this.add(rightPanel);
-
+        finishPanel = new FinishPanel();
     }
 
     public void actionPerformed(ActionEvent e){
@@ -261,13 +260,9 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         }
     }
 
-    public void finishAdding(){
-        this.remove(rightPanel);
-        this.repaint();
-        planetarySystem.resize();
+    public void finishedCreating(){
+        this.add(finishPanel);
     }
-
-
 
     @Override
     public void mousePressed(MouseEvent mouseEvent) {

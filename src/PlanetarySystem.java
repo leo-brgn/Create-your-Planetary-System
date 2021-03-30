@@ -58,11 +58,6 @@ public class PlanetarySystem extends JPanel implements Runnable{
 
     }
 
-    public void resize(){
-        this.setBounds(0,0,1050,640);
-        this.repaint();
-    }
-
     public void update(float deltaT){
         if(!celestialObjects.isEmpty()) {
             for (CelestialObject c : celestialObjects) {
