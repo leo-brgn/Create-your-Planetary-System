@@ -14,6 +14,7 @@ public class Star extends CelestialObject{
     public Star(){
         super(150, new Point(390,320));
         alpha = 1.0f;
+        typeStr = "Star";
     }
 
     public void paintComponent(Graphics g){

@@ -98,10 +98,10 @@ public class PlanetarySystem extends JPanel implements Runnable{
         }
     }
 
-    public void addCelestialObject(Window.TypePlanet typePlanet, Point position, float size, Color color){
-        if (typePlanet == Window.TypePlanet.GASEOUS){
+    public void addCelestialObject(TypePlanet typePlanet, Point position, float size, Color color){
+        if (typePlanet == TypePlanet.GASEOUS){
             celestialObjects.add(new Gaseous((int) size, position,color));
-        } else if (typePlanet == Window.TypePlanet.ROCKY){
+        } else if (typePlanet == TypePlanet.ROCKY){
             celestialObjects.add(new Rocky((int) size,position,color));
         }
 

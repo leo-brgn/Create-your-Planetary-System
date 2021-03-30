@@ -283,9 +283,6 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         planetarySystem.resize();
     }
 
-    public enum TypePlanet {
-        GASEOUS, ROCKY
-    }
 
 
     @Override

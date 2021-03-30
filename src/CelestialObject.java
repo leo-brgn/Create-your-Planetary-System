@@ -23,6 +23,7 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     protected int count; // To track the amount of time in which the planet has stopped moving
     protected Color color; // Color of the planet
     protected Point position; // Position of the planet in px
+    protected String typeStr;
 
     public CelestialObject(int radius, Point position) {
         // Set the universe constants

@@ -20,7 +20,6 @@ public class Title extends JFrame implements ActionListener{
      */
     public static void main(String[] args){
         new Title();
-        System.out.println(Thread.activeCount());
     }
 
     /**
