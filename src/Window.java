@@ -229,7 +229,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         }else if(typeToCreate == TypePlanet.ROCKY){
             for(int i=0; i<colorButtonsRocky.length; i++){
                 if(e.getSource()==colorButtonsRocky[i]){
-                    colorSelected=i;
+                    colorSelected=i+6;
                 }
             }
         }

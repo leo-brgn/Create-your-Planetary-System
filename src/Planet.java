@@ -2,7 +2,7 @@ import java.awt.*;
 
 public class Planet extends CelestialObject {
 
-    private Color[] colors;
+    private final Color[] colors;
 
     public Planet(int radius, Point position, int colorIndex, TypePlanet typePlanet) {
         super(radius, position, colorIndex);
@@ -19,6 +19,7 @@ public class Planet extends CelestialObject {
     }
 
     public void paintComponent(Graphics g){
+        super.paintComponent(g);
         Graphics2D g2D = (Graphics2D)g;
         float[] dist = {0.1f,1f};
         RadialGradientPaint p = new RadialGradientPaint(position.x + radius, position.y +radius, 2*radius, dist, colors);

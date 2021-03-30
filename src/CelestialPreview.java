@@ -26,7 +26,7 @@ public class CelestialPreview extends JPanel{
     }
 
     public void setSize(float size){
-        this.size = (int) size;
+        this.size = 10*(int) size;
     }
 
     public void setColor(int index){
