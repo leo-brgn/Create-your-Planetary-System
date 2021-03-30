@@ -115,9 +115,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
         System.out.println("Planet got too far and removed: " + celestialObject);
     }
 
-
     public int getAddedSize(){
         return this.addedCelestialObjects.size();
     }
-
 }
