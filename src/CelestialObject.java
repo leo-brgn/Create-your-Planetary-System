@@ -49,9 +49,6 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
         this.color = color;
     }
 
-    // Abstract method to return a string when we call the class directly
-    public abstract String toString();
-
     // Method to sort the planets
     public int compareTo(CelestialObject celestialObject){
         return Double.compare(this.distanceToStar, celestialObject.distanceToStar);
