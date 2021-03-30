@@ -59,6 +59,19 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
         this.mass = 1000*density*Math.PI*(4f/3f)*Math.pow(radiusKm * 1000,3);
     }
 
+    // Method to set the initial velocity of the planet to stay in orbit
+    public void setInitialVelocity(){
+        double magnitude = Math.sqrt(1.5*(G*mass)/(distanceToStarKm*1000));
+        double[] unitaryVec = {(position.x - 390) /distanceToStar, (position.y - 320)/distanceToStar};
+        if(Math.random()>0.5){
+            velocityX = magnitude * unitaryVec[1];
+            velocityY = -magnitude * unitaryVec[0];
+        } else {
+            velocityX = -magnitude * unitaryVec[1];
+            velocityY = magnitude * unitaryVec[0];
+        }
+    }
+
     // Method to compute the distance from the celestial object to the star
     public void computeDistanceToStar(){
         this.distanceToStar = Math.sqrt((position.x-390)*(position.x-390) + (position.y-320)*(position.y-320));
@@ -103,16 +116,5 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
         return distanceToStarKm <= (radiusKm+sunRadius*3);
     }
 
-    //
-    public void setInitialVelocity(){
-        double magnitude = Math.sqrt((G*mass)/(distanceToStarKm*1000));
-        double[] unitaryVec = {(position.x - 390) /distanceToStar, (position.y - 320)/distanceToStar};
-        if(Math.random()>0.5){
-            velocityX = magnitude * unitaryVec[1];
-            velocityY = -magnitude * unitaryVec[0];
-        } else {
-            velocityX = -magnitude * unitaryVec[1];
-            velocityY = magnitude * unitaryVec[0];
-        }
-    }
+
 }

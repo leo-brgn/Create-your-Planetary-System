@@ -14,7 +14,6 @@ public class PlanetarySystem extends JPanel implements Runnable{
     private final LinkedList<CelestialObject> addedCelestialObjects;
     private final LinkedList<CelestialObject> celestialObjects;
     private final float timeScale;
-    private final BackgroundStars backgroundStars;
     private final Star star;
 
     /**
@@ -27,7 +26,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
         this.setBounds(0,0,780,640);
         this.setBackground(Color.BLACK);
         this.setLayout(null);
-        this.backgroundStars = new BackgroundStars(500);
+        BackgroundStars backgroundStars = new BackgroundStars(500);
         this.star = new Star();
         this.add(backgroundStars);
         this.setVisible(true);
