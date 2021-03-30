@@ -3,12 +3,13 @@ import java.awt.*;
 public class PlanetGradient {
 
     private static final Color[] listColor={
-            new Color(195, 155, 211),
-            new Color(165, 105, 189),
-            new Color(84, 153, 199),
-            new Color(133, 193, 233),
             new Color(115, 198, 182),
             new Color(130, 224, 170),
+            new Color(133, 193, 233),
+            new Color(84, 153, 199),
+            new Color(195, 155, 211),
+            new Color(165, 105, 189),
+
 
             new Color(247, 220, 111),
             new Color(245, 176, 65),
