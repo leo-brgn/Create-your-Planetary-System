@@ -29,10 +29,11 @@ public class FinishPanel extends JPanel implements ChangeListener {
             this.add(panels.get(i));
         }
 
-        slider = new JSlider(JSlider.HORIZONTAL, 1, 100, 10);
+        slider = new JSlider(JSlider.HORIZONTAL, 0, 12, 1);
         slider.setBounds(100,500,100,50);
-        slider.setMinorTickSpacing(10);
-        slider.setMajorTickSpacing(25);
+        slider.setMinorTickSpacing(1);
+        slider.setMajorTickSpacing(6);
+        slider.setValue(2);
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
         slider.setBackground(Color.BLACK);
@@ -55,6 +56,9 @@ public class FinishPanel extends JPanel implements ChangeListener {
 
     @Override
     public void stateChanged(ChangeEvent e) {
-
+        if(e.getSource() == slider){
+            PlanetarySystem.timeScale = (slider.getValue()+1);
+        }
     }
+
 }

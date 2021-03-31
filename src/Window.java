@@ -136,6 +136,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         slider.setBackground(Color.BLACK);
         slider.setForeground(Color.WHITE);
         slider.addChangeListener(this);
+
         rightPanel.add(slider);
         // END RIGHT PANEL
         colorButtonsGaseous = new JButton[6];

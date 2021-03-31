@@ -13,7 +13,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
      */
     private final LinkedList<CelestialObject> addedCelestialObjects;
     private final LinkedList<CelestialObject> celestialObjects;
-    private final float timeScale;
+    public static float timeScale;
     private final Star star;
 
     /**
@@ -32,7 +32,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
         this.setVisible(true);
         // Adding the sun, the first element of the set of celestial objects, no interactions on it in this version
         celestialObjects.add(star);
-        this.timeScale = 30*24*3600;
+        timeScale = 10*30*24*3600; //un mois en secondes
         // THREAD
         Thread simulationThread = new Thread(this, "Simulation Thread");
         simulationThread.start();
