@@ -141,7 +141,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         colorButtonsGaseous = new JButton[6];
         colorButtonsRocky = new JButton[6];
         this.add(rightPanel);
-        finishPanel = new FinishPanel();
+        finishPanel = new FinishPanel(nbPlanets);
     }
 
     public void actionPerformed(ActionEvent e){
