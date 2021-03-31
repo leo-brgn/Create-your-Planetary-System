@@ -76,8 +76,8 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         rightPanel.add(backPlanetNb);
 
         planetNb = new JLabel();
-        planetNb.setText("PLANET: " + currentPlanet + "/" + nbPlanets);
-        planetNb.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,32));
+        planetNb.setText("PLANET:" + currentPlanet + "/" + nbPlanets);
+        planetNb.setFont(new java.awt.Font(Font.DIALOG_INPUT,Font.BOLD,32));
         //planetNb.setBorder(BorderFactory.createLineBorder(Color.white));
         planetNb.setBounds(30,20,165,40);
         planetNb.setForeground(Color.WHITE);
@@ -121,6 +121,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
 
         create = new JButton("CREATE");
         create.setBounds(85, 550, 100,25);
+        create.setFont(new java.awt.Font(Font.DIALOG_INPUT,Font.BOLD,14));
         create.setForeground(Color.WHITE);
         create.setBackground(Color.BLACK);
         create.addActionListener(this);

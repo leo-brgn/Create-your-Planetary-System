@@ -39,34 +39,35 @@ public class Title extends JFrame implements ActionListener{
         firstPanel.setVisible(true);
         firstPanel.setLayout(null);
 
-        JLabel affBackground = new JLabel (new ImageIcon("items/images/diywallpaper.jpg"));
+        JLabel affBackground = new JLabel (new ImageIcon("items/images/diywallpaper-nude.jpg"));
         affBackground.setBounds(0,0,1050,640);
         firstPanel.add(affBackground);
 
         JLabel txtLabel = new JLabel();
         txtLabel.setText("CREATE YOUR PLANETARY SYSTEM");
-        txtLabel.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,45));
-        txtLabel.setForeground(Color.WHITE);
-        txtLabel.setBounds(110,55,830,50);
+        txtLabel.setFont(new java.awt.Font(Font.DIALOG_INPUT,Font.BOLD,50));
+        txtLabel.setForeground(new Color (242, 243, 244));
+        txtLabel.setBounds(90,65,870,50);
         affBackground.add(txtLabel);
 
         JLabel titleLabel = new JLabel();
         titleLabel.setText("How many planet do you want to add ?");
-        titleLabel.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,30));
-        titleLabel.setForeground(Color.WHITE);
-        titleLabel.setBounds(270,425,510,50);
+        titleLabel.setFont(new java.awt.Font(Font.DIALOG_INPUT,Font.BOLD,25));
+        titleLabel.setForeground(new Color (242, 243, 244));
+        titleLabel.setBounds(245,425,560,50);
         affBackground.add(titleLabel);
 
         nbPlanetArea= new JTextArea();
         nbPlanetArea.setText(String.valueOf(nbInitial));
-        nbPlanetArea.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,20));
-        nbPlanetArea.setBackground(Color.BLACK);
+        nbPlanetArea.setFont(new java.awt.Font(Font.DIALOG_INPUT,Font.BOLD,20));
+        nbPlanetArea.setBackground(new Color(41,39,40));
         nbPlanetArea.setForeground(Color.WHITE);
         nbPlanetArea.setBounds(520,495,10,35);
         affBackground.add(nbPlanetArea);
 
-        launchButton = new JButton("Start");
-        launchButton.setBounds(485,535,80,25);
+        launchButton = new JButton("START!");
+        launchButton.setBounds(483,535,85,25);
+        launchButton.setFont(new java.awt.Font(Font.DIALOG_INPUT,Font.BOLD,13));
         launchButton.setForeground(Color.WHITE);
         launchButton.setBackground(Color.GRAY);
         launchButton.addActionListener(this);
