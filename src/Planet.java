@@ -21,7 +21,7 @@ public class Planet extends CelestialObject {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D)g;
-        float[] dist = {0.1f,1f};
+        float[] dist = {0.05f,1f};
         RadialGradientPaint p = new RadialGradientPaint(position.x + radius, position.y +radius, 2*radius, dist, colors);
         g2D.setPaint(p);
         g2D.fillOval(position.x, position.y,2*radius,2*radius);

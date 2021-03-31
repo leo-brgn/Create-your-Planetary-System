@@ -19,7 +19,7 @@ public class CelestialPreview extends JPanel{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D)g;
-        float[] dist = {0.1f,1f};
+        float[] dist = {0.02f,1f};
         RadialGradientPaint p = new RadialGradientPaint((this.getWidth()/2f),(this.getHeight()/2f), 2*size, dist, colors);
         g2D.setPaint(p);
         g2D.fillOval(((this.getWidth()/2)-size), ((this.getHeight()/2)-size),2*size,2*size);

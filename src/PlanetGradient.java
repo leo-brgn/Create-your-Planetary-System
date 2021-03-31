@@ -24,6 +24,6 @@ public class PlanetGradient {
     }
 
     public static Color[] getTwoColors(int index){
-        return new Color[]{listColor[index], (Color.WHITE)};
+        return new Color[]{ (Color.WHITE),listColor[index]};
     }
 }

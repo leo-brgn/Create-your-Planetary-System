@@ -65,7 +65,7 @@ public class Title extends JFrame implements ActionListener{
         nbPlanetArea.setBounds(520,495,15,35);
         affBackground.add(nbPlanetArea);
 
-        launchButton = new JButton("START!");
+        launchButton = new JButton("START");
         launchButton.setBounds(483,535,85,25);
         launchButton.setFont(new java.awt.Font(Font.DIALOG_INPUT,Font.BOLD,13));
         launchButton.setForeground(Color.WHITE);
@@ -75,11 +75,15 @@ public class Title extends JFrame implements ActionListener{
 
         plusButton = new JButton(new ImageIcon("items/images/logo-plus.png"));
         plusButton.setBounds(585,500,25,25);
+        plusButton.setBorder(BorderFactory.createEmptyBorder());
+        plusButton.setBackground(Color.GRAY);
         plusButton.addActionListener(this);
         affBackground.add(plusButton);
 
         minusButton = new JButton(new ImageIcon("items/images/logo-minus.png"));
         minusButton.setBounds(440,500,25,25);
+        minusButton.setBorder(BorderFactory.createEmptyBorder());
+        minusButton.setBackground(Color.GRAY);
         minusButton.addActionListener(this);
         affBackground.add(minusButton);
 
