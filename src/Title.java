@@ -39,7 +39,7 @@ public class Title extends JFrame implements ActionListener{
         firstPanel.setVisible(true);
         firstPanel.setLayout(null);
 
-        JLabel affBackground = new JLabel (new ImageIcon("items/images/wallpaper-HD.jpg"));
+        JLabel affBackground = new JLabel (new ImageIcon("items/images/diywallpaper.jpg"));
         affBackground.setBounds(0,0,1050,640);
         firstPanel.add(affBackground);
 
