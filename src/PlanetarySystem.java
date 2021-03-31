@@ -32,7 +32,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
         this.setVisible(true);
         // Adding the sun, the first element of the set of celestial objects, no interactions on it in this version
         celestialObjects.add(star);
-        this.timeScale = 6*30*24*3600;
+        this.timeScale = 30*24*3600;
         // THREAD
         Thread simulationThread = new Thread(this, "Simulation Thread");
         simulationThread.start();
@@ -67,7 +67,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
                 }
                 c.computeDistanceToStar();
                 c.setGravitationalForce();
-                c.updateVelocity(timeScale *deltaT / 1000);
+                c.updateVelocity(timeScale * deltaT / 1000);
                 c.updatePosition(timeScale * deltaT / 1000);
                 if(c.isTooFar()){
                     removeCelestialObject(c);

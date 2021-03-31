@@ -61,15 +61,22 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
 
     // Method to set the initial velocity of the planet to stay in orbit
     public void setInitialVelocity(){
-        double magnitude = Math.sqrt((0.5*G*mass)/(distanceToStarKm*1000));
-        double[] unitaryVec = {(position.x - 390) /distanceToStar, (position.y - 320)/distanceToStar};
-        if(Math.random()>0.5){
-            velocityX = magnitude * unitaryVec[1];
-            velocityY = -magnitude * unitaryVec[0];
-        } else {
-            velocityX = -magnitude * unitaryVec[1];
-            velocityY = magnitude * unitaryVec[0];
+        double magnitude = Math.sqrt((0.3*G*mass)/(distanceToStarKm*1000));
+        double[] vectorSunToPlanet = {(position.x - 390) /distanceToStar, (position.y - 320)/distanceToStar};
+        if(vectorSunToPlanet[0]>=0 && vectorSunToPlanet[1]<=0){ //RU
+            velocityX = - magnitude * vectorSunToPlanet[0];
+            velocityY = magnitude * vectorSunToPlanet[1];
+        } else if(vectorSunToPlanet[0]>0 && vectorSunToPlanet[1]>0){ //RD
+            velocityX = magnitude * vectorSunToPlanet[0];
+            velocityY = -magnitude * vectorSunToPlanet[1];
+        } else if(vectorSunToPlanet[0]<=0 && vectorSunToPlanet[1]>=0){ //LD
+            velocityX = -magnitude * vectorSunToPlanet[0];
+            velocityY = magnitude * vectorSunToPlanet[1];
+        } else if(vectorSunToPlanet[0]<0 && vectorSunToPlanet[1]<0){ //LU
+            velocityX = magnitude * vectorSunToPlanet[0];
+            velocityY = -magnitude * vectorSunToPlanet[1];
         }
+
     }
 
     // Method to compute the distance from the celestial object to the star

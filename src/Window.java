@@ -22,7 +22,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     private Point mouseLocation;
     // System attributes
     private final int nbPlanets;
-    private int currentPlanet=1;
+    private int currentPlanet=1; // Goes from 1 to nbPlanets
     private final PlanetarySystem planetarySystem;
     private final JButton[] colorButtonsGaseous;
     private final JButton[] colorButtonsRocky;
@@ -169,9 +169,12 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
                 }
                 planetToAdd = false;
             }
-            if (currentPlanet != nbPlanets){
+            if (currentPlanet < nbPlanets){
                 currentPlanet++;
                 planetNb.setText("PLANET: " + currentPlanet + "/" + nbPlanets);
+            } else if (currentPlanet == nbPlanets){
+                currentPlanet++;
+                finishedCreating();
             }
         }
     }
@@ -248,6 +251,8 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     }
 
     public void finishedCreating(){
+        this.remove(rightPanel);
+        this.repaint();
         this.add(finishPanel);
     }
 
