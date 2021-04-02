@@ -3,6 +3,7 @@ import java.awt.*;
 public class Planet extends CelestialObject {
 
     private final Color[] colors;
+    private long lifeTime; //attributes that will be displayed at the end of the game
 
     public Planet(int radius, Point position, int colorIndex, TypePlanet typePlanet) {
         super(radius, position, colorIndex);
