@@ -61,7 +61,7 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
 
     // Method to set the initial velocity of the planet to stay in orbit
     public void setInitialVelocity(){
-        double magnitude = Math.sqrt((0.3*G*mass)/(distanceToStarKm*1000));
+        double magnitude = Math.sqrt((G*mass)/(distanceToStarKm*1000));
         double[] vectorSunToPlanet = {(position.x - 390) /distanceToStar, (position.y - 320)/distanceToStar};
         if(vectorSunToPlanet[0]>=0 && vectorSunToPlanet[1]<=0){ //RU
             velocityX = - magnitude * vectorSunToPlanet[0];
@@ -100,27 +100,15 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     public void updatePosition(float deltaT){
         position.x = (int) (position.x + deltaT * (velocityX / (scaleDst*1000)));
         position.y = (int) (position.y + deltaT * (velocityY / (scaleDst*1000)));
-        // Checks if the variation in position is smaller that 0 to force a displacement if it has been to long since last movement
-        if(Math.abs(position.x + deltaT * (velocityX / (scaleDst*1000))) < 1.0 && Math.abs(position.y + deltaT * (velocityY / (scaleDst*1000))) < 1.0){
-            count++;
-            if (count >= 10){
-                position.x = (int) (position.x + deltaT * (velocityX / (scaleDst*1000)) + Math.signum(velocityX));
-                count = 0;
-            }
-        } else {
-            count = 0; // once the movement is made, there is no counting
-        }
     }
 
     // Method to verify if the planet has gone too far, the distance chosen is not scientific
     public boolean isTooFar(){
-        return distanceToStar >= 700;
+        return distanceToStar >= 390;
     }
 
     // Method to verify if the planet is colliding with the sun
     public boolean isTooClose(long sunRadius){
         return distanceToStarKm <= (radiusKm+sunRadius*3);
     }
-
-
 }

@@ -55,7 +55,6 @@ public class PlanetarySystem extends JPanel implements Runnable{
                 e.printStackTrace();
             }
         }
-
     }
 
     public void update(float deltaT){
@@ -67,8 +66,8 @@ public class PlanetarySystem extends JPanel implements Runnable{
                 }
                 c.computeDistanceToStar();
                 c.setGravitationalForce();
-                c.updateVelocity(timeScale * deltaT / 1000);
-                c.updatePosition(timeScale * deltaT / 1000);
+                c.updateVelocity( timeScale *deltaT / 1000);
+                c.updatePosition( timeScale *deltaT / 1000);
                 if(c.isTooFar()){
                     removeCelestialObject(c);
                 }
@@ -77,7 +76,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
                     JOptionPane.showMessageDialog(this, "The planet collided with the sun !");
                 }
                 if(c instanceof Star){
-                    ((Star) c).updateSun(deltaT);
+                    ((Star) c).updateSun(deltaT/1000);
                 }
             }
             Collections.sort(celestialObjects);

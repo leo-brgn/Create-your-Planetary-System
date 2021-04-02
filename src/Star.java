@@ -28,8 +28,9 @@ public class Star extends CelestialObject{
 
 
     public void updateSun(float deltaT){
-        alpha = (float) Math.abs(Math.cos(deltaT/10000));
+        alpha = (float) Math.abs(Math.cos(deltaT));
     }
+
     @Override
     public String toString() {
         return "Sun of radius: " + radiusKm;

@@ -7,10 +7,9 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class FinishPanel extends JPanel implements ChangeListener {
+public class FinishPanel extends JPanel {
     private LinkedList<Planet> planets = new LinkedList<>();
     private ArrayList<JPanel> panels = new ArrayList<>(5);
-    private JSlider slider;
 
     public FinishPanel(int nbPlanets){
         this.setBackground(Color.BLACK);
@@ -29,19 +28,6 @@ public class FinishPanel extends JPanel implements ChangeListener {
             this.add(panels.get(i));
         }
 
-        slider = new JSlider(JSlider.HORIZONTAL, 0, 12, 1);
-        slider.setBounds(100,500,100,50);
-        slider.setMinorTickSpacing(1);
-        slider.setMajorTickSpacing(6);
-        slider.setValue(2);
-        slider.setPaintTicks(true);
-        slider.setPaintLabels(true);
-        slider.setBackground(Color.BLACK);
-        slider.setForeground(Color.WHITE);
-        slider.addChangeListener(this);
-
-        this.add(slider);
-
         this.setVisible(true);
     }
 
@@ -54,11 +40,5 @@ public class FinishPanel extends JPanel implements ChangeListener {
         }
     }
 
-    @Override
-    public void stateChanged(ChangeEvent e) {
-        if(e.getSource() == slider){
-            PlanetarySystem.timeScale = (slider.getValue()+1);
-        }
-    }
 
 }
