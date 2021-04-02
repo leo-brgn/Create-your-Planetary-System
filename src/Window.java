@@ -246,7 +246,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     public void stateChanged(ChangeEvent e) {
         if(e.getSource() == slider){
             sizeSelected = slider.getValue();
-            this.celestialPreview.setSize(sizeSelected);
+            this.celestialPreview.setSize(2*sizeSelected);
             this.celestialPreview.repaint();
         }
     }

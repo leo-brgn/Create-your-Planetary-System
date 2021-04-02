@@ -64,17 +64,17 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
         double magnitude = Math.sqrt((G*mass)/(distanceToStarKm*1000));
         double[] vectorSunToPlanet = {(position.x - 390) /distanceToStar, (position.y - 320)/distanceToStar};
         if(vectorSunToPlanet[0]>=0 && vectorSunToPlanet[1]<=0){ //RU
-            velocityX = - magnitude * vectorSunToPlanet[0];
-            velocityY = magnitude * vectorSunToPlanet[1];
+            velocityX = - magnitude * vectorSunToPlanet[1];
+            velocityY = magnitude * vectorSunToPlanet[0];
         } else if(vectorSunToPlanet[0]>0 && vectorSunToPlanet[1]>0){ //RD
-            velocityX = magnitude * vectorSunToPlanet[0];
-            velocityY = -magnitude * vectorSunToPlanet[1];
+            velocityX = magnitude * vectorSunToPlanet[1];
+            velocityY = -magnitude * vectorSunToPlanet[0];
         } else if(vectorSunToPlanet[0]<=0 && vectorSunToPlanet[1]>=0){ //LD
-            velocityX = -magnitude * vectorSunToPlanet[0];
-            velocityY = magnitude * vectorSunToPlanet[1];
+            velocityX = -magnitude * vectorSunToPlanet[1];
+            velocityY = magnitude * vectorSunToPlanet[0];
         } else if(vectorSunToPlanet[0]<0 && vectorSunToPlanet[1]<0){ //LU
-            velocityX = magnitude * vectorSunToPlanet[0];
-            velocityY = -magnitude * vectorSunToPlanet[1];
+            velocityX = magnitude * vectorSunToPlanet[1];
+            velocityY = -magnitude * vectorSunToPlanet[0];
         }
 
     }
