@@ -24,14 +24,11 @@ public class FinishPanel extends JPanel {
             jLabel.setBounds(100,45,50,20);
             jLabel.setFont(new java.awt.Font(Font.DIALOG_INPUT,Font.BOLD,13));
             jLabel.setForeground(Color.WHITE);
-            CelestialPreview c = new CelestialPreview(15); // adding the preview
-            c.setBounds(180, 0,70,70);
-            c.setColor(3);
-            c.setVisible(true);
-            jPanel.add(c);
+
             jPanel.add(jLabel);
             panels.add(jPanel);
             this.add(panels.get(i));
+            updateCases();
         }
 
 
@@ -44,6 +41,10 @@ public class FinishPanel extends JPanel {
 
     public void updateCases(){
         for(JPanel p: panels){
+            CelestialPreview c = new CelestialPreview(15); // adding the preview of the planet
+            c.setBounds(180, 0,70,80);
+            c.setVisible(true);
+            p.add(c);
         }
     }
 
