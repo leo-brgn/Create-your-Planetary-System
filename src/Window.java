@@ -129,9 +129,9 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         rightPanel.add(create);
 
         slider = new JSlider(JSlider.HORIZONTAL, 0, 100, sizeSelected);
-        slider.setBounds(140,160,100,50);
-        slider.setMinorTickSpacing(10);
-        slider.setMajorTickSpacing(5);
+        slider.setBounds(120,160,120,50);
+        slider.setMinorTickSpacing(5);
+        slider.setMajorTickSpacing(25);
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
         slider.setBackground(Color.BLACK);
