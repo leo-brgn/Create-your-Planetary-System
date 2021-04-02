@@ -1,8 +1,4 @@
-import com.sun.jdi.connect.spi.TransportService;
-
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
