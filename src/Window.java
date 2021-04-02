@@ -116,7 +116,8 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         preview.setForeground(Color.WHITE);
         rightPanel.add(preview);
 
-        celestialPreview = new CelestialPreview(25);
+        this.sizeSelected = 2;
+        celestialPreview = new CelestialPreview(sizeSelected);
         rightPanel.add(celestialPreview);
 
         create = new JButton("CREATE");
@@ -127,10 +128,10 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         create.addActionListener(this);
         rightPanel.add(create);
 
-        slider = new JSlider(JSlider.HORIZONTAL, 0, 100, 1);
+        slider = new JSlider(JSlider.HORIZONTAL, 0, 100, sizeSelected);
         slider.setBounds(140,160,100,50);
-        slider.setMinorTickSpacing(5);
-        slider.setMajorTickSpacing(10);
+        slider.setMinorTickSpacing(10);
+        slider.setMajorTickSpacing(5);
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
         slider.setBackground(Color.BLACK);
