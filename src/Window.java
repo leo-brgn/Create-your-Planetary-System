@@ -116,8 +116,9 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         preview.setForeground(Color.WHITE);
         rightPanel.add(preview);
 
-        this.sizeSelected = 2;
+        this.sizeSelected = 5; // initialize the size of the planet and the position of the slider
         celestialPreview = new CelestialPreview(sizeSelected);
+
         rightPanel.add(celestialPreview);
 
         create = new JButton("CREATE");
@@ -128,7 +129,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         create.addActionListener(this);
         rightPanel.add(create);
 
-        slider = new JSlider(JSlider.HORIZONTAL, 0, 100, sizeSelected);
+        slider = new JSlider(JSlider.HORIZONTAL, 5, 100, sizeSelected); // start at 1 to avoid empty planets and errors
         slider.setBounds(120,160,120,50);
         slider.setMinorTickSpacing(5);
         slider.setMajorTickSpacing(25);
@@ -167,9 +168,11 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         if(mouseEvent.getButton() == MouseEvent.BUTTON1 && planetToAdd) {
             if(mouseEvent.getX() < 780){
                 if (planetarySystem.getAddedSize() < 10 + 1) {
-                    planetarySystem.addCelestialObject(typeToCreate, mouseEvent.getPoint(), (float)(sizeSelected*0.08), colorSelected);
-                    finishPanel.addPlanet(new Planet ((int)(sizeSelected*0.08), mouseEvent.getPoint(), colorSelected , typeToCreate)); //creating an object planet
+
+                        planetarySystem.addCelestialObject(typeToCreate, mouseEvent.getPoint(), (int)(0.2*sizeSelected), colorSelected);
+                        finishPanel.addPlanet(new Planet((int) (0.2*sizeSelected), mouseEvent.getPoint(), colorSelected, typeToCreate)); //creating an object planet
                 }
+
                 planetToAdd = false;
             }
             if (currentPlanet < nbPlanets){
@@ -247,9 +250,12 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     @Override
     public void stateChanged(ChangeEvent e) {
         if(e.getSource() == slider){
-            sizeSelected = slider.getValue();
-            this.celestialPreview.setSize((float)(sizeSelected*0.08));
+            sizeSelected = slider.getValue(); //value of the slider between 0 and 100 in pixels
+
+            System.out.println(sizeSelected);
+            this.celestialPreview.setSize((float) (0.80) * sizeSelected);
             this.celestialPreview.repaint();
+
         }
     }
 

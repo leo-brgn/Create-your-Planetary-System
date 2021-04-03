@@ -22,11 +22,11 @@ public class CelestialPreview extends JPanel{
         float[] dist = {0.02f,1f};
         RadialGradientPaint p = new RadialGradientPaint((this.getWidth()/2f),(this.getHeight()/2f), 2*size, dist, colors);
         g2D.setPaint(p);
-        g2D.fillOval(((this.getWidth()/2)-size), ((this.getHeight()/2)-size),2*size,2*size);
+        g2D.fillOval(((this.getWidth()/2)-size), ((this.getHeight()/2)-size),2*size,2*size); //diameter of two times the size chosen
     }
 
     public void setSize(float size){
-        this.size = 10*(int) size;
+        this.size = (int) size;
     }
 
     public void setColor(int index){
