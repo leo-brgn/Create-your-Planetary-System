@@ -4,10 +4,19 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * Class for the creation of the planets inheriting from JPanel
+ */
+
 public class Window extends JFrame implements ActionListener, MouseListener, ChangeListener {
-    // GUI attributes
+
+    /**
+     * Attributes
+     */
+
+    //GIU
     private final JPanel rightPanel; // The panel on the right
-    private final JPanel line;
+    private final JPanel line; //line at the left of the panel
     private final JPanel backPlanetNb; // JPanel of the planets to add
     private final JLabel planetNb;
     private final JButton rocky;
@@ -16,7 +25,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     private final JLabel  color;
     private final JButton create;
     private final JSlider slider;
-    private CelestialPreview celestialPreview; // took off final
+    //preview of the planet before adding it to the planetary system
     private JPanel sliderPanel;
     // Position of the mouse
     private Point mouseLocation;
@@ -34,8 +43,11 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     private boolean planetToAdd = false;
     private boolean buttonsAdded = false;
     private FinishPanel finishPanel;
+    private CelestialPreview celestialPreview;
 
-
+    /**
+     * Constructor
+     */
     public Window(int nbPlanets){
         this.nbPlanets = nbPlanets;
         planetarySystem = new PlanetarySystem();
@@ -51,7 +63,8 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         System.out.println(Thread.activeCount());
         this.getContentPane().add(planetarySystem);
         this.setVisible(true);
-        this.addWindowListener(new WindowAdapter(){
+
+        this.addWindowListener(new WindowAdapter(){ //allow the game to restart at the end
             public void windowClosing(WindowEvent e){
                 dispose();
                 new Title();
@@ -140,6 +153,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         slider.addChangeListener(this);
 
         rightPanel.add(slider);
+
         // END RIGHT PANEL
         colorButtonsGaseous = new JButton[6];
         colorButtonsRocky = new JButton[6];

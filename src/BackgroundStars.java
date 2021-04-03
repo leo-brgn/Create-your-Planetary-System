@@ -4,7 +4,6 @@ import java.awt.*;
 /**
  * Class to create a background with stars of different appearances
  */
-
 public class BackgroundStars extends JComponent {
 
     /**

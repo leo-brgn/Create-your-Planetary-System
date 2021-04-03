@@ -1,6 +1,13 @@
 import java.awt.*;
 
+/**
+ * Class inheriting from CelestialObject to create the central star
+ */
 public class Star extends CelestialObject{
+
+    /**
+     * Attributes
+     */
     private final Color[] colors = {
             new Color(255,255,255,255),
             new Color(255, 228, 132, 255),
@@ -11,6 +18,9 @@ public class Star extends CelestialObject{
     };
     private float alpha;
 
+    /**
+     * Constructor
+     */
     public Star(){
         super(150, new Point(390,320));
         alpha = 1.0f;
