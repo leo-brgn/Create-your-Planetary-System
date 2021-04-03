@@ -8,8 +8,8 @@ import java.util.LinkedList;
  */
 
 public class FinishPanel extends JPanel {
-    private LinkedList<Planet> planets = new LinkedList<>();
 
+    private LinkedList<Planet> planets = new LinkedList<>();
     private ArrayList<JPanel> panels = new ArrayList<>(5);
 
     public FinishPanel(int nbPlanets){
@@ -17,18 +17,19 @@ public class FinishPanel extends JPanel {
         this.setBounds(780, 0, 270, 640);
         this.setLayout(null);
         for(int i=0; i<5; i++){ //initialize the five panel
+
             JPanel jPanel = new JPanel();
             jPanel.setBackground(Color.GRAY);
-            jPanel.setBounds(10,100+80*i,250,70);
-            JLabel jLabel = new JLabel("Coucou");
-            jLabel.setBounds(100,45,50,20);
+            jPanel.setBounds(10,60+100*i,250,90);
+            JLabel jLabel = new JLabel("Planet n° " + (i+1));
+            jLabel.setBounds(5 ,5,200,20);
             jLabel.setFont(new java.awt.Font(Font.DIALOG_INPUT,Font.BOLD,13));
             jLabel.setForeground(Color.WHITE);
-
             jPanel.add(jLabel);
             panels.add(jPanel);
             this.add(panels.get(i));
             updateCases();
+
         }
 
 
@@ -40,12 +41,25 @@ public class FinishPanel extends JPanel {
     }
 
     public void updateCases(){
-        for(JPanel p: panels){
-            CelestialPreview c = new CelestialPreview(15); // adding the preview of the planet
-            c.setBounds(180, 0,70,80);
+        for(int i =0; i<panels.size() ;i++) {
+
+            CelestialPreview c = new CelestialPreview(35); // adding the preview of the planet
+            c.setBounds(160, 0,90,90);
+            for(int j=0; j<planets.size() ;j++) {
+
+                if(i==j) {
+                    c.setSize(25);
+                    c.setColor(6);// test color
+                }
+            }
             c.setVisible(true);
-            p.add(c);
+            panels.get(i).add(c);
         }
+
+    }
+
+    public LinkedList getplanets() {
+        return planets;
     }
 
 

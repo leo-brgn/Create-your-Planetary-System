@@ -16,7 +16,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     private final JLabel  color;
     private final JButton create;
     private final JSlider slider;
-    private final CelestialPreview celestialPreview;
+    private CelestialPreview celestialPreview; // took off final
     private JPanel sliderPanel;
     // Position of the mouse
     private Point mouseLocation;
@@ -168,6 +168,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
             if(mouseEvent.getX() < 780){
                 if (planetarySystem.getAddedSize() < 10 + 1) {
                     planetarySystem.addCelestialObject(typeToCreate, mouseEvent.getPoint(), (float)(sizeSelected*0.08), colorSelected);
+                    finishPanel.addPlanet(new Planet ((int)(sizeSelected*0.08), mouseEvent.getPoint(), colorSelected , typeToCreate)); //creating an object planet
                 }
                 planetToAdd = false;
             }
