@@ -54,9 +54,4 @@ public class FinishPanel extends JPanel {
 
     }
 
-    public LinkedList getplanets() {
-        return planets;
-    }
-
-
 }
