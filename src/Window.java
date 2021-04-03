@@ -110,13 +110,13 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         rightPanel.add(color);
         colorSelected = 0;
 
-        JLabel preview = new JLabel("P R E V I E W");
+        JLabel preview = new JLabel("P R E V I E W    x4 ");
         preview.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
-        preview.setBounds(85, 330, 100,25);
+        preview.setBounds(70, 330, 150,25);
         preview.setForeground(Color.WHITE);
         rightPanel.add(preview);
 
-        this.sizeSelected = 5; // initialize the size of the planet and the position of the slider
+        this.sizeSelected = 1; // initialize the size of the planet and the position of the slider
         celestialPreview = new CelestialPreview(sizeSelected);
 
         rightPanel.add(celestialPreview);
@@ -129,7 +129,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         create.addActionListener(this);
         rightPanel.add(create);
 
-        slider = new JSlider(JSlider.HORIZONTAL, 5, 100, sizeSelected); // start at 1 to avoid empty planets and errors
+        slider = new JSlider(JSlider.HORIZONTAL, 0, 100, sizeSelected); //slider between 0 and 100
         slider.setBounds(120,160,120,50);
         slider.setMinorTickSpacing(5);
         slider.setMajorTickSpacing(25);
@@ -169,8 +169,8 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
             if(mouseEvent.getX() < 780){
                 if (planetarySystem.getAddedSize() < 10 + 1) {
 
-                        planetarySystem.addCelestialObject(typeToCreate, mouseEvent.getPoint(), (int)(0.2*sizeSelected), colorSelected);
-                        finishPanel.addPlanet(new Planet((int) (0.2*sizeSelected), mouseEvent.getPoint(), colorSelected, typeToCreate)); //creating an object planet
+                        planetarySystem.addCelestialObject(typeToCreate, mouseEvent.getPoint(), (int)(0.15*(sizeSelected+7)), colorSelected); // the added 7 is to avoid nil values for the radius with the slider between 0 and 6 (we add 7 to the value of the slider)
+                        finishPanel.addPlanet(new Planet((int) (0.15*(sizeSelected+7)), mouseEvent.getPoint(), colorSelected, typeToCreate)); //creating an object planet
                 }
 
                 planetToAdd = false;
@@ -253,7 +253,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
             sizeSelected = slider.getValue(); //value of the slider between 0 and 100 in pixels
 
             System.out.println(sizeSelected);
-            this.celestialPreview.setSize((float) (0.80) * sizeSelected);
+            this.celestialPreview.setSize((float) (0.60) * (sizeSelected+7)); //still the added 7 to have a simple relation between the preview and the game (4x)
             this.celestialPreview.repaint();
 
         }
