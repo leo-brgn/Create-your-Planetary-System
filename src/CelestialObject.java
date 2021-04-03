@@ -54,9 +54,9 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
         return Double.compare(this.distanceToStar, celestialObject.distanceToStar);
     }
 
-    // Method to compute the mass as a function of the density
+    // Method to compute the mass as a function of the density and the radius (in km)
     public void computeMass() {
-        this.mass = 1000*density*Math.PI*(4f/3f)*Math.pow(radiusKm * 1000,3);
+        this.mass = density*Math.PI*(4f/3f)*Math.pow(radiusKm * 1000,3);
     }
 
     // Method to set the initial velocity of the planet to stay in orbit
