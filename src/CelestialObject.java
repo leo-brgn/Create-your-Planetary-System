@@ -62,8 +62,15 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     // Method to set the initial velocity of the planet to stay in orbit
     public void setInitialVelocity(){
         double magnitude = Math.sqrt((G*mass)/(distanceToStarKm*1000));
-        double[] vectorSunToPlanet = {(position.x - 390) /distanceToStar, (position.y - 320)/distanceToStar};
-        if(vectorSunToPlanet[0]>=0 && vectorSunToPlanet[1]<=0){ //RU
+        double[] vectorSunToPlanet = {(position.x - 390)/distanceToStar, (position.y - 320)/distanceToStar};
+
+        /*System.out.println("x: " +vectorSunToPlanet[0]);
+        System.out.println("y: " +vectorSunToPlanet[1]);
+        System.out.println("d= " + distanceToStar);
+        System.out.println(Math.sqrt((vectorSunToPlanet[0])*(vectorSunToPlanet[0]) + (vectorSunToPlanet[1])*(vectorSunToPlanet[1])));
+        */
+
+        /*if(vectorSunToPlanet[0]>=0 && vectorSunToPlanet[1]<=0){ //RU
             velocityX = - magnitude * vectorSunToPlanet[0];
             velocityY = magnitude * vectorSunToPlanet[1];
         } else if(vectorSunToPlanet[0]>0 && vectorSunToPlanet[1]>0){ //RD
@@ -75,7 +82,12 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
         } else if(vectorSunToPlanet[0]<0 && vectorSunToPlanet[1]<0){ //LU
             velocityX = magnitude * vectorSunToPlanet[0];
             velocityY = -magnitude * vectorSunToPlanet[1];
-        }
+        }*/
+
+        velocityX = magnitude * vectorSunToPlanet[1];
+        velocityY = -magnitude * vectorSunToPlanet[0];
+        System.out.println("vx : " + velocityX);
+        System.out.println("vy : " + velocityY);
 
     }
 
@@ -92,6 +104,7 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
 
     // Method to compute the new velocity using an approximation of the acceleration at order 1
     public void updateVelocity(float deltaT){
+
         velocityX += deltaT * gravitationalForce * ((390 - position.x)/distanceToStar);
         velocityY += deltaT * gravitationalForce * ((320 - position.y)/distanceToStar);
     }
