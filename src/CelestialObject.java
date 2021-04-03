@@ -87,16 +87,13 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
             velocityY = -magnitude * vectorSunToPlanet[1];
         }*/
 
-        //if(Math.random()<0.5) {
+        if(Math.random()<0.5) {
             velocityX = magnitude * vectorSunToPlanet[1]/scaleDst;
             velocityY = -magnitude * vectorSunToPlanet[0]/scaleDst;
-       // }else{
-            //velocityX = -magnitude * vectorSunToPlanet[1];
-            //velocityY = magnitude * vectorSunToPlanet[0];
-        //}
-
-        System.out.println("vxi : " + velocityX);
-        System.out.println("vyi : " + velocityY);
+       }else{
+            velocityX = -magnitude * vectorSunToPlanet[1]/scaleDst;
+            velocityY = magnitude * vectorSunToPlanet[0]/scaleDst;
+        }
 
     }
 
@@ -114,13 +111,14 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     // Method to compute the new velocity using an approximation of the acceleration at order 1
     public void updateVelocity(float deltaT){
 
-         /*
+
         velocityX += deltaT * gravitationalForce * ((390 - position.x)/distanceToStar);
         velocityY += deltaT * gravitationalForce * ((320 - position.y)/distanceToStar);
-        */
+
+        /*
         velocityX += deltaT * gravitationalForce/(1000*scaleDst) ;
         velocityY += deltaT * gravitationalForce/(1000*scaleDst) ;
-        System.out.println("vx :" + velocityX);
+        */
     }
 
     // Method to compute the new position using an approximation
