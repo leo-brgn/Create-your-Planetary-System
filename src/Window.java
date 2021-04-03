@@ -168,9 +168,9 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         if(mouseEvent.getButton() == MouseEvent.BUTTON1 && planetToAdd) {
             if(mouseEvent.getX() < 780){
                 if (planetarySystem.getAddedSize() < 10 + 1) {
-
                         planetarySystem.addCelestialObject(typeToCreate, mouseEvent.getPoint(), (int)(0.15*(sizeSelected+7)), colorSelected); // the added 7 is to avoid nil values for the radius with the slider between 0 and 6 (we add 7 to the value of the slider)
                         finishPanel.addPlanet(new Planet((int) (0.15*(sizeSelected+7)), mouseEvent.getPoint(), colorSelected, typeToCreate)); //creating an object planet
+                        System.out.println(finishPanel.getplanets().size());
                 }
 
                 planetToAdd = false;
@@ -251,18 +251,17 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     public void stateChanged(ChangeEvent e) {
         if(e.getSource() == slider){
             sizeSelected = slider.getValue(); //value of the slider between 0 and 100 in pixels
-
-            System.out.println(sizeSelected);
             this.celestialPreview.setSize((float) (0.60) * (sizeSelected+7)); //still the added 7 to have a simple relation between the preview and the game (4x)
             this.celestialPreview.repaint();
-
         }
     }
 
     public void finishedCreating(){
+        finishPanel.updateCases();
         this.remove(rightPanel);
         this.repaint();
         this.add(finishPanel);
+
     }
 
     @Override

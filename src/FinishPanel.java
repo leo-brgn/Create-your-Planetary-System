@@ -17,7 +17,6 @@ public class FinishPanel extends JPanel {
         this.setBounds(780, 0, 270, 640);
         this.setLayout(null);
         for(int i=0; i<5; i++){ //initialize the five panel
-
             JPanel jPanel = new JPanel();
             jPanel.setBackground(Color.GRAY);
             jPanel.setBounds(10,60+100*i,250,90);
@@ -28,10 +27,7 @@ public class FinishPanel extends JPanel {
             jPanel.add(jLabel);
             panels.add(jPanel);
             this.add(panels.get(i));
-            updateCases();
-
         }
-
 
         this.setVisible(true);
     }
@@ -41,15 +37,15 @@ public class FinishPanel extends JPanel {
     }
 
     public void updateCases(){
-        for(int i =0; i<panels.size() ;i++) {
+        for(int i=0; i<panels.size() ;i++) {
 
             CelestialPreview c = new CelestialPreview(35); // adding the preview of the planet
-            c.setBounds(160, 0,90,90);
-            for(int j=0; j<planets.size() ;j++) {
+            c.setBounds(160, 0,90,90); // fixed preview at the right
 
+            for(int j=0; j<planets.size() ;j++) {
                 if(i==j) {
-                    c.setSize(25);
-                    c.setColor(6);// test color
+                    c.setSize(planets.get(j).radius);
+                    c.setColor(planets.get(j).colorIndex);// test color
                 }
             }
             c.setVisible(true);
