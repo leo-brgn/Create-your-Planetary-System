@@ -2,15 +2,22 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Class to create a background with stars
+ * Class to create a background with stars of different appearances
  */
+
 public class BackgroundStars extends JComponent {
 
+    /**
+     * Attributes
+     */
     private final double[] a;
     private final double[] b;
     private final double[] c;
     private final float alpha;
 
+    /**
+     * Constructor
+     */
     public BackgroundStars(int n){
         this.setBounds(0,0,780,640);
         a = new double[n];
@@ -24,6 +31,9 @@ public class BackgroundStars extends JComponent {
         alpha = 1.0f;
     }
 
+    /**
+     * Method to paint the stars with different color and sizes
+     */
     public void paintComponent(Graphics g){
         g.setColor(new Color(1f,1f,1f, 0.2f*alpha));
         for (int i = 0; i<a.length/4; i++){
