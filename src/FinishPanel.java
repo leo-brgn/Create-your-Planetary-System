@@ -12,7 +12,9 @@ public class FinishPanel extends JPanel {
     private LinkedList<Planet> planets = new LinkedList<>();
     private ArrayList<JPanel> panels = new ArrayList<>(5);
 
+
     public FinishPanel(int nbPlanets){
+
         this.setBackground(Color.BLACK);
         this.setBounds(780, 0, 270, 640);
         this.setLayout(null);
@@ -45,7 +47,14 @@ public class FinishPanel extends JPanel {
             for(int j=0; j<planets.size() ;j++) {
                 if(i==j) {
                     c.setSize(planets.get(j).radius);
-                    c.setColor(planets.get(j).colorIndex);// test color
+                    c.setColor(planets.get(j).colorIndex);
+
+                    JLabel distance = new JLabel("Radius " + planets.get(j).radiusKm + " km");
+                    distance.setBounds(5 ,20,200,20);
+                    distance.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,13));
+                    distance.setForeground(Color.WHITE);
+                    panels.get(j).add(distance);
+
                 }
             }
             c.setVisible(true);
