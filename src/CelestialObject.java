@@ -33,7 +33,7 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
         // Set the universe constants
         this.scaleDst = 10_000_000; // Scale km/px, 5_000_00 before
         // Scale of the sizes km/px
-        long scaleSizes = 5000; // Scale km/px 34_817 before
+        long scaleSizes = 4500; // Scale km/px 34_817 before
 
         /**
          * Update on scales :
