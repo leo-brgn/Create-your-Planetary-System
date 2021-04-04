@@ -70,7 +70,7 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
 
     // Method to compute the mass as a function of the density and the radius (in km)
     public void computeMass() {
-        this.mass = density*Math.PI*(4f/3f)*Math.pow(radiusKm * 1000,3);
+        this.mass = 1000*density*Math.PI*(4f/3f)*Math.pow(radiusKm * 1000,3);
     }
 
     // Method to set the initial velocity of the planet to stay in orbit
@@ -125,14 +125,14 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     // Method to compute the new velocity using an approximation of the acceleration at order 1
     public void updateVelocity(float deltaT){
 
-
+/*
         velocityX += deltaT * gravitationalForce * ((390 - position.x)/distanceToStar);
         velocityY += deltaT * gravitationalForce * ((320 - position.y)/distanceToStar);
+*/
 
-        /*
         velocityX += deltaT * gravitationalForce/(1000*scaleDst) ;
         velocityY += deltaT * gravitationalForce/(1000*scaleDst) ;
-        */
+
     }
 
     // Method to compute the new position using an approximation
