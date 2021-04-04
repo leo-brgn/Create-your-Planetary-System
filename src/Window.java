@@ -22,6 +22,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     private final JButton rocky;
     private final JButton gaseous;
     private final JLabel size;
+    private final JLabel realSize;
     private final JLabel  color;
     private final JButton create;
     private final JSlider slider;
@@ -30,6 +31,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     // Position of the mouse
     private Point mouseLocation;
     // System attributes
+    private double sizeKm;
     private final int nbPlanets;
     private int currentPlanet=1; // Goes from 1 to nbPlanets
     private final PlanetarySystem planetarySystem;
@@ -112,9 +114,16 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
 
         size = new JLabel("S I Z E");
         size.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
-        size.setBounds(50, 170, 100, 25);
+        size.setBounds(50, 150, 100, 25);
         size.setForeground(Color.WHITE);
         rightPanel.add(size);
+
+        this.sizeKm = 0;
+        realSize = new JLabel(0 + " km");
+        realSize.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
+        realSize.setBounds(30, 185, 100, 25);
+        realSize.setForeground(Color.WHITE);
+        rightPanel.add(realSize);
 
         color = new JLabel("C O L O R");
         color.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
@@ -264,6 +273,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     public void stateChanged(ChangeEvent e) {
         if(e.getSource() == slider){
             sizeSelected = slider.getValue(); //value of the slider between 0 and 100 in pixels
+            realSize.setText((int)(0.15 * (sizeSelected+7)*4500) + " km");
             this.celestialPreview.setSize((float) (0.60) * (sizeSelected+7)); //still the added 7 to have a simple relation between the preview and the game (4x)
             this.celestialPreview.repaint();
         }

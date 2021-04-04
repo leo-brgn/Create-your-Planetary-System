@@ -12,6 +12,7 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
      */
     final private double G; // Universal gravity constant in m3/kg/s2
     final private long scaleDst; // Scale of distances km/px
+    final private long scaleSizes;
     protected int radius; // Radius of the planet in px
     protected long radiusKm; // Radius of the planet in px
     protected double density; // Density of the planet in kg/m3
@@ -33,7 +34,7 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
         // Set the universe constants
         this.scaleDst = 10_000_000; // Scale km/px, 5_000_00 before
         // Scale of the sizes km/px
-        long scaleSizes = 4500; // Scale km/px 34_817 before
+        scaleSizes = 4500; // Scale km/px 34_817 before
 
         /**
          * Update on scales :
