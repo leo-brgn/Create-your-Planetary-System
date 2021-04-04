@@ -15,6 +15,7 @@ public class Star extends CelestialObject{
             new Color(252, 110, 1, 226),
             new Color(101, 44, 20, 233),
             new Color(209, 112, 9, 12),
+
     };
     private float alpha;
 
@@ -25,6 +26,8 @@ public class Star extends CelestialObject{
         super(150, new Point(390,320));
         alpha = 1.0f;
         typeStr = "Star";
+        density = 1.41;//same as our central star
+        computeMass();
     }
 
     public void paintComponent(Graphics g){
@@ -37,18 +40,13 @@ public class Star extends CelestialObject{
     }
 
 
-    public void updateSun(float deltaT){
-        alpha = (float) Math.abs(Math.cos(deltaT));
+    public void updateSun(float deltaT2){
+        alpha = (float) Math.abs(Math.cos(deltaT2));
     }
 
     @Override
     public String toString() {
-        return "Sun of radius: " + radiusKm;
-    }
-
-    @Override
-    public void computeMass() {
-        //No need for mass
+        return "Sun of radius: " + radiusKm +"km and of mass " + mass +"kg";
     }
 
     public boolean isTooClose(){
