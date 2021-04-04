@@ -6,6 +6,7 @@ import java.awt.*;
  * It allows for the creation of stars, planets and maybe later satellites.
  */
 public abstract class CelestialObject extends JComponent implements Comparable<CelestialObject> {
+
     /**
      * Attributes
      */
@@ -25,11 +26,24 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     protected Point position; // Position of the planet in px
     protected String typeStr;
 
+    /**
+     * Constructor
+     */
     public CelestialObject(int radius, Point position) {
         // Set the universe constants
-        this.scaleDst = 10_000_000; // Scale km/px
+        this.scaleDst = 10_000_000; // Scale km/px, 5_000_00 before
         // Scale of the sizes km/px
-        long scaleSizes = 34_817; // Scale km/px
+        long scaleSizes = 5000; // Scale km/px 34_817 before
+
+        /**
+         * Update on scales :
+         * the radius of the sun is about 700_000 km
+         * the radius of the biggest planets is about 70_000km
+         * => I updated the scaleSizes to have proper scales
+         *
+         * the furthest planet is at 5_000_000_000km from the sun so I also updated scaleDst
+         */
+
         this.G = 6.674 * Math.pow(10, -11);
         // Initialize the radius
         this.radius = radius;
