@@ -16,9 +16,9 @@ public class Planet extends CelestialObject {
         }
         colors = PlanetGradient.getTwoColors(colorIndex);
         computeMass();
-        setInitialVelocity();
-        // Compute the distance to the star
         computeDistanceToStar();
+        setInitialVelocity();
+
     }
 
     public void paintComponent(Graphics g) {
@@ -34,7 +34,7 @@ public class Planet extends CelestialObject {
     public void setInitialVelocity(){
         //applying the fundamental law of dynamics and considering the mass of the sun much bigger
         double magnitude = Math.sqrt((G*Star.massStar)/(distanceToStarKm*1000)); //in m/s
-        System.out.print(magnitude);
+        System.out.print(distanceToStarKm);
         double[] vectorSunToPlanet = {(position.x - 390)/distanceToStar, (position.y - 320)/distanceToStar};
         if(Math.random()<0.5) {
             velocityX = magnitude * vectorSunToPlanet[1];
@@ -63,9 +63,9 @@ public class Planet extends CelestialObject {
         /*
         velocityX += deltaT * gravitationalForce * ((390 - position.x)/distanceToStar);
         velocityY += deltaT * gravitationalForce * ((320 - position.y)/distanceToStar);
-        */
+
         velocityX += deltaT2 * gravitationalForce;
-        velocityY += deltaT2 * gravitationalForce;
+        velocityY += deltaT2 * gravitationalForce;*/
 
     }
 
