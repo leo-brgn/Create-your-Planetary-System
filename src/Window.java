@@ -31,7 +31,6 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     // Position of the mouse
     private Point mouseLocation;
     // System attributes
-    private double sizeKm;
     private final int nbPlanets;
     private int currentPlanet=1; // Goes from 1 to nbPlanets
     private final PlanetarySystem planetarySystem;
@@ -41,6 +40,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     private TypePlanet typeToCreate;
     private int colorSelected;
     private int sizeSelected;
+    private long sizeKm;
     // Booleans
     private boolean planetToAdd = false;
     private boolean buttonsAdded = false;
@@ -118,8 +118,8 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         size.setForeground(Color.WHITE);
         rightPanel.add(size);
 
-        this.sizeKm = 0;
-        realSize = new JLabel(4725 + " km");
+        this.sizeKm = (long)( 0.15 * (sizeSelected+7)*4500);
+        realSize = new JLabel(sizeKm + " km");
         realSize.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
         realSize.setBounds(30, 185, 100, 25);
         realSize.setForeground(Color.WHITE);
@@ -274,7 +274,8 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     public void stateChanged(ChangeEvent e) {
         if(e.getSource() == slider){
             sizeSelected = slider.getValue(); //value of the slider between 0 and 100 in pixels
-            realSize.setText((int)(0.15 * (sizeSelected+7)*4500) + " km");
+            sizeKm = (long) (0.15 * (sizeSelected+7)*4500);
+            realSize.setText((int)(sizeKm) + " km");
             this.celestialPreview.setSize((float) (0.60) * (sizeSelected+7)); //still the added 7 to have a simple relation between the preview and the game (4x)
             this.celestialPreview.repaint();
         }

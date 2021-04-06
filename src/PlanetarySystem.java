@@ -118,4 +118,5 @@ public class PlanetarySystem extends JPanel implements Runnable{
     public int getAddedSize(){
         return this.addedCelestialObjects.size();
     }
+
 }
