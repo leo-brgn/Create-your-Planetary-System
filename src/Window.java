@@ -114,12 +114,12 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
 
         size = new JLabel("S I Z E");
         size.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
-        size.setBounds(50, 150, 100, 25);
+        size.setBounds(50, 160, 100, 25);
         size.setForeground(Color.WHITE);
         rightPanel.add(size);
 
         this.sizeKm = 0;
-        realSize = new JLabel(0 + " km");
+        realSize = new JLabel(4725 + " km");
         realSize.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
         realSize.setBounds(30, 185, 100, 25);
         realSize.setForeground(Color.WHITE);
@@ -151,10 +151,11 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         create.addActionListener(this);
         rightPanel.add(create);
 
-        slider = new JSlider(JSlider.HORIZONTAL, 0, 100, sizeSelected); //slider between 0 and 100
-        slider.setBounds(120,160,120,50);
-        slider.setMinorTickSpacing(5);
-        slider.setMajorTickSpacing(25);
+        slider = new JSlider(JSlider.HORIZONTAL); //slider between 0 and 100
+        slider.setBounds(140,160,100,50);
+        slider.setValue(sizeSelected);
+        /*slider.setMinorTickSpacing(5);
+        slider.setMajorTickSpacing(25);*/
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
         slider.setBackground(Color.BLACK);
