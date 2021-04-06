@@ -21,20 +21,12 @@ public class Planet extends CelestialObject {
 
     }
 
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Graphics2D g2D = (Graphics2D) g;
-        float[] dist = {0.05f, 1f};
-        RadialGradientPaint p = new RadialGradientPaint(position.x + radius, position.y + radius, 2 * radius, dist, colors);
-        g2D.setPaint(p);
-        g2D.fillOval(position.x, position.y, 2 * radius, 2 * radius);
-    }
+
 
     // Method to set the initial velocity of the planet to stay in orbit
     public void setInitialVelocity(){
         //applying the fundamental law of dynamics and considering the mass of the sun much bigger
         double magnitude = Math.sqrt((G*Star.massStar)/(distanceToStarKm*1000)); //in m/s
-        System.out.print(distanceToStarKm);
         double[] vectorSunToPlanet = {(position.x - 390)/distanceToStar, (position.y - 320)/distanceToStar};
         if(Math.random()<0.5) {
             velocityX = magnitude * vectorSunToPlanet[1];
@@ -43,6 +35,7 @@ public class Planet extends CelestialObject {
             velocityX = -magnitude * vectorSunToPlanet[1];
             velocityY = magnitude * vectorSunToPlanet[0];
         }
+        System.out.println(velocityX + " " + velocityY);
 
     }
 
@@ -63,16 +56,17 @@ public class Planet extends CelestialObject {
         /*
         velocityX += deltaT * gravitationalForce * ((390 - position.x)/distanceToStar);
         velocityY += deltaT * gravitationalForce * ((320 - position.y)/distanceToStar);
-
-        velocityX += deltaT2 * gravitationalForce;
-        velocityY += deltaT2 * gravitationalForce;*/
+*/
+//        velocityX += deltaT2 * gravitationalForce * (390 - position.x);
+//        velocityY += deltaT2 * gravitationalForce;
 
     }
 
     // Method to compute the new position using an approximation
     public void updatePosition(float deltaT2){
-        position.x = (int) (position.x + deltaT2 * (velocityX)/(1000*scaleDst)); // px
-        position.y = (int) (position.y + deltaT2 * (velocityY)/(1000*scaleDst)); // px
+        position.x = (int) (position.x + (deltaT2 * (velocityX))/(1000*scaleDst)); // px
+        position.y = (int) (position.y + (deltaT2 * (velocityY))/(1000*scaleDst)); // px
+        System.out.println(" Vitesse X:" + (int) (position.x + (deltaT2 * (velocityX))/(1000*scaleDst)) + " Y: "+(int) (position.y + (deltaT2 * (velocityY))/(1000*scaleDst)));
     }
 
     // Method to verify if the planet has gone too far, the distance chosen is not scientific
@@ -90,5 +84,14 @@ public class Planet extends CelestialObject {
         return typeStr + " planet of radius: " + radiusKm + " and mass: " + mass + " at " + distanceToStarKm + "km from the star.";
     }
 
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2D = (Graphics2D) g;
+        float[] dist = {0.05f, 1f};
+        RadialGradientPaint p = new RadialGradientPaint(position.x + radius, position.y + radius, 2 * radius, dist, colors);
+        g2D.setPaint(p);
+        g2D.fillOval(position.x, position.y, 2 * radius, 2 * radius);
+        g2D.drawLine(position.x, position.y,position.x + (int)velocityX/1000,position.y + (int)velocityY/1000);
+    }
 
 }

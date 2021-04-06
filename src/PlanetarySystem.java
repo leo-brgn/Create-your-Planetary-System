@@ -71,12 +71,12 @@ public class PlanetarySystem extends JPanel implements Runnable{
                     p.computeDistanceToStar();
                     p.computeGravitationalForce();
 
-//                    p.updatePosition(timeScale * deltaT /1000);
-//                    p.updateVelocity(timeScale * deltaT /1000);
+                    p.updatePosition(timeScale * deltaT /1000);
+                    p.updateVelocity(timeScale * deltaT /1000);
 
 
-                    p.updatePosition( deltaT/1000);
-                    p.updateVelocity( deltaT/1000);
+//                    p.updatePosition( deltaT/1000);
+//                    p.updateVelocity( deltaT/1000);
 
                     if (p.isTooFar()) {
                         removeCelestialObject(c);
