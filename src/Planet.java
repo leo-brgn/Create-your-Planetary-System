@@ -92,7 +92,6 @@ public class Planet extends CelestialObject {
         RadialGradientPaint p = new RadialGradientPaint(position.x + radius, position.y + radius, 2 * radius, dist, colors);
         g2D.setPaint(p);
         g2D.fillOval(position.x, position.y, 2 * radius, 2 * radius);
-        g2D.drawLine(position.x, position.y,position.x + (int)velocityX/1000,position.y + (int)velocityY/1000);
     }
 
 }
