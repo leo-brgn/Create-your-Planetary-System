@@ -13,7 +13,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
      */
     private final LinkedList<CelestialObject> addedCelestialObjects;
     private final LinkedList<CelestialObject> celestialObjects;
-    public static float timeScale;
+    public static double timeScale;
     private final Star star;
 
     /**
@@ -33,7 +33,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
         this.setVisible(true);
         // Adding the sun, the first element of the set of celestial objects, no interactions on it in this version
         celestialObjects.add(star);
-        timeScale = 30*24*3600; //one month in seconds
+        timeScale = (365.25*24*3600)/1000f; //one month in milliseconds
         // THREAD
         Thread simulationThread = new Thread(this, "Simulation Thread");
         simulationThread.start();
@@ -51,7 +51,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
             update(deltaT);
             render();
             try{
-                Thread.sleep(50);
+                Thread.sleep(100);
             } catch (InterruptedException e){
                 e.printStackTrace();
             }
@@ -71,8 +71,10 @@ public class PlanetarySystem extends JPanel implements Runnable{
                     p.computeDistanceToStar();
                     p.computeGravitationalForce();
 
-                    p.updatePosition(timeScale * deltaT /1000);
-                    p.updateVelocity(timeScale * deltaT /1000);
+                    p.updatePosition((float) (timeScale * deltaT));
+                    p.updateVelocity((float) (timeScale * deltaT));
+                    System.out.println("det :" + timeScale * deltaT);
+
 
 
 //                    p.updatePosition( deltaT/1000);

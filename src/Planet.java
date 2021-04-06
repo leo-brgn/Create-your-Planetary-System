@@ -35,7 +35,6 @@ public class Planet extends CelestialObject {
             velocityX = -magnitude * vectorSunToPlanet[1];
             velocityY = magnitude * vectorSunToPlanet[0];
         }
-        System.out.println(velocityX + " " + velocityY);
 
     }
 
@@ -52,21 +51,23 @@ public class Planet extends CelestialObject {
 
     // Method to compute the new velocity using an approximation of the acceleration at order 1
     public void updateVelocity(float deltaT2){
-
-        /*
-        velocityX += deltaT * gravitationalForce * ((390 - position.x)/distanceToStar);
-        velocityY += deltaT * gravitationalForce * ((320 - position.y)/distanceToStar);
-*/
-//        velocityX += deltaT2 * gravitationalForce * (390 - position.x);
-//        velocityY += deltaT2 * gravitationalForce;
-
+        velocityX += deltaT2 * gravitationalForce * ((390 - position.x)/distanceToStar);
+        velocityY += deltaT2 * gravitationalForce * ((320 - position.y)/distanceToStar);
     }
 
     // Method to compute the new position using an approximation
     public void updatePosition(float deltaT2){
-        position.x = (int) (position.x + (deltaT2 * (velocityX))/(1000*scaleDst)); // px
-        position.y = (int) (position.y + (deltaT2 * (velocityY))/(1000*scaleDst)); // px
-        System.out.println(" Vitesse X:" + (int) (position.x + (deltaT2 * (velocityX))/(1000*scaleDst)) + " Y: "+(int) (position.y + (deltaT2 * (velocityY))/(1000*scaleDst)));
+        if(velocityX<=0){
+            position.x += - (int) Math.abs((deltaT2 * (velocityX)) / (1000*scaleDst)); // px
+        } else {
+            position.x += (int) Math.abs((deltaT2 * (velocityX)) / (1000*scaleDst)); // px
+        }
+        if (velocityY<=0){
+            position.y += - (int) Math.abs((deltaT2 * (velocityY))/(1000*scaleDst)); // px
+        } else {
+            position.y += (int) Math.abs((deltaT2 * (velocityY))/(1000*scaleDst)); // px
+        }
+
     }
 
     // Method to verify if the planet has gone too far, the distance chosen is not scientific
