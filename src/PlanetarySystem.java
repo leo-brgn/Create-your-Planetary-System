@@ -75,10 +75,10 @@ public class PlanetarySystem extends JPanel implements Runnable{
 //                    p.updateVelocity(timeScale * deltaT /1000);
 
 
-                    p.updatePosition( deltaT/1000);
+                    p.updatePosition( deltaT/1000); //
                     p.updateVelocity( deltaT/1000);
 
-                    if (p.isTooFar()) {
+                    if (p.isTooFar()) {//
                         removeCelestialObject(c);
                     }
                     if (p.isTooClose(star.radiusKm)) {
