@@ -65,25 +65,29 @@ public class PlanetarySystem extends JPanel implements Runnable{
                     drawCelestialObject(c);
                     this.setComponentZOrder(c, 0);
                 }
-                c.computeDistanceToStar();
-                c.setGravitationalForce();
+                if (!(c instanceof Star)) {
+                    Planet p = (Planet) c;
 
-                c.updatePosition( timeScale *deltaT / 1000);
-                c.updateVelocity( timeScale *deltaT / 1000);
+                    p.computeDistanceToStar();
+                    p.setGravitationalForce();
 
-                /*
-                c.updatePosition( deltaT/1000);
-                 c.updateVelocity( deltaT/1000);*/
+                    p.updatePosition(timeScale * deltaT / 1000);
+                    p.updateVelocity(timeScale * deltaT / 1000);
 
-                if(c.isTooFar()){
-                    removeCelestialObject(c);
-                }
-                if(c.isTooClose(star.radiusKm) && !(c instanceof Star)){
-                    removeCelestialObject(c);
-                    JOptionPane.showMessageDialog(this, "The planet collided with the sun !");
-                }
-                if(c instanceof Star){
-                    ((Star) c).updateSun(deltaT/1000);
+                    /*
+                    c.updatePosition( deltaT/1000);
+                    c.updateVelocity( deltaT/1000);*/
+
+                    if (p.isTooFar()) {
+                        removeCelestialObject(c);
+                    }
+                    if (p.isTooClose(star.radiusKm)) {
+                        removeCelestialObject(c);
+                        JOptionPane.showMessageDialog(this, "The planet collided with the sun !");
+                    }
+
+                } else {
+                    ((Star) c).updateSun(deltaT / 1000);
                 }
             }
             Collections.sort(celestialObjects);

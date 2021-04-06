@@ -10,9 +10,9 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     /**
      * Attributes
      */
-    final private double G; // Universal gravity constant in m3/kg/s2
-    final private long scaleDst; // Scale of distances km/px
-    final private long scaleSizes;
+    final protected double G; // Universal gravity constant in m3/kg/s2
+    final protected long scaleDst; // Scale of distances km/px
+    final protected long scaleSizes;
     protected int radius; // Radius of the planet in px
     protected long radiusKm; // Radius of the planet in px
     protected double density; // Density of the planet in kg/m3
@@ -52,8 +52,6 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
         // Set the JComponent coordinate system
         this.setLocation(0, 0);
         this.setSize(780, 640);
-        // Compute the distance to the star
-        computeDistanceToStar();
         this.count = 0;
     }
 
@@ -72,61 +70,5 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
         this.mass = 1000*density*Math.PI*(4f/3f)*Math.pow(radiusKm * 1000,3);
     }
 
-    // Method to set the initial velocity of the planet to stay in orbit
-    public void setInitialVelocity(){
 
-        //applying the fundamental law of dynamics and considering the mass of the sun much bigger
-        double magnitude = Math.sqrt((G*1000*1.41*Math.PI*(4f/3f)*Math.pow(675000*1000,3))/(distanceToStarKm*1000)); //in m/s
-        System.out.println(magnitude);
-        double[] vectorSunToPlanet = {(position.x - 390)/distanceToStar, (position.y - 320)/distanceToStar};
-
-        if(Math.random()<0.5) {
-            velocityX = magnitude * vectorSunToPlanet[1]/scaleDst;
-            velocityY = -magnitude * vectorSunToPlanet[0]/scaleDst;
-       }else{
-            velocityX = -magnitude * vectorSunToPlanet[1]/scaleDst;
-            velocityY = magnitude * vectorSunToPlanet[0]/scaleDst;
-        }
-
-    }
-
-    // Method to compute the distance from the celestial object to the star
-    public void computeDistanceToStar(){
-        this.distanceToStar = Math.sqrt((position.x-390)*(position.x-390) + (position.y-320)*(position.y-320));
-        this.distanceToStarKm = scaleDst * distanceToStar;
-    }
-
-    // Method to compute the force applied on the planet at a certain position
-    public void setGravitationalForce() { // we do not use the mass of PLANET
-        this.gravitationalForce = ((G * 1000 * 1.41 * Math.PI * (4f / 3f) * Math.pow(675000 * 1000, 3)) / Math.pow(distanceToStarKm * 1000, 2));
-    }
-
-    // Method to compute the new velocity using an approximation of the acceleration at order 1
-    public void updateVelocity(float deltaT2){
-
-        /*
-        velocityX += deltaT * gravitationalForce * ((390 - position.x)/distanceToStar);
-        velocityY += deltaT * gravitationalForce * ((320 - position.y)/distanceToStar);
-        */
-
-        velocityX += deltaT2 * gravitationalForce/(1000*scaleDst) ;
-        velocityY += deltaT2 * gravitationalForce/(1000*scaleDst) ;
-
-    }
-
-    // Method to compute the new position using an approximation
-    public void updatePosition(float deltaT2){
-        position.x = (int) (position.x + deltaT2 * (velocityX));
-        position.y = (int) (position.y + deltaT2 * (velocityY));
-    }
-
-    // Method to verify if the planet has gone too far, the distance chosen is not scientific
-    public boolean isTooFar(){
-        return distanceToStar >= 390;
-    }
-
-    // Method to verify if the planet is colliding with the sun
-    public boolean isTooClose(long sunRadius){
-        return distanceToStarKm <= (radiusKm+sunRadius*3);
-    }
 }

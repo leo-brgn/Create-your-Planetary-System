@@ -17,6 +17,8 @@ public class Planet extends CelestialObject {
         colors = PlanetGradient.getTwoColors(colorIndex);
         computeMass();
         setInitialVelocity();
+        // Compute the distance to the star
+        computeDistanceToStar();
     }
 
     public void paintComponent(Graphics g) {
@@ -26,6 +28,63 @@ public class Planet extends CelestialObject {
         RadialGradientPaint p = new RadialGradientPaint(position.x + radius, position.y + radius, 2 * radius, dist, colors);
         g2D.setPaint(p);
         g2D.fillOval(position.x, position.y, 2 * radius, 2 * radius);
+    }
+
+    // Method to set the initial velocity of the planet to stay in orbit
+    public void setInitialVelocity(){
+
+        //applying the fundamental law of dynamics and considering the mass of the sun much bigger
+        double magnitude = Math.sqrt((G*Star.massStar)/(distanceToStarKm*1000)); //in m/s
+        System.out.println(magnitude);
+        double[] vectorSunToPlanet = {(position.x - 390)/distanceToStar, (position.y - 320)/distanceToStar};
+
+        if(Math.random()<0.5) {
+            velocityX = magnitude * vectorSunToPlanet[1]/scaleDst;
+            velocityY = -magnitude * vectorSunToPlanet[0]/scaleDst;
+        }else{
+            velocityX = -magnitude * vectorSunToPlanet[1]/scaleDst;
+            velocityY = magnitude * vectorSunToPlanet[0]/scaleDst;
+        }
+
+    }
+
+    // Method to compute the distance from the celestial object to the star
+    public void computeDistanceToStar(){
+        this.distanceToStar = Math.sqrt((position.x-390)*(position.x-390) + (position.y-320)*(position.y-320));
+        this.distanceToStarKm = scaleDst * distanceToStar;
+    }
+
+    // Method to compute the force applied on the planet at a certain position
+    public void setGravitationalForce() { // we do not use the mass of PLANET
+        this.gravitationalForce = ((G * Star.massStar) / Math.pow(distanceToStarKm * 1000, 2));
+    }
+
+    // Method to compute the new velocity using an approximation of the acceleration at order 1
+    public void updateVelocity(float deltaT2){
+
+        /*
+        velocityX += deltaT * gravitationalForce * ((390 - position.x)/distanceToStar);
+        velocityY += deltaT * gravitationalForce * ((320 - position.y)/distanceToStar);
+        */
+        velocityX += deltaT2 * gravitationalForce/(1000*scaleDst) ;
+        velocityY += deltaT2 * gravitationalForce/(1000*scaleDst) ;
+
+    }
+
+    // Method to compute the new position using an approximation
+    public void updatePosition(float deltaT2){
+        position.x = (int) (position.x + deltaT2 * (velocityX));
+        position.y = (int) (position.y + deltaT2 * (velocityY));
+    }
+
+    // Method to verify if the planet has gone too far, the distance chosen is not scientific
+    public boolean isTooFar(){
+        return distanceToStar >= 390;
+    }
+
+    // Method to verify if the planet is colliding with the sun
+    public boolean isTooClose(long sunRadius){
+        return distanceToStarKm <= (radiusKm+sunRadius*3);
     }
 
     @Override

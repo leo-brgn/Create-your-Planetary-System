@@ -18,6 +18,7 @@ public class Star extends CelestialObject{
 
     };
     private float alpha;
+    static double massStar = 0;
 
     /**
      * Constructor
@@ -28,6 +29,7 @@ public class Star extends CelestialObject{
         typeStr = "Star";
         density = 1.41;//same as our central star
         computeMass();
+        massStar = mass;
     }
 
     public void paintComponent(Graphics g){
@@ -47,15 +49,6 @@ public class Star extends CelestialObject{
     @Override
     public String toString() {
         return "Sun of radius: " + radiusKm +"km and of mass " + mass +"kg";
-    }
-
-    public boolean isTooClose(){
-        return false;
-    }
-
-    @Override
-    public void updatePosition(float deltaT) {
-        // No need for updating position
     }
 
     @Override
