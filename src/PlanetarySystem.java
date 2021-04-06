@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -6,15 +8,16 @@ import java.util.LinkedList;
 /**
  * Class for the planetary system inheriting from JPanel implementing Runnable for multi-threading practice
  */
-public class PlanetarySystem extends JPanel implements Runnable{
+public class PlanetarySystem extends JPanel implements Runnable, ChangeListener {
 
     /**
      * Attributes
      */
     private final LinkedList<CelestialObject> addedCelestialObjects;
     private final LinkedList<CelestialObject> celestialObjects;
-    public static double timeScale;
+    public double timeScale;
     private final Star star;
+    private JSlider slider;
 
     /**
      * Constructor
@@ -37,6 +40,14 @@ public class PlanetarySystem extends JPanel implements Runnable{
         // THREAD
         Thread simulationThread = new Thread(this, "Simulation Thread");
         simulationThread.start();
+        slider = new JSlider(JSlider.HORIZONTAL, 1,20, 10);
+        slider.setBounds(10,10,100,50);
+        slider.setPaintTicks(true);
+        slider.setPaintLabels(true);
+        slider.setBackground(Color.BLACK);
+        slider.setForeground(Color.WHITE);
+        slider.addChangeListener(this);
+        this.add(slider);
     }
 
     @Override
@@ -119,4 +130,10 @@ public class PlanetarySystem extends JPanel implements Runnable{
         return this.addedCelestialObjects.size();
     }
 
+    @Override
+    public void stateChanged(ChangeEvent e) {
+        if (e.getSource() == slider){
+            timeScale = (365.25*2.4*3600)/1000f * slider.getValue();
+        }
+    }
 }

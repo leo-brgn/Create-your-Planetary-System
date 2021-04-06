@@ -9,14 +9,13 @@ import java.util.LinkedList;
  * Class called at the end of the program to display the five created planets and some of their characteristics
  */
 
-public class FinishPanel extends JPanel implements ChangeListener {
+public class FinishPanel extends JPanel {
 
     /**
      * Attributes
      */
     private LinkedList<Planet> planets;
     private ArrayList<JPanel> panels;
-    private JSlider slider;
 
     /**
      * Constructor
@@ -40,15 +39,6 @@ public class FinishPanel extends JPanel implements ChangeListener {
             panels.add(jPanel);
             this.add(panels.get(i));
         }
-        slider = new JSlider(JSlider.HORIZONTAL, 0,10,(int)PlanetarySystem.timeScale);
-        slider.setBounds(10,10,100,50);
-        slider.setPaintTicks(true);
-        slider.setPaintLabels(true);
-        slider.setBackground(Color.BLACK);
-        slider.setForeground(Color.WHITE);
-        slider.addChangeListener(this);
-        this.add(slider);
-        this.setVisible(true);
     }
 
 
@@ -82,10 +72,5 @@ public class FinishPanel extends JPanel implements ChangeListener {
 
     }
 
-    @Override
-    public void stateChanged(ChangeEvent e) {
-        if (e.getSource() == slider){
-            PlanetarySystem.timeScale = 365.5*3600*(slider.getValue() + 1);
-        }
-    }
+
 }

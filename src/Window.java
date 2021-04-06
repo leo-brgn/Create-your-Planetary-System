@@ -286,6 +286,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         this.remove(rightPanel);
         this.repaint();
         this.add(finishPanel);
+        finishPanel.setVisible(true);
 
     }
 
