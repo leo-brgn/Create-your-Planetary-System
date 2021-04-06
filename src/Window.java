@@ -121,7 +121,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         this.sizeKm = (long)( 0.15 * (sizeSelected+7)*4500);
         realSize = new JLabel(sizeKm + " km");
         realSize.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
-        realSize.setBounds(30, 185, 100, 25);
+        realSize.setBounds(45, 185, 100, 25);
         realSize.setForeground(Color.WHITE);
         rightPanel.add(realSize);
 
