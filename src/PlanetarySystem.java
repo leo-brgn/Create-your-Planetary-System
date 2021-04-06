@@ -69,7 +69,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
                     Planet p = (Planet) c;
 
                     p.computeDistanceToStar();
-                    p.setGravitationalForce();
+                    p.computeGravitationalForce();
 
 //                    p.updatePosition(timeScale * deltaT /1000);
 //                    p.updateVelocity(timeScale * deltaT /1000);

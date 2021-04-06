@@ -53,7 +53,7 @@ public class Planet extends CelestialObject {
     }
 
     // Method to compute the force applied on the planet at a certain position
-    public void setGravitationalForce() { // we do not use the mass of PLANET
+    public void computeGravitationalForce() { // we do not use the mass of PLANET
         this.gravitationalForce = ((G * Star.massStar) / Math.pow(distanceToStarKm * 1000, 2)); // m/s^2
     }
 
