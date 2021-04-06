@@ -32,18 +32,16 @@ public class Planet extends CelestialObject {
 
     // Method to set the initial velocity of the planet to stay in orbit
     public void setInitialVelocity(){
-
         //applying the fundamental law of dynamics and considering the mass of the sun much bigger
         double magnitude = Math.sqrt((G*Star.massStar)/(distanceToStarKm*1000)); //in m/s
-        System.out.println(magnitude);
+        System.out.print(magnitude);
         double[] vectorSunToPlanet = {(position.x - 390)/distanceToStar, (position.y - 320)/distanceToStar};
-
         if(Math.random()<0.5) {
-            velocityX = magnitude * vectorSunToPlanet[1]/scaleDst;
-            velocityY = -magnitude * vectorSunToPlanet[0]/scaleDst;
+            velocityX = magnitude * vectorSunToPlanet[1];
+            velocityY = -magnitude * vectorSunToPlanet[0];
         }else{
-            velocityX = -magnitude * vectorSunToPlanet[1]/scaleDst;
-            velocityY = magnitude * vectorSunToPlanet[0]/scaleDst;
+            velocityX = -magnitude * vectorSunToPlanet[1];
+            velocityY = magnitude * vectorSunToPlanet[0];
         }
 
     }
@@ -56,7 +54,7 @@ public class Planet extends CelestialObject {
 
     // Method to compute the force applied on the planet at a certain position
     public void setGravitationalForce() { // we do not use the mass of PLANET
-        this.gravitationalForce = ((G * Star.massStar) / Math.pow(distanceToStarKm * 1000, 2));
+        this.gravitationalForce = ((G * Star.massStar) / Math.pow(distanceToStarKm * 1000, 2)); // m/s^2
     }
 
     // Method to compute the new velocity using an approximation of the acceleration at order 1
@@ -66,15 +64,15 @@ public class Planet extends CelestialObject {
         velocityX += deltaT * gravitationalForce * ((390 - position.x)/distanceToStar);
         velocityY += deltaT * gravitationalForce * ((320 - position.y)/distanceToStar);
         */
-        velocityX += deltaT2 * gravitationalForce/(1000*scaleDst) ;
-        velocityY += deltaT2 * gravitationalForce/(1000*scaleDst) ;
+        velocityX += deltaT2 * gravitationalForce;
+        velocityY += deltaT2 * gravitationalForce;
 
     }
 
     // Method to compute the new position using an approximation
     public void updatePosition(float deltaT2){
-        position.x = (int) (position.x + deltaT2 * (velocityX));
-        position.y = (int) (position.y + deltaT2 * (velocityY));
+        position.x = (int) (position.x + deltaT2 * (velocityX)/(1000*scaleDst)); // px
+        position.y = (int) (position.y + deltaT2 * (velocityY)/(1000*scaleDst)); // px
     }
 
     // Method to verify if the planet has gone too far, the distance chosen is not scientific

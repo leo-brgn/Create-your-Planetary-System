@@ -71,8 +71,8 @@ public class PlanetarySystem extends JPanel implements Runnable{
                     p.computeDistanceToStar();
                     p.setGravitationalForce();
 
-                    p.updatePosition(timeScale * deltaT / 1000);
-                    p.updateVelocity(timeScale * deltaT / 1000);
+                    p.updatePosition(timeScale * deltaT /1000);
+                    p.updateVelocity(timeScale * deltaT /1000);
 
                     /*
                     c.updatePosition( deltaT/1000);
