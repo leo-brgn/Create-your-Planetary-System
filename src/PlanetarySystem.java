@@ -22,17 +22,18 @@ public class PlanetarySystem extends JPanel implements Runnable{
     public PlanetarySystem () {
         this.addedCelestialObjects = new LinkedList<>();
         this.celestialObjects = new LinkedList<>();
-        // Creation of the pane
+
+        // Creation of the black panel
         this.setBounds(0,0,780,640);
         this.setBackground(Color.BLACK);
         this.setLayout(null);
-        BackgroundStars backgroundStars = new BackgroundStars(500);
-        this.star = new Star();
+        BackgroundStars backgroundStars = new BackgroundStars(500); //creation of the background stars
+        this.star = new Star(); //creation of the central star
         this.add(backgroundStars);
         this.setVisible(true);
         // Adding the sun, the first element of the set of celestial objects, no interactions on it in this version
         celestialObjects.add(star);
-        timeScale = 10*30*24*3600; //un mois en secondes
+        timeScale = 30*24*3600; //one month in seconds
         // THREAD
         Thread simulationThread = new Thread(this, "Simulation Thread");
         simulationThread.start();
@@ -45,7 +46,7 @@ public class PlanetarySystem extends JPanel implements Runnable{
         long timeNow;
         while(true) {
             timeNow = System.currentTimeMillis();
-            deltaT = timeNow - lastTime;
+            deltaT = timeNow - lastTime; //calculation of the difference of time to find the derivative
             lastTime = timeNow;
             update(deltaT);
             render();
@@ -66,8 +67,14 @@ public class PlanetarySystem extends JPanel implements Runnable{
                 }
                 c.computeDistanceToStar();
                 c.setGravitationalForce();
-                c.updateVelocity( timeScale *deltaT / 1000);
+
                 c.updatePosition( timeScale *deltaT / 1000);
+                c.updateVelocity( timeScale *deltaT / 1000);
+
+                /*
+                c.updatePosition( deltaT/1000);
+                 c.updateVelocity( deltaT/1000);*/
+
                 if(c.isTooFar()){
                     removeCelestialObject(c);
                 }

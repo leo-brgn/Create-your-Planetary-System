@@ -4,23 +4,34 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * Class for the creation of the planets inheriting from JPanel
+ */
+
 public class Window extends JFrame implements ActionListener, MouseListener, ChangeListener {
-    // GUI attributes
+
+    /**
+     * Attributes
+     */
+
+    //GIU
     private final JPanel rightPanel; // The panel on the right
-    private final JPanel line;
+    private final JPanel line; //line at the left of the panel
     private final JPanel backPlanetNb; // JPanel of the planets to add
     private final JLabel planetNb;
     private final JButton rocky;
     private final JButton gaseous;
     private final JLabel size;
+    private final JLabel realSize;
     private final JLabel  color;
     private final JButton create;
     private final JSlider slider;
-    private final CelestialPreview celestialPreview;
+    //preview of the planet before adding it to the planetary system
     private JPanel sliderPanel;
     // Position of the mouse
     private Point mouseLocation;
     // System attributes
+    private double sizeKm;
     private final int nbPlanets;
     private int currentPlanet=1; // Goes from 1 to nbPlanets
     private final PlanetarySystem planetarySystem;
@@ -34,8 +45,11 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     private boolean planetToAdd = false;
     private boolean buttonsAdded = false;
     private FinishPanel finishPanel;
+    private CelestialPreview celestialPreview;
 
-
+    /**
+     * Constructor
+     */
     public Window(int nbPlanets){
         this.nbPlanets = nbPlanets;
         planetarySystem = new PlanetarySystem();
@@ -51,7 +65,8 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         System.out.println(Thread.activeCount());
         this.getContentPane().add(planetarySystem);
         this.setVisible(true);
-        this.addWindowListener(new WindowAdapter(){
+
+        this.addWindowListener(new WindowAdapter(){ //allow the game to restart at the end
             public void windowClosing(WindowEvent e){
                 dispose();
                 new Title();
@@ -99,9 +114,16 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
 
         size = new JLabel("S I Z E");
         size.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
-        size.setBounds(50, 170, 100, 25);
+        size.setBounds(50, 150, 100, 25);
         size.setForeground(Color.WHITE);
         rightPanel.add(size);
+
+        this.sizeKm = 0;
+        realSize = new JLabel(0 + " km");
+        realSize.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
+        realSize.setBounds(30, 185, 100, 25);
+        realSize.setForeground(Color.WHITE);
+        rightPanel.add(realSize);
 
         color = new JLabel("C O L O R");
         color.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
@@ -110,14 +132,15 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         rightPanel.add(color);
         colorSelected = 0;
 
-        JLabel preview = new JLabel("P R E V I E W");
+        JLabel preview = new JLabel("P R E V I E W    x4 ");
         preview.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
-        preview.setBounds(85, 330, 100,25);
+        preview.setBounds(70, 330, 150,25);
         preview.setForeground(Color.WHITE);
         rightPanel.add(preview);
 
-        this.sizeSelected = 2;
+        this.sizeSelected = 1; // initialize the size of the planet and the position of the slider
         celestialPreview = new CelestialPreview(sizeSelected);
+
         rightPanel.add(celestialPreview);
 
         create = new JButton("CREATE");
@@ -128,10 +151,10 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         create.addActionListener(this);
         rightPanel.add(create);
 
-        slider = new JSlider(JSlider.HORIZONTAL, 0, 100, sizeSelected);
-        slider.setBounds(140,160,100,50);
-        slider.setMinorTickSpacing(10);
-        slider.setMajorTickSpacing(5);
+        slider = new JSlider(JSlider.HORIZONTAL, 0, 100, sizeSelected); //slider between 0 and 100
+        slider.setBounds(120,160,120,50);
+        slider.setMinorTickSpacing(5);
+        slider.setMajorTickSpacing(25);
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
         slider.setBackground(Color.BLACK);
@@ -139,6 +162,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         slider.addChangeListener(this);
 
         rightPanel.add(slider);
+
         // END RIGHT PANEL
         colorButtonsGaseous = new JButton[6];
         colorButtonsRocky = new JButton[6];
@@ -167,8 +191,10 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         if(mouseEvent.getButton() == MouseEvent.BUTTON1 && planetToAdd) {
             if(mouseEvent.getX() < 780){
                 if (planetarySystem.getAddedSize() < 10 + 1) {
-                    planetarySystem.addCelestialObject(typeToCreate, mouseEvent.getPoint(), sizeSelected, colorSelected);
+                        planetarySystem.addCelestialObject(typeToCreate, mouseEvent.getPoint(), (int)(0.15*(sizeSelected+7)), colorSelected); // the added 7 is to avoid nil values for the radius with the slider between 0 and 6 (we add 7 to the value of the slider)
+                        finishPanel.addPlanet(new Planet((int) (0.15*(sizeSelected+7)), mouseEvent.getPoint(), colorSelected, typeToCreate)); //creating an object planet
                 }
+
                 planetToAdd = false;
             }
             if (currentPlanet < nbPlanets){
@@ -246,16 +272,19 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     @Override
     public void stateChanged(ChangeEvent e) {
         if(e.getSource() == slider){
-            sizeSelected = slider.getValue();
-            this.celestialPreview.setSize(2*sizeSelected);
+            sizeSelected = slider.getValue(); //value of the slider between 0 and 100 in pixels
+            realSize.setText((int)(0.15 * (sizeSelected+7)*4500) + " km");
+            this.celestialPreview.setSize((float) (0.60) * (sizeSelected+7)); //still the added 7 to have a simple relation between the preview and the game (4x)
             this.celestialPreview.repaint();
         }
     }
 
     public void finishedCreating(){
+        finishPanel.updateCases();
         this.remove(rightPanel);
         this.repaint();
         this.add(finishPanel);
+
     }
 
     @Override

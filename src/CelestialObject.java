@@ -6,11 +6,13 @@ import java.awt.*;
  * It allows for the creation of stars, planets and maybe later satellites.
  */
 public abstract class CelestialObject extends JComponent implements Comparable<CelestialObject> {
+
     /**
      * Attributes
      */
     final private double G; // Universal gravity constant in m3/kg/s2
     final private long scaleDst; // Scale of distances km/px
+    final private long scaleSizes;
     protected int radius; // Radius of the planet in px
     protected long radiusKm; // Radius of the planet in px
     protected double density; // Density of the planet in kg/m3
@@ -25,11 +27,22 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     protected Point position; // Position of the planet in px
     protected String typeStr;
 
+    /**
+     * Constructor
+     */
     public CelestialObject(int radius, Point position) {
         // Set the universe constants
-        this.scaleDst = 4_687_500; // Scale km/px
+        this.scaleDst = 5_000_000;
         // Scale of the sizes km/px
-        long scaleSizes = 34_817; // Scale km/px
+        scaleSizes = 4500; // Scale km/px 34_817 before
+
+        /**
+         * Update on scales :
+         * the radius of the sun is about 700_000 km
+         * the radius of the biggest planets is about 70_000km
+         * => I updated the scaleSizes to have proper scales
+         */
+
         this.G = 6.674 * Math.pow(10, -11);
         // Initialize the radius
         this.radius = radius;
@@ -54,27 +67,25 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
         return Double.compare(this.distanceToStar, celestialObject.distanceToStar);
     }
 
-    // Method to compute the mass as a function of the density
+    // Method to compute the mass as a function of the density and the radius (in km)
     public void computeMass() {
         this.mass = 1000*density*Math.PI*(4f/3f)*Math.pow(radiusKm * 1000,3);
     }
 
     // Method to set the initial velocity of the planet to stay in orbit
     public void setInitialVelocity(){
-        double magnitude = Math.sqrt((G*mass)/(distanceToStarKm*1000));
-        double[] vectorSunToPlanet = {(position.x - 390) /distanceToStar, (position.y - 320)/distanceToStar};
-        if(vectorSunToPlanet[0]>=0 && vectorSunToPlanet[1]<=0){ //RU
-            velocityX = - magnitude * vectorSunToPlanet[1];
-            velocityY = magnitude * vectorSunToPlanet[0];
-        } else if(vectorSunToPlanet[0]>0 && vectorSunToPlanet[1]>0){ //RD
-            velocityX = magnitude * vectorSunToPlanet[1];
-            velocityY = -magnitude * vectorSunToPlanet[0];
-        } else if(vectorSunToPlanet[0]<=0 && vectorSunToPlanet[1]>=0){ //LD
-            velocityX = -magnitude * vectorSunToPlanet[1];
-            velocityY = magnitude * vectorSunToPlanet[0];
-        } else if(vectorSunToPlanet[0]<0 && vectorSunToPlanet[1]<0){ //LU
-            velocityX = magnitude * vectorSunToPlanet[1];
-            velocityY = -magnitude * vectorSunToPlanet[0];
+
+        //applying the fundamental law of dynamics and considering the mass of the sun much bigger
+        double magnitude = Math.sqrt((G*1000*1.41*Math.PI*(4f/3f)*Math.pow(675000*1000,3))/(distanceToStarKm*1000)); //in m/s
+        System.out.println(magnitude);
+        double[] vectorSunToPlanet = {(position.x - 390)/distanceToStar, (position.y - 320)/distanceToStar};
+
+        if(Math.random()<0.5) {
+            velocityX = magnitude * vectorSunToPlanet[1]/scaleDst;
+            velocityY = -magnitude * vectorSunToPlanet[0]/scaleDst;
+       }else{
+            velocityX = -magnitude * vectorSunToPlanet[1]/scaleDst;
+            velocityY = magnitude * vectorSunToPlanet[0]/scaleDst;
         }
 
     }
@@ -86,20 +97,27 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     }
 
     // Method to compute the force applied on the planet at a certain position
-    public void setGravitationalForce(){ // we do not use the mss of the central sun because it will cancel afterward
-        this.gravitationalForce = (G*mass)/Math.pow(distanceToStarKm*1000,2); // Around 10-5 since we don't have mass of sun
+    public void setGravitationalForce() { // we do not use the mass of PLANET
+        this.gravitationalForce = ((G * 1000 * 1.41 * Math.PI * (4f / 3f) * Math.pow(675000 * 1000, 3)) / Math.pow(distanceToStarKm * 1000, 2));
     }
 
     // Method to compute the new velocity using an approximation of the acceleration at order 1
-    public void updateVelocity(float deltaT){
+    public void updateVelocity(float deltaT2){
+
+        /*
         velocityX += deltaT * gravitationalForce * ((390 - position.x)/distanceToStar);
         velocityY += deltaT * gravitationalForce * ((320 - position.y)/distanceToStar);
+        */
+
+        velocityX += deltaT2 * gravitationalForce/(1000*scaleDst) ;
+        velocityY += deltaT2 * gravitationalForce/(1000*scaleDst) ;
+
     }
 
     // Method to compute the new position using an approximation
-    public void updatePosition(float deltaT){
-        position.x = (int) (position.x + deltaT * (velocityX / (scaleDst*1000)));
-        position.y = (int) (position.y + deltaT * (velocityY / (scaleDst*1000)));
+    public void updatePosition(float deltaT2){
+        position.x = (int) (position.x + deltaT2 * (velocityX));
+        position.y = (int) (position.y + deltaT2 * (velocityY));
     }
 
     // Method to verify if the planet has gone too far, the distance chosen is not scientific
