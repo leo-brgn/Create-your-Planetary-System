@@ -1,7 +1,13 @@
 import java.awt.*;
 
+/**
+ * Class for the each planet inheriting from CelestialObject
+ */
 public class Planet extends CelestialObject {
 
+    /**
+     * Constructor
+     */
     public Planet(int radius, Point position, int colorIndex, TypePlanet typePlanet) {
         super(radius, position, colorIndex);
         if (typePlanet == TypePlanet.GASEOUS) {
