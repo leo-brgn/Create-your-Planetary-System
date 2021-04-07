@@ -36,8 +36,10 @@ public class Planet extends CelestialObject {
         this.gravitationalForce = ((G * Star.massStar) / Math.pow(distanceToStarKm * 1000, 2)); // m/s^2
     }
 
-    // Method to set the initial velocity of the planet to stay in orbit
-    // applying the fundamental law of dynamics and considering the mass of the sun much bigger
+
+    /**
+     * Method to set the initial velocity of the planet to stay in orbit (orbital velocity)
+     */
     public void setInitialVelocity(){
         double magnitude = Math.sqrt((G*Star.massStar)/(distanceToStarKm*1000)); //in m/s
         double[] vectorSunToPlanet = {(position.x - 390)/distanceToStar, (position.y - 320)/distanceToStar}; //unit vector
@@ -79,12 +81,14 @@ public class Planet extends CelestialObject {
 
     }
 
-    // Method to verify if the planet has gone too far, the distance chosen is not scientific
+    /**
+     * Method to verify if the planet has gone too far, the distance chosen is not scientific
+     */
     public boolean isTooFar(){
         return distanceToStar >= 390;
     }
 
-    // Method to verify if the planet is colliding with the sun
+
     public boolean isTooClose(long sunRadius){
         return distanceToStarKm <= (radiusKm+sunRadius*3);
     }
@@ -94,6 +98,9 @@ public class Planet extends CelestialObject {
         return typeStr + " planet of radius: " + radiusKm + " and mass: " + mass + " at " + distanceToStarKm + "km from the star.";
     }
 
+    /**
+     * Method to paint the planet
+     */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D) g;
