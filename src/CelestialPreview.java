@@ -1,11 +1,21 @@
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Class for the preview of the planet inheriting from JPanel
+ *  */
+
 public class CelestialPreview extends JPanel{
 
+    /**
+     * Attributes
+     */
     private int size;
     private Color color = Color.WHITE;
 
+    /**
+     * Constructor
+     */
     public CelestialPreview(float size){
         this.setBackground(new Color(28,40,51));
         this.setBounds(10, 360, 240, 170);
