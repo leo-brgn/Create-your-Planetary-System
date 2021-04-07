@@ -61,6 +61,12 @@ public class FinishPanel extends JPanel {
                     distance.setForeground(Color.WHITE);
                     panels.get(j).add(distance);
 
+                    JLabel massPlanet = new JLabel("Mass of " + (float)(planets.get(j).mass) + " kg");
+                    massPlanet.setBounds(5 ,30,200,20);
+                    massPlanet.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,13));
+                    massPlanet.setForeground(Color.WHITE);
+                    panels.get(j).add(massPlanet);
+
                 }
             }
             c.setVisible(true);
