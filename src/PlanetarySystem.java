@@ -17,7 +17,8 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
     private final LinkedList<CelestialObject> celestialObjects;
     public double timeScale;
     private final Star star;
-    private JSlider slider;
+    private final JSlider slider;
+    private final JLabel scaleTimeLabel;
 
     /**
      * Constructor
@@ -47,7 +48,18 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
         slider.setBackground(Color.BLACK);
         slider.setForeground(Color.WHITE);
         slider.addChangeListener(this);
+
+        JLabel scaleSizeLabel = new JLabel("2 UA");
+        scaleSizeLabel.setBounds(80, 545, 100,20);
+        scaleSizeLabel.setForeground(Color.WHITE);
+
+        scaleTimeLabel = new JLabel("1 YEAR/Sec");
+        scaleTimeLabel.setBounds(120, 10, 100,20);
+        scaleTimeLabel.setForeground(Color.WHITE);
+
         this.add(slider);
+        this.add(scaleSizeLabel);
+        this.add(scaleTimeLabel);
     }
 
     @Override
@@ -133,7 +145,16 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
     @Override
     public void stateChanged(ChangeEvent e) {
         if (e.getSource() == slider){
-            timeScale = (365.25*2.4*3600)/1000f * slider.getValue();
+            timeScale = (365.25*24*3600)/1000f *0.5* slider.getValue();
+            scaleTimeLabel.setText(String.valueOf(slider.getValue()*0.5) + " YEAR/Sec");
         }
+    }
+
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        g.setColor(Color.WHITE);
+        g.drawLine(40,560,70,560);
+        g.drawLine(40,560,40,550);
+        g.drawLine(70,560,70,550);
     }
 }
