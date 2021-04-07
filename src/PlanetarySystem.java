@@ -35,9 +35,11 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
         this.star = new Star(); //creation of the central star
         this.add(backgroundStars);
         this.setVisible(true);
+
         // Adding the sun, the first element of the set of celestial objects, no interactions on it in this version
         celestialObjects.add(star);
-        timeScale = (365.25*24*3600)/1000f; //one month in milliseconds
+        timeScale = (365.25*24*3600)/1000f; //one year
+
         // THREAD
         Thread simulationThread = new Thread(this, "Simulation Thread");
         simulationThread.start();
@@ -49,11 +51,13 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
         slider.setForeground(Color.WHITE);
         slider.addChangeListener(this);
 
+        //Distance scale
         JLabel scaleSizeLabel = new JLabel("2 UA");
         scaleSizeLabel.setBounds(80, 545, 100,20);
         scaleSizeLabel.setForeground(Color.WHITE);
 
-        scaleTimeLabel = new JLabel("1 YEAR/Sec");
+        //Time scale
+        scaleTimeLabel = new JLabel("1 YEAR/Sec"); //not really, it is 1year/ deltaT
         scaleTimeLabel.setBounds(120, 10, 100,20);
         scaleTimeLabel.setForeground(Color.WHITE);
 

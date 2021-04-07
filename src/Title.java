@@ -9,6 +9,9 @@ import java.awt.event.ActionListener;
  */
 public class Title extends JFrame implements ActionListener{
 
+    /**
+     * Attributes
+     */
     private final JTextArea nbPlanetArea;
     private final JButton plusButton;
     private final JButton minusButton;
