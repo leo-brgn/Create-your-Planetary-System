@@ -2,31 +2,43 @@ import java.awt.*;
 
 public class Planet extends CelestialObject {
 
-    private final Color[] colors;
-    private long lifeTime; //attributes that will be displayed at the end of the game
-
     public Planet(int radius, Point position, int colorIndex, TypePlanet typePlanet) {
         super(radius, position, colorIndex);
         if (typePlanet == TypePlanet.GASEOUS) {
-            density = 1; // Density in g/cm3
+            // Density in g/cm3
+            density = 1;
             typeStr = "Gaseous";
         } else if (typePlanet == TypePlanet.ROCKY) {
-            density = 5; // Density in g/cm3
+            // Density in g/cm3
+            density = 5;
             typeStr = "Rocky";
         }
-        colors = PlanetGradient.getTwoColors(colorIndex);
+        color = PlanetColor.getColor(colorIndex);
         computeMass();
         computeDistanceToStar();
         setInitialVelocity();
 
     }
 
+    /**
+     * Method to compute the distance from the celestial object to the star
+     */
+    public void computeDistanceToStar(){
+        this.distanceToStar = Math.sqrt((position.x-390)*(position.x-390) + (position.y-320)*(position.y-320));
+        this.distanceToStarKm = scaleDst * distanceToStar;
+    }
 
     /**
      * Method to set the initial velocity of the planet to stay in orbit
+     * Applying the fundamental law of dynamics we get an approximation of the orbital velocity v^2 = G*M/r
      */
+    public void computeGravitationalForce() {
+        this.gravitationalForce = ((G * Star.massStar) / Math.pow(distanceToStarKm * 1000, 2)); // m/s^2
+    }
+
+    // Method to set the initial velocity of the planet to stay in orbit
+    // applying the fundamental law of dynamics and considering the mass of the sun much bigger
     public void setInitialVelocity(){
-        //Applying the fundamental law of dynamics we get an approximation of the orbital velocity v^2 = G*M/r
         double magnitude = Math.sqrt((G*Star.massStar)/(distanceToStarKm*1000)); //in m/s
         double[] vectorSunToPlanet = {(position.x - 390)/distanceToStar, (position.y - 320)/distanceToStar}; //unit vector
 
@@ -41,22 +53,6 @@ public class Planet extends CelestialObject {
 
     }
 
-    /**
-     * Method to compute the distance from the celestial object to the star
-     */
-    public void computeDistanceToStar(){
-        this.distanceToStar = Math.sqrt((position.x-390)*(position.x-390) + (position.y-320)*(position.y-320)); //in px
-        this.distanceToStarKm = scaleDst * distanceToStar; //in km
-    }
-
-    /**
-     * Method to compute the force applied on the planet at a certain position
-     * The force computed is actually not a force but a force divided by a mass (the mass of the planet)
-     * The mass of the planet is not needed since it will be divided
-     */
-    public void computeGravitationalForce() {
-        this.gravitationalForce = ((G * Star.massStar) / Math.pow(distanceToStarKm * 1000, 2)); // m/s^2
-    }
     /**
      * Method to compute the new velocity using an approximation of the acceleration at order 1
      */
@@ -101,9 +97,7 @@ public class Planet extends CelestialObject {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D) g;
-        float[] dist = {0.05f, 1f};
-        RadialGradientPaint p = new RadialGradientPaint(position.x + radius, position.y + radius, 2 * radius, dist, colors);
-        g2D.setPaint(p);
+        g2D.setColor(color);
         g2D.fillOval(position.x, position.y, 2 * radius, 2 * radius);
     }
 

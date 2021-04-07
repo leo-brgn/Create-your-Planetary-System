@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class PlanetGradient {
+public class PlanetColor {
 
     private static final Color[] listColor={
             new Color(115, 198, 182),
@@ -21,9 +21,5 @@ public class PlanetGradient {
 
     public static Color getColor(int index){
         return listColor[index];
-    }
-
-    public static Color[] getTwoColors(int index){
-        return new Color[]{ (Color.WHITE),listColor[index]};
     }
 }

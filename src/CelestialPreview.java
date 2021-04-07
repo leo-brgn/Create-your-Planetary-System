@@ -4,7 +4,7 @@ import java.awt.*;
 public class CelestialPreview extends JPanel{
 
     private int size;
-    private Color[] colors = new Color[2];
+    private Color color = Color.WHITE;
 
     public CelestialPreview(float size){
         this.setBackground(new Color(28,40,51));
@@ -12,16 +12,12 @@ public class CelestialPreview extends JPanel{
         this.setVisible(true);
         this.setLayout(null);
         this.size = (int) size;
-        colors[1] = new Color(95,106,106);
-        colors[0] = new Color(166, 189, 189);
     }
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D)g;
-        float[] dist = {0.02f,1f};
-        RadialGradientPaint p = new RadialGradientPaint((this.getWidth()/2f),(this.getHeight()/2f), 2*size, dist, colors);
-        g2D.setPaint(p);
+        g2D.setColor(color);
         g2D.fillOval(((this.getWidth()/2)-size), ((this.getHeight()/2)-size),2*size,2*size); //diameter of two times the size chosen
     }
 
@@ -30,6 +26,6 @@ public class CelestialPreview extends JPanel{
     }
 
     public void setColor(int index){
-        this.colors = PlanetGradient.getTwoColors(index);
+        this.color = PlanetColor.getColor(index);
     }
 }

@@ -1,6 +1,4 @@
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -14,16 +12,15 @@ public class FinishPanel extends JPanel {
     /**
      * Attributes
      */
-    private LinkedList<Planet> planets;
-    private ArrayList<JPanel> panels;
+    private final LinkedList<Planet> planets;
+    private final ArrayList<JPanel> panels;
 
     /**
      * Constructor
      */
     public FinishPanel(int nbPlanets){
-
         this.planets = new LinkedList<>();
-        this.panels = new ArrayList<>(5);
+        this.panels = new ArrayList<>(nbPlanets);
         this.setBackground(Color.BLACK);
         this.setBounds(780, 0, 270, 640);
         this.setLayout(null);

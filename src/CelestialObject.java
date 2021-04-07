@@ -23,7 +23,8 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     protected double velocityX; // Speed of the planet in m/s
     protected double velocityY; // Speed of the planet in m/s
     protected int count; // To track the amount of time in which the planet has stopped moving
-    protected int colorIndex; // Color of the planet
+    protected int colorIndex; // Color index of the planet
+    protected Color color;
     protected Point position; // Position of the planet in px
     protected String typeStr;
 
@@ -31,18 +32,11 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
      * Constructor
      */
     public CelestialObject(int radius, Point position) {
-        // Set the universe constants
+        // Scale the distances km/px
         this.scaleDst = 10_000_000;
         // Scale of the sizes km/px
-        scaleSizes = 4500; // Scale km/px 34_817 before
-
-        /**
-         * Update on scales :
-         * the radius of the sun is about 700_000 km
-         * the radius of the biggest planets is about 70_000km
-         * => I updated the scaleSizes to have proper scales
-         */
-
+        this.scaleSizes = 4500;
+        // Set the universal gravity constant
         this.G = 6.674 * Math.pow(10, -11);
         // Initialize the radius
         this.radius = radius;
