@@ -108,10 +108,11 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
                         removeCelestialObject(c);
                         JOptionPane.showMessageDialog(this, "The planet collided with the sun !");
                     }
+                    Collections.sort(celestialObjects);
                     isColliding(p, celestialObjects.indexOf(p));
                 }
             }
-            Collections.sort(celestialObjects);
+
         }
     }
 
@@ -160,8 +161,9 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
         if (index == 1 && p.getDistanceToStar() <= (star.getRadius() + p.getRadius())){
             isRunning = false;
             JOptionPane.showMessageDialog(this, p.getObjectName()+ " is colliding with the sun!");
-        } else if (getPointDistance(positionP, positionQ) <= (p.getRadius() + celestialObjectBefore.getRadius())) {
+        } else if (index > 1 && getPointDistance(positionP, positionQ) <= (p.getRadius() + celestialObjectBefore.getRadius())) {
             isRunning = false;
+
             JOptionPane.showMessageDialog(this, (p.getObjectName() + " is colliding with " + celestialObjectBefore.getObjectName()));
         }
     }
