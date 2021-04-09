@@ -19,15 +19,15 @@ public class Star extends CelestialObject{
     };
     private float alpha;
     static double massStar = 0;
-
     /**
      * Constructor
      */
-    public Star(){
-        super(150, new Point(390,320));
+    public Star(int rad){
+        super(rad, new Point(390,320));
         alpha = 1.0f;
         typeStr = "Star";
         density = 1.41;//same as our central star
+        objectName = "Sun";
         computeMass();
         massStar = mass;
     }

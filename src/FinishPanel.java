@@ -44,9 +44,7 @@ public class FinishPanel extends JPanel {
     } //method to add the new planets to the current list
 
     public void updateCases(){ //method to update the five panels describing the planets
-
         for(int i=0; i<panels.size() ;i++) {
-
             CelestialPreview c = new CelestialPreview(35); // adding the preview of the planet
             c.setBounds(160, 0,90,90); // fixed preview at the right
 
@@ -55,14 +53,14 @@ public class FinishPanel extends JPanel {
                     c.setSize(planets.get(j).radius);
                     c.setColor(planets.get(j).colorIndex);
 
-                    JLabel distance = new JLabel("Radius " + planets.get(j).radiusKm + " km");
-                    distance.setBounds(5 ,20,200,20);
+                    JLabel distance = new JLabel("Radius: " + planets.get(j).radiusKm + " km");
+                    distance.setBounds(5 ,25,200,20);
                     distance.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,13));
                     distance.setForeground(Color.WHITE);
                     panels.get(j).add(distance);
 
-                    JLabel massPlanet = new JLabel("Mass of " + (float)(planets.get(j).mass) + " kg");
-                    massPlanet.setBounds(5 ,30,200,20);
+                    JLabel massPlanet = new JLabel("Mass:" + (float)((planets.get(j).mass)*(10^3)) + "kg");
+                    massPlanet.setBounds(5 ,40,200,20);
                     massPlanet.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,13));
                     massPlanet.setForeground(Color.WHITE);
                     panels.get(j).add(massPlanet);
@@ -72,7 +70,6 @@ public class FinishPanel extends JPanel {
             c.setVisible(true);
             panels.get(i).add(c);
         }
-
     }
 
 

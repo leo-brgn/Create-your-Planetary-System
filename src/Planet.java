@@ -4,12 +4,12 @@ import java.awt.*;
  * Class for the each planet inheriting from CelestialObject
  */
 public class Planet extends CelestialObject {
-
     /**
      * Constructor
      */
-    public Planet(int radius, Point position, int colorIndex, TypePlanet typePlanet) {
+    public Planet(int radius, Point position, int colorIndex, TypePlanet typePlanet, String name) {
         super(radius, position, colorIndex);
+        this.objectName = name;
         if (typePlanet == TypePlanet.GASEOUS) {
             // Density in g/cm3
             density = 1;
@@ -33,6 +33,12 @@ public class Planet extends CelestialObject {
         this.distanceToStar = Math.sqrt((position.x-390)*(position.x-390) + (position.y-320)*(position.y-320));
         this.distanceToStarKm = scaleDst * distanceToStar;
     }
+
+    public double getDistanceToStar(){
+        return distanceToStar;
+    }
+
+
 
     /**
      * Method to set the initial velocity of the planet to stay in orbit
@@ -113,5 +119,7 @@ public class Planet extends CelestialObject {
         g2D.setColor(color);
         g2D.fillOval(position.x, position.y, 2 * radius, 2 * radius);
     }
+
+
 
 }
