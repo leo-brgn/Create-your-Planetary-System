@@ -108,8 +108,6 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
                         JOptionPane.showMessageDialog(this, "The planet collided with the sun !");
                     }
                     isColliding(p, celestialObjects.indexOf(p));
-                } else {
-                    ((Star) c).updateSun(deltaT / 1000);
                 }
             }
             Collections.sort(celestialObjects);
