@@ -19,7 +19,6 @@ public class Star extends CelestialObject{
     };
     private float alpha;
     static double massStar = 0;
-
     /**
      * Constructor
      */
