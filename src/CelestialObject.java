@@ -29,7 +29,7 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     protected String typeStr;
 
     /**
-     * Constructor
+     * Constructors
      */
     public CelestialObject(int radius, Point position) {
         // Scale the distances km/px
@@ -54,12 +54,16 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
         this.colorIndex = colorIndex;
     }
 
-    // Method to sort the planets
+    /**
+     * Method to sort the planets
+     */
     public int compareTo(CelestialObject celestialObject){
         return Double.compare(this.distanceToStar, celestialObject.distanceToStar);
     }
 
-    // Method to compute the mass as a function of the density and the radius (in km)
+    /**
+     * Method to compute the mass as a function of the density and the radius (in km)
+     */
     public void computeMass() {
         this.mass = 1000*density*Math.PI*(4f/3f)*Math.pow(radiusKm * 1000,3);
     }
