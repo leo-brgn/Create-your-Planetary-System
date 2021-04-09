@@ -19,6 +19,7 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
     private final Star star;
     private final JSlider slider;
     private final JLabel scaleTimeLabel;
+    private boolean isRunning;
 
     /**
      * Constructor
@@ -26,7 +27,7 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
     public PlanetarySystem () {
         this.addedCelestialObjects = new LinkedList<>();
         this.celestialObjects = new LinkedList<>();
-
+        isRunning = true;
         // Creation of the black panel
         this.setBounds(0,0,780,640);
         this.setBackground(Color.BLACK);
@@ -71,7 +72,7 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
         long deltaT;
         long lastTime = System.currentTimeMillis();
         long timeNow;
-        while(true) {
+        while(isRunning) {
             timeNow = System.currentTimeMillis();
             deltaT = timeNow - lastTime; //calculation of the difference of time to find the derivative
             lastTime = timeNow;
@@ -157,9 +158,10 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
         CelestialObject celestialObjectBefore = addedCelestialObjects.get(index-1);
         Point positionQ = celestialObjectBefore.getPosition();
         if (index == 1 && p.getDistanceToStar() <= (star.getRadius() + p.getRadius())){
-            System.out.println(p.getDistanceToStar() + "  " + (star.getRadius() + p.getRadius()));
+            isRunning = false;
             JOptionPane.showMessageDialog(this, p.getObjectName()+ " is colliding with the sun!");
         } else if (getPointDistance(positionP, positionQ) <= (p.getRadius() + celestialObjectBefore.getRadius())) {
+            isRunning = false;
             JOptionPane.showMessageDialog(this, (p.getObjectName() + " is colliding with " + celestialObjectBefore.getObjectName()));
         }
     }

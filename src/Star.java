@@ -37,7 +37,7 @@ public class Star extends CelestialObject{
         //super.paintComponent(g);
         Graphics2D g2D = (Graphics2D)g;
         float[] dist = {0.05f*alpha, 0.1f*alpha, 0.17f*alpha, 0.22f * alpha, 0.35f*alpha, 1*alpha};
-        RadialGradientPaint p = new RadialGradientPaint(position, radius, dist, colors);
+        RadialGradientPaint p = new RadialGradientPaint(position, 3*radius, dist, colors);
         g2D.setPaint(p);
         g2D.fillOval(position.x-3*radius-15,position.y-3*radius-15,3*2*radius + 30,3*2*radius + 30);
     }
