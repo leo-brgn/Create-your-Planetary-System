@@ -24,9 +24,9 @@ public class FinishPanel extends JPanel {
         this.setBackground(Color.BLACK);
         this.setBounds(780, 0, 270, 640);
         this.setLayout(null);
-        for(int i=0; i<5; i++){ //initialize the five panel
+        for(int i=0; i<nbPlanets; i++){ //initialize the five panel
             JPanel jPanel = new JPanel();
-            jPanel.setBackground(Color.GRAY);
+            jPanel.setBackground(new Color(51,48,51));
             jPanel.setBounds(10,60+100*i,250,90);
             JLabel jLabel = new JLabel("Planet n° " + (i+1));
             jLabel.setBounds(5 ,5,200,20);
