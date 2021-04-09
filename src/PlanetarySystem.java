@@ -32,7 +32,7 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
         this.setBackground(Color.BLACK);
         this.setLayout(null);
         BackgroundStars backgroundStars = new BackgroundStars(500); //creation of the background stars
-        this.star = new Star(); //creation of the central star
+        this.star = new Star(150); //creation of the central star
         this.add(backgroundStars);
         this.setVisible(true);
 
@@ -126,7 +126,7 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
     }
 
     public void addCelestialObject(TypePlanet typePlanet, Point position, float size, int colorIndex){
-        celestialObjects.add(new Planet((int) size,position, colorIndex, typePlanet));
+        celestialObjects.add(new Planet((int) size,position, colorIndex, typePlanet, "Name"));
     }
 
     public void drawCelestialObject(CelestialObject celestialObject) {
@@ -155,18 +155,18 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
     }
 
     public void isColliding(Planet p, int index){
-        Point positionP = new Point(p.getPosition().x, p.getPosition().y);
+        Point positionP = p.getPosition();
         CelestialObject celestialObjectBefore = addedCelestialObjects.get(index-1);
-        Point positionQ = new Point(celestialObjectBefore.getPosition().x, celestialObjectBefore());
-        if (index == 1 && p.getDistanceToStar() < star.getRadius() + p.getRadius()){
-            JOptionPane.showMessageDialog(this, "Collision with the sun!");
-        } else if (getPointDistance(positionP, positionQ)) {
-            JOptionPane.showMessageDialog(this, p.getPlanetName());
+        Point positionQ = celestialObjectBefore.getPosition();
+        if (index == 1 && p.getDistanceToStar() <= (star.getRadius() + p.getRadius())){
+            JOptionPane.showMessageDialog(this, p.getObjectName()+ " is colliding with the sun!");
+        } else if (getPointDistance(positionP, positionQ) <= (p.getRadius() + celestialObjectBefore.getRadius())) {
+            JOptionPane.showMessageDialog(this, (p.getObjectName() + " is colliding with " + celestialObjectBefore.getObjectName()));
         }
     }
 
-    public int getPointDistance(Point p, Point q){
-
+    public double getPointDistance(Point p, Point q){
+        return Math.sqrt((p.getX()-q.getX())*(p.getX()-q.getX()) +(p.getY()-q.getY()) * (p.getY()-q.getY()));
     }
     public void paintComponent(Graphics g){
         super.paintComponent(g);

@@ -8,8 +8,9 @@ public class Planet extends CelestialObject {
     /**
      * Constructor
      */
-    public Planet(int radius, Point position, int colorIndex, TypePlanet typePlanet) {
+    public Planet(int radius, Point position, int colorIndex, TypePlanet typePlanet, String name) {
         super(radius, position, colorIndex);
+        this.planetName = name;
         if (typePlanet == TypePlanet.GASEOUS) {
             // Density in g/cm3
             density = 1;
@@ -38,9 +39,7 @@ public class Planet extends CelestialObject {
         return distanceToStar;
     }
 
-    public String getPlanetName(){
-        return planetName;
-    }
+
 
     /**
      * Method to set the initial velocity of the planet to stay in orbit

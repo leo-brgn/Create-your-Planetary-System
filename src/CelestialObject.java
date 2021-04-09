@@ -24,6 +24,7 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     protected double velocityY; // Speed of the planet in m/s
     protected int count; // To track the amount of time in which the planet has stopped moving
     protected int colorIndex; // Color index of the planet
+    protected String objectName;
     protected Color color;
     protected Point position; // Position of the planet in px
     protected String typeStr;
@@ -67,6 +68,10 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
 
     public int getRadius(){
         return radius;
+    }
+
+    public String getObjectName(){
+        return objectName;
     }
     // Method to compute the mass as a function of the density and the radius (in km)
     /**
