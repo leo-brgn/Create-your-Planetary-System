@@ -32,7 +32,7 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
         this.setBackground(Color.BLACK);
         this.setLayout(null);
         BackgroundStars backgroundStars = new BackgroundStars(500); //creation of the background stars
-        this.star = new Star(150); //creation of the central star
+        this.star = new Star(50); //creation of the central star
         this.add(backgroundStars);
         this.setVisible(true);
 
@@ -159,6 +159,7 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
         CelestialObject celestialObjectBefore = addedCelestialObjects.get(index-1);
         Point positionQ = celestialObjectBefore.getPosition();
         if (index == 1 && p.getDistanceToStar() <= (star.getRadius() + p.getRadius())){
+            System.out.println(p.getDistanceToStar() + "  " + (star.getRadius() + p.getRadius()));
             JOptionPane.showMessageDialog(this, p.getObjectName()+ " is colliding with the sun!");
         } else if (getPointDistance(positionP, positionQ) <= (p.getRadius() + celestialObjectBefore.getRadius())) {
             JOptionPane.showMessageDialog(this, (p.getObjectName() + " is colliding with " + celestialObjectBefore.getObjectName()));
@@ -166,7 +167,7 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
     }
 
     public double getPointDistance(Point p, Point q){
-        return Math.sqrt((p.getX()-q.getX())*(p.getX()-q.getX()) +(p.getY()-q.getY()) * (p.getY()-q.getY()));
+        return Math.sqrt((p.getX()-q.getX())*(p.getX()-q.getX())+(p.getY()-q.getY())*(p.getY()-q.getY()));
     }
     public void paintComponent(Graphics g){
         super.paintComponent(g);
