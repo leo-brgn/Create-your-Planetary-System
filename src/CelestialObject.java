@@ -63,6 +63,4 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     public void computeMass() {
         this.mass = 1000*density*Math.PI*(4f/3f)*Math.pow(radiusKm * 1000,3);
     }
-
-
 }
