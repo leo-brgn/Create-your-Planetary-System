@@ -108,7 +108,7 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
                         removeCelestialObject(c);
                         JOptionPane.showMessageDialog(this, "The planet collided with the sun !");
                     }
-
+                    isColliding(p, celestialObjects.indexOf(p));
                 } else {
                     ((Star) c).updateSun(deltaT / 1000);
                 }
@@ -154,6 +154,20 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
         }
     }
 
+    public void isColliding(Planet p, int index){
+        Point positionP = new Point(p.getPosition().x, p.getPosition().y);
+        CelestialObject celestialObjectBefore = addedCelestialObjects.get(index-1);
+        Point positionQ = new Point(celestialObjectBefore.getPosition().x, celestialObjectBefore());
+        if (index == 1 && p.getDistanceToStar() < star.getRadius() + p.getRadius()){
+            JOptionPane.showMessageDialog(this, "Collision with the sun!");
+        } else if (getPointDistance(positionP, positionQ)) {
+            JOptionPane.showMessageDialog(this, p.getPlanetName());
+        }
+    }
+
+    public int getPointDistance(Point p, Point q){
+
+    }
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         g.setColor(Color.WHITE);

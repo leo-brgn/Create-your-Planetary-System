@@ -44,9 +44,7 @@ public class FinishPanel extends JPanel {
     } //method to add the new planets to the current list
 
     public void updateCases(){ //method to update the five panels describing the planets
-
         for(int i=0; i<panels.size() ;i++) {
-
             CelestialPreview c = new CelestialPreview(35); // adding the preview of the planet
             c.setBounds(160, 0,90,90); // fixed preview at the right
 
@@ -72,7 +70,6 @@ public class FinishPanel extends JPanel {
             c.setVisible(true);
             panels.get(i).add(c);
         }
-
     }
 
 

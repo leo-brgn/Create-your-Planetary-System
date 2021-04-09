@@ -4,7 +4,7 @@ import java.awt.*;
  * Class for the each planet inheriting from CelestialObject
  */
 public class Planet extends CelestialObject {
-
+    private String planetName;
     /**
      * Constructor
      */
@@ -32,6 +32,14 @@ public class Planet extends CelestialObject {
     public void computeDistanceToStar(){
         this.distanceToStar = Math.sqrt((position.x-390)*(position.x-390) + (position.y-320)*(position.y-320));
         this.distanceToStarKm = scaleDst * distanceToStar;
+    }
+
+    public double getDistanceToStar(){
+        return distanceToStar;
+    }
+
+    public String getPlanetName(){
+        return planetName;
     }
 
     /**
@@ -113,5 +121,7 @@ public class Planet extends CelestialObject {
         g2D.setColor(color);
         g2D.fillOval(position.x, position.y, 2 * radius, 2 * radius);
     }
+
+
 
 }
