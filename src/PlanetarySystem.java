@@ -156,7 +156,7 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
 
     public void isColliding(Planet p, int index){
         Point positionP = p.getPosition();
-        CelestialObject celestialObjectBefore = addedCelestialObjects.get(index-1);
+        CelestialObject celestialObjectBefore = celestialObjects.get(index-1);
         Point positionQ = celestialObjectBefore.getPosition();
         if (index == 1 && p.getDistanceToStar() <= (star.getRadius() + p.getRadius())){
             isRunning = false;
