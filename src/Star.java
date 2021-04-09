@@ -41,11 +41,6 @@ public class Star extends CelestialObject{
         g2D.fillOval(position.x-radius-15,position.y-radius-15,2*radius + 30,2*radius + 30);
     }
 
-
-    public void updateSun(float deltaT2){
-        alpha = (float) Math.abs(Math.cos(deltaT2));
-    }
-
     @Override
     public String toString() {
         return "Sun of radius: " + radiusKm +"km and of mass " + mass +"kg";
