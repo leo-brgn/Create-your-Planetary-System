@@ -4,13 +4,12 @@ import java.awt.*;
  * Class for the each planet inheriting from CelestialObject
  */
 public class Planet extends CelestialObject {
-    private String planetName;
     /**
      * Constructor
      */
     public Planet(int radius, Point position, int colorIndex, TypePlanet typePlanet, String name) {
         super(radius, position, colorIndex);
-        this.planetName = name;
+        this.objectName = name;
         if (typePlanet == TypePlanet.GASEOUS) {
             // Density in g/cm3
             density = 1;

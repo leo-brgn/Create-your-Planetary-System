@@ -90,7 +90,6 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
             for (CelestialObject c : celestialObjects) {
                 if (!addedCelestialObjects.contains(c)) {
                     drawCelestialObject(c);
-                    this.setComponentZOrder(c, 0);
                 }
                 if (!(c instanceof Star)) {
                     Planet p = (Planet) c;
@@ -126,12 +125,13 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
     }
 
     public void addCelestialObject(TypePlanet typePlanet, Point position, float size, int colorIndex){
-        celestialObjects.add(new Planet((int) size,position, colorIndex, typePlanet, "Name"));
+        celestialObjects.add(new Planet((int) size,position, colorIndex, typePlanet, "Bitch"));
     }
 
     public void drawCelestialObject(CelestialObject celestialObject) {
         this.add(celestialObject);
         addedCelestialObjects.add(celestialObject);
+        this.setComponentZOrder(celestialObject, 0);
         System.out.println("New planet added: " + celestialObject);
     }
 
