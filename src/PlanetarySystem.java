@@ -124,8 +124,8 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
         }
     }
 
-    public void addCelestialObject(TypePlanet typePlanet, Point position, float size, int colorIndex){
-        celestialObjects.add(new Planet((int) size,position, colorIndex, typePlanet, "Bitch"));
+    public void addCelestialObject(TypePlanet typePlanet, Point position, float size, int colorIndex, String name){
+        celestialObjects.add(new Planet((int) size,position, colorIndex, typePlanet, name));
     }
 
     public void drawCelestialObject(CelestialObject celestialObject) {
