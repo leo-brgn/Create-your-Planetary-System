@@ -3,7 +3,7 @@ import java.awt.*;
 
 /**
  * Class for the preview of the planet inheriting from JPanel
- *  */
+ */
 
 public class CelestialPreview extends JPanel{
 
