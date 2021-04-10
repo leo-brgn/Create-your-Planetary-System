@@ -22,10 +22,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     private final JLabel realSize;
     private final JButton create;
     private final JSlider slider;
-    //preview of the planet before adding it to the planetary system
-    private JPanel sliderPanel;
-    // Position of the mouse
-    private Point mouseLocation;
+
     // System attributes
     private final int nbPlanets;
     private int currentPlanet=1; // Goes from 1 to nbPlanets
@@ -41,7 +38,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     private boolean planetToAdd = false;
     private boolean buttonsAdded = false;
     private final FinishPanel finishPanel;
-    private final CelestialPreview celestialPreview;
+    private final CelestialPreview celestialPreview; //preview of the planet before adding it to the planetary system
 
     /**
      * Constructor
@@ -188,8 +185,8 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         if(mouseEvent.getButton() == MouseEvent.BUTTON1 && planetToAdd) {
             if(mouseEvent.getX() < 780){
                 if (planetarySystem.getAddedSize() < 10 + 1) {
-                        planetarySystem.addCelestialObject(typeToCreate, mouseEvent.getPoint(), (int)(0.15*(sizeSelected+7)), colorSelected, "Bitch n°=" + String.valueOf(currentPlanet)); // the added 7 is to avoid nil values for the radius with the slider between 0 and 6 (we add 7 to the value of the slider)
-                        finishPanel.addPlanet(new Planet((int) (0.15*(sizeSelected+7)), mouseEvent.getPoint(), colorSelected, typeToCreate, "Bitch n°=" + String.valueOf(currentPlanet))); //creating an object planet
+                        planetarySystem.addCelestialObject(typeToCreate, mouseEvent.getPoint(), (int)(0.15*(sizeSelected+7)), colorSelected, "Bitch n°=" + (currentPlanet)); // the added 7 is to avoid nil values for the radius with the slider between 0 and 6 (we add 7 to the value of the slider)
+                        finishPanel.addPlanet(new Planet((int) (0.15*(sizeSelected+7)), mouseEvent.getPoint(), colorSelected, typeToCreate, "Bitch n°=" + (currentPlanet))); //creating an object planet
                 }
 
                 planetToAdd = false;
