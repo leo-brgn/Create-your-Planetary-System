@@ -181,6 +181,10 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
     public double getPointDistance(Point p, Point q){
         return Math.sqrt((p.getX()-q.getX())*(p.getX()-q.getX())+(p.getY()-q.getY())*(p.getY()-q.getY()));
     }
+
+    /**
+     * Method to paint the scale of the distances between planets
+     */
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         g.setColor(Color.WHITE);
