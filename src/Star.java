@@ -17,7 +17,7 @@ public class Star extends CelestialObject{
             new Color(209, 112, 9, 12),
 
     };
-    private float alpha;
+    private final float alpha;
     static double massStar = 0;
     /**
      * Constructor
