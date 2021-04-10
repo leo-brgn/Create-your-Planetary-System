@@ -86,18 +86,21 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
         }
     }
 
+    /**
+     * Method to update the planetary system every deltaT
+     */
     public void update(float deltaT){
         if(!celestialObjects.isEmpty()) {
             for (CelestialObject c : celestialObjects) {
                 if (!addedCelestialObjects.contains(c)) {
                     drawCelestialObject(c);
                 }
-                if (!(c instanceof Star)) {
+                if (!(c instanceof Star)) { //we only consider planets
                     Planet p = (Planet) c;
 
+                    //update of the fundamental variables of the planet
                     p.computeDistanceToStar();
                     p.computeGravitationalForce();
-
                     p.updatePosition((float) (timeScale * deltaT));
                     p.updateVelocity((float) (timeScale * deltaT));
 
@@ -154,6 +157,11 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
         }
     }
 
+    /**
+     * Method to determine collisions between celestials objects
+     * Collisions between planets
+     * Collisions between the sun and a planet
+     */
     public void isColliding(Planet p, int index){
         Point positionP = p.getPosition();
         CelestialObject celestialObjectBefore = celestialObjects.get(index-1);
@@ -163,11 +171,13 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
             JOptionPane.showMessageDialog(this, p.getObjectName()+ " is colliding with the sun!");
         } else if (index > 1 && getPointDistance(positionP, positionQ) <= (p.getRadius() + celestialObjectBefore.getRadius())) {
             isRunning = false;
-
             JOptionPane.showMessageDialog(this, (p.getObjectName() + " is colliding with " + celestialObjectBefore.getObjectName()));
         }
     }
 
+    /**
+     * Method to return the distance between two points
+     */
     public double getPointDistance(Point p, Point q){
         return Math.sqrt((p.getX()-q.getX())*(p.getX()-q.getX())+(p.getY()-q.getY())*(p.getY()-q.getY()));
     }
