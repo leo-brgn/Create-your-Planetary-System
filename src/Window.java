@@ -201,7 +201,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         }
     }
 
-    public void updateColorButtons(){
+    private void updateColorButtons(){
         if (buttonsAdded) {
             if(typeToCreate == TypePlanet.GASEOUS && currentColorButtons==colorButtonsRocky){
                 for (JButton jButton : colorButtonsRocky) {
@@ -245,7 +245,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         this.rightPanel.repaint();
     }
 
-    public void colorButtonClicked(ActionEvent e){
+    private void colorButtonClicked(ActionEvent e){
         if(typeToCreate == TypePlanet.GASEOUS){
             for(int i=0; i<colorButtonsGaseous.length; i++){
                 if(e.getSource()==colorButtonsGaseous[i]){
@@ -274,7 +274,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         }
     }
 
-    public void finishedCreating(){
+    private void finishedCreating(){
         finishPanel.updateCases();
         this.remove(rightPanel);
         this.repaint();

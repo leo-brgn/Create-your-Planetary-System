@@ -12,8 +12,8 @@ public class FinishPanel extends JPanel {
     /**
      * Attributes
      */
-    private final LinkedList<Planet> planets;
-    private final ArrayList<JPanel> panels;
+    private LinkedList<Planet> planets;
+    private ArrayList<JPanel> panels;
 
     /**
      * Constructor

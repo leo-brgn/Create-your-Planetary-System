@@ -70,9 +70,9 @@ public class Planet extends CelestialObject {
     /**
      * Method to compute the new velocity using an approximation of the acceleration at order 1
      */
-    public void updateVelocity(float deltaT2){
-        velocityX += deltaT2 * gravitationalForce * ((390 - position.x)/distanceToStar);
-        velocityY += deltaT2 * gravitationalForce * ((320 - position.y)/distanceToStar);
+    public void updateVelocity(float deltaT){
+        velocityX += deltaT * gravitationalForce * ((390 - position.x)/distanceToStar);
+        velocityY += deltaT * gravitationalForce * ((320 - position.y)/distanceToStar);
     }
 
     /**

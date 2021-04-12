@@ -149,14 +149,6 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
         return this.addedCelestialObjects.size();
     }
 
-    @Override
-    public void stateChanged(ChangeEvent e) {
-        if (e.getSource() == slider){
-            timeScale = (365.25*24*3600)/1000f *0.5* slider.getValue();
-            scaleTimeLabel.setText(slider.getValue() * 0.5 + " YEAR/Sec");
-        }
-    }
-
     /**
      * Method to determine collisions between celestials objects
      * Collisions between planets
@@ -180,6 +172,14 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
      */
     public double getPointDistance(Point p, Point q){
         return Math.sqrt((p.getX()-q.getX())*(p.getX()-q.getX())+(p.getY()-q.getY())*(p.getY()-q.getY()));
+    }
+
+    @Override
+    public void stateChanged(ChangeEvent e) {
+        if (e.getSource() == slider){
+            timeScale = (365.25*24*3600)/1000f *0.5* slider.getValue();
+            scaleTimeLabel.setText(slider.getValue() * 0.5 + " YEAR/Sec");
+        }
     }
 
     /**
