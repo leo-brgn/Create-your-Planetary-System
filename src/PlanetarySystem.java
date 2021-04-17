@@ -58,7 +58,7 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
         scaleSizeLabel.setForeground(Color.WHITE);
 
         //Time scale
-        scaleTimeLabel = new JLabel("1 YEAR/Sec"); //not really, it is 1year/ deltaT
+        scaleTimeLabel = new JLabel("Time scale"); //not really, it is 1year/ deltaT
         scaleTimeLabel.setBounds(120, 10, 100,20);
         scaleTimeLabel.setForeground(Color.WHITE);
 
