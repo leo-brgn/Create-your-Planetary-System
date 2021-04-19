@@ -32,6 +32,7 @@ public class Planet extends CelestialObject {
     public void computeDistanceToStar(){
         this.distanceToStar = Math.sqrt((position.x-390)*(position.x-390) + (position.y-320)*(position.y-320));
         this.distanceToStarKm = scaleDst * distanceToStar;
+        System.out.println(distanceToStar);
     }
 
     public double getDistanceToStar(){
@@ -97,8 +98,8 @@ public class Planet extends CelestialObject {
      * Method to verify if the planet has gone too far, the distance chosen is not scientific
      */
     public boolean isTooFar(){
-        return distanceToStar >= 390;
-    }
+        return distanceToStar >= 505;
+    } //biggest distance in diagonal of the sun
 
 
     public boolean isTooClose(long sunRadius){
