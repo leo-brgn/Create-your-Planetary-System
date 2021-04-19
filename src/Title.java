@@ -29,7 +29,7 @@ public class Title extends JFrame implements ActionListener{
      * Constructor
      */
     public Title() {
-        this.setTitle("Create your Solar System");
+        this.setTitle("Create your Planetary System");
         this.setSize(1050,640);
         this.setResizable(false);
         this.setLocation(120,20);
