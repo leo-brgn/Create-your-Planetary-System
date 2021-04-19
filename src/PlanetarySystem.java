@@ -154,6 +154,7 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
      * Collisions between planets
      * Collisions between the sun and a planet
      */
+
     public void isColliding(Planet p, int index){
         Point positionP = p.getPosition();
         CelestialObject celestialObjectBefore = celestialObjects.get(index-1);
