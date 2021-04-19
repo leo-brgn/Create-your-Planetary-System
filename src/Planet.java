@@ -32,14 +32,11 @@ public class Planet extends CelestialObject {
     public void computeDistanceToStar(){
         this.distanceToStar = Math.sqrt((position.x-390)*(position.x-390) + (position.y-320)*(position.y-320));
         this.distanceToStarKm = scaleDst * distanceToStar;
-        System.out.println(distanceToStar);
     }
 
     public double getDistanceToStar(){
         return distanceToStar;
     }
-
-
 
     /**
      * Method to set the initial velocity of the planet to stay in orbit
