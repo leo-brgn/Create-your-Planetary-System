@@ -54,7 +54,7 @@ public class Title extends JFrame implements ActionListener{
         affBackground.add(txtLabel);
 
         JLabel titleLabel = new JLabel();
-        titleLabel.setText("How many planet do you want to add ?");
+        titleLabel.setText("How many planets do you want to add ?");
         titleLabel.setFont(new java.awt.Font(Font.DIALOG_INPUT,Font.BOLD,25));
         titleLabel.setForeground(new Color (242, 243, 244));
         titleLabel.setBounds(245,425,560,50);
