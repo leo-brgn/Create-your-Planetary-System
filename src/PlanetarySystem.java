@@ -39,7 +39,7 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
 
         // Adding the sun, the first element of the set of celestial objects, no interactions on it in this version
         celestialObjects.add(star);
-        timeScale = (365.25*24*3600)/1000f; //one year
+        timeScale = (365.25*24*3600)/1000f; //one year in seconds
 
         // THREAD
         Thread simulationThread = new Thread(this, "Simulation Thread");
@@ -58,7 +58,7 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
         scaleSizeLabel.setForeground(Color.WHITE);
 
         //Time scale
-        scaleTimeLabel = new JLabel("Time scale"); //not really, it is 1year/ deltaT
+        scaleTimeLabel = new JLabel("YEAR/sec"); //not really, it is 1year/ deltaT
         scaleTimeLabel.setBounds(120, 10, 100,20);
         scaleTimeLabel.setForeground(Color.WHITE);
 
