@@ -138,6 +138,7 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
         System.out.println("New planet added: " + celestialObject);
     }
 
+
     public void removeCelestialObject(CelestialObject celestialObject){
         celestialObjects.remove(celestialObject);
         addedCelestialObjects.remove(celestialObject);

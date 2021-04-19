@@ -46,7 +46,6 @@ public class Planet extends CelestialObject {
         this.gravitationalForce = ((G * Star.massStar) / Math.pow(distanceToStarKm * 1000, 2)); // m/s^2
     }
 
-
     /**
      * Method to set the initial velocity of the planet to stay in orbit (orbital velocity)
      */
@@ -95,7 +94,7 @@ public class Planet extends CelestialObject {
      * Method to verify if the planet has gone too far, the distance chosen is not scientific
      */
     public boolean isTooFar(){
-        return distanceToStar >= 505;
+        return distanceToStar >= 450;
     } //biggest distance in diagonal of the sun
 
 
@@ -117,7 +116,5 @@ public class Planet extends CelestialObject {
         g2D.setColor(color);
         g2D.fillOval(position.x, position.y, 2 * radius, 2 * radius);
     }
-
-
 
 }
