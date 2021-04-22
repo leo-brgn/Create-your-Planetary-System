@@ -106,6 +106,7 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
 
                     if (p.isTooFar()) {
                         removeCelestialObject(c);
+                        Collections.sort(celestialObjects);
                     }
                     if (p.isTooClose(star.radiusKm)) {
                         removeCelestialObject(c);
