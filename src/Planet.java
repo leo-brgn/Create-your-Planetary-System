@@ -4,6 +4,7 @@ import java.awt.*;
  * Class for the each planet inheriting from CelestialObject
  */
 public class Planet extends CelestialObject {
+
     /**
      * Constructor
      */
@@ -23,7 +24,6 @@ public class Planet extends CelestialObject {
         computeMass();
         computeDistanceToStar();
         setInitialVelocity();
-
     }
 
     /**

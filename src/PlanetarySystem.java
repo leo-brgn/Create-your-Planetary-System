@@ -19,7 +19,7 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
     private final Star star;
     private final JSlider slider;
     private final JLabel scaleTimeLabel;
-    private boolean isRunning;
+    public boolean isRunning;
 
     /**
      * Constructor
@@ -58,7 +58,7 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
         scaleSizeLabel.setForeground(Color.WHITE);
 
         //Time scale
-        scaleTimeLabel = new JLabel("YEAR/sec"); //not really, it is 1year/ deltaT
+        scaleTimeLabel = new JLabel("Timescale"); //not really, it is 1year/ deltaT
         scaleTimeLabel.setBounds(120, 10, 100,20);
         scaleTimeLabel.setForeground(Color.WHITE);
 
@@ -177,7 +177,7 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
     public void stateChanged(ChangeEvent e) {
         if (e.getSource() == slider){
             timeScale = (365.25*24*3600)/1000f *0.5* slider.getValue();
-            scaleTimeLabel.setText(slider.getValue() * 0.5 + " YEAR/Sec");
+            scaleTimeLabel.setText(slider.getValue() * 0.5 + " Timescale");
         }
     }
 
