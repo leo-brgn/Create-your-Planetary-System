@@ -141,21 +141,21 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
     public void isColliding(Planet p, int index){
 
         Point positionP = p.getPosition();
-        Point p2 = new Point();
-        p2.x += p.radius;
-        p2.y += p.radius;
+        Point positionPRadius = new Point();
+        positionPRadius.x += p.radius;
+        positionPRadius.y += p.radius;
+
         CelestialObject celestialObjectBefore = celestialObjects.get(index-1);
         Point positionQ = celestialObjectBefore.getPosition();
-        Point p3 = new Point();
-        p3.x += celestialObjectBefore.radius;
-        p3.y += celestialObjectBefore.radius;
-        System.out.println("distance planet sun : " + p.getDistanceToStar());
-        System.out.println("radius planet " +p.getRadius());
+        Point positionQRadius = new Point();
+        positionQRadius.x += celestialObjectBefore.radius;
+        positionQRadius.y += celestialObjectBefore.radius;
+
         if (index == 1 && p.getDistanceToStar() <= (star.getRadius() + p.getRadius())){
             isRunning = false;
             System.out.println(p.getDistanceToStar());
             JOptionPane.showMessageDialog(this, p.getObjectName()+ " is colliding with the Sun !" +"\n"+ "Close the game and try again ! ");
-        } else if (index > 1 && getPointDistance(new Point(positionP.x + p2.x, positionP.y + p2.y), new Point(positionQ.x + p3.x, positionQ.y + p3.y)) <= (p.getRadius() + celestialObjectBefore.getRadius())) {
+        } else if (index > 1 && getPointDistance(new Point(positionP.x + positionPRadius.x, positionP.y + positionPRadius.y), new Point(positionQ.x + positionQRadius.x, positionQ.y + positionQRadius.y)) <= (p.getRadius() + celestialObjectBefore.getRadius())) {
             isRunning = false;
             JOptionPane.showMessageDialog(this, (p.getObjectName() + " is colliding with " + celestialObjectBefore.getObjectName() +"\n"+ "Close the game and try again ! "));
         }
