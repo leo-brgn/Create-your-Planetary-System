@@ -199,20 +199,16 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
      */
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
-        if(mouseEvent.getButton() == MouseEvent.BUTTON1 && planetToAdd) {
-            if(mouseEvent.getX() < 780) {
-                if (currentPlanet <= nbPlanets && canCreate()) {
-                    planetarySystem.addCelestialObject(typeToCreate, mouseEvent.getPoint(), (int) (0.15 * (sizeSelected + 7)), colorSelected, fieldName.getText()); // the added 7 is to avoid nil values for the radius with the slider between 0 and 6 (we add 7 to the value of the slider)
-                    finishPanel.addPlanet(new Planet((int) (0.15 * (sizeSelected + 7)), mouseEvent.getPoint(), colorSelected, typeToCreate, fieldName.getText()));
-                    planetToAdd = false;
-                }
+        if(mouseEvent.getButton() == MouseEvent.BUTTON1 && planetToAdd && canCreate() && mouseEvent.getX() < 780 && currentPlanet <= nbPlanets ) {
+                planetarySystem.addCelestialObject(typeToCreate, mouseEvent.getPoint(), (int) (0.15 * (sizeSelected + 7)), colorSelected, fieldName.getText()); // the added 7 is to avoid nil values for the radius with the slider between 0 and 6 (we add 7 to the value of the slider)
+                finishPanel.addPlanet(new Planet((int) (0.15 * (sizeSelected + 7)), mouseEvent.getPoint(), colorSelected, typeToCreate, fieldName.getText()));
+                planetToAdd = false;
                 if (currentPlanet < nbPlanets){
                     planetNb.setText("PLANET: " + currentPlanet + "/" + nbPlanets);
                 } else if (currentPlanet == nbPlanets) {
                     finishedCreating();
                 }
-
-            }
+                currentPlanet++;
         }
     }
 
@@ -300,13 +296,15 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
 
     private boolean canCreate(){
         if (colorSelected == 0){
+            JOptionPane.showMessageDialog(super.getContentPane(), "Please select a color.");
             return false;
         } else if(sizeSelected == 0 || sizeKm==0){
+            JOptionPane.showMessageDialog(super.getContentPane(), "Please select a size.");
             return false;
         } else if(fieldName.getText().equals("") || fieldName.getText() == null){
+            JOptionPane.showMessageDialog(super.getContentPane(), "Please name your planet.");
             return false;
         } else {
-            System.out.println(fieldName.getText());
             return true;
         }
     }
