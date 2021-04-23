@@ -1,6 +1,6 @@
 # Create your planetary system
 
-Foobar is a Python library for dealing with word pluralization.
+Create your planetary system is a java program that allows you to personalize planets in order to simulate your solar system.
 
 ## Installation
 
@@ -12,6 +12,7 @@ pip install foobar
 
 ## Usage
 
+
 ```python
 import foobar
 
@@ -21,9 +22,4 @@ foobar.singularize('phenomena') # returns 'phenomenon'
 ```
 
 ## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
+From 4 INSA students, Léo Brignone, Alice Paris, Lisa Colombarini et Maé Puggia thanks to the help of our teachers
