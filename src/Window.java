@@ -22,6 +22,11 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     private final JLabel realSize;
     private final JButton create;
     private final JSlider slider;
+    private final JTextField fieldName;
+    private final JLabel name;
+    private final JLabel size;
+    private final JLabel color;
+    private final JLabel preview;
 
     // System attributes
     private final int nbPlanets;
@@ -82,53 +87,63 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         // JPanel of the planets to add
         JPanel backPlanetNb = new JPanel();
         backPlanetNb.setBackground(new Color(51,48,51));
-        backPlanetNb.setBounds(0,25,270,60);
+        backPlanetNb.setBounds(0,15,270,60);
         rightPanel.add(backPlanetNb);
 
         planetNb = new JLabel();
         planetNb.setText("PLANET:" + currentPlanet + "/" + nbPlanets);
-        planetNb.setFont(new java.awt.Font(Font.DIALOG_INPUT,Font.BOLD,32));
+        planetNb.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,32));
         //planetNb.setBorder(BorderFactory.createLineBorder(Color.white));
         planetNb.setBounds(30,20,165,40);
         planetNb.setForeground(Color.WHITE);
         backPlanetNb.add(planetNb);
 
+        fieldName = new JTextField();
+        fieldName.setBounds(120, 130, 120, 25);
+        rightPanel.add(fieldName);
+
+        name = new JLabel("N A M E");
+        name.setFont(new Font(Font.SANS_SERIF,Font.BOLD,15));
+        name.setBounds(40, 130, 100, 25);
+        name.setForeground(Color.WHITE);
+        rightPanel.add(name);
+
         rocky = new JButton("ROCKY");
-        rocky.setBounds(20,115,100,25);
+        rocky.setBounds(20,85,100,25);
         rocky.setForeground(Color.WHITE);
         rocky.setBackground(Color.BLACK);
         rocky.addActionListener(this);
         rightPanel.add(rocky);
 
         gaseous = new JButton("GASEOUS");
-        gaseous.setBounds(140,115,100,25);
+        gaseous.setBounds(140,85,100,25);
         gaseous.setForeground(Color.WHITE);
         gaseous.setBackground(Color.BLACK);
         gaseous.addActionListener(this);
         rightPanel.add(gaseous);
 
-        JLabel size = new JLabel("S I Z E");
-        size.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
-        size.setBounds(50, 160, 100, 25);
+        size = new JLabel("S I Z E");
+        size.setFont(new Font(Font.SANS_SERIF,Font.BOLD,15));
+        size.setBounds(40, 165, 100, 25);
         size.setForeground(Color.WHITE);
         rightPanel.add(size);
 
         this.sizeKm = (long)( 0.15 * (sizeSelected+7)*4500);
         realSize = new JLabel(sizeKm + " km");
-        realSize.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
-        realSize.setBounds(45, 185, 100, 25);
+        realSize.setFont(new Font(Font.SANS_SERIF,Font.BOLD,15));
+        realSize.setBounds(45, 190, 100, 25);
         realSize.setForeground(Color.WHITE);
         rightPanel.add(realSize);
 
-        JLabel color = new JLabel("C O L O R");
-        color.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
+        color = new JLabel("C O L O R");
+        color.setFont(new Font(Font.SANS_SERIF,Font.BOLD,15));
         color.setBounds(95, 230, 100,25);
         color.setForeground(Color.WHITE);
         rightPanel.add(color);
         colorSelected = 0;
 
-        JLabel preview = new JLabel("P R E V I E W    x4 ");
-        preview.setFont(new java.awt.Font(Font.SANS_SERIF,Font.BOLD,15));
+        preview = new JLabel("P R E V I E W    x4 ");
+        preview.setFont(new Font(Font.SANS_SERIF,Font.BOLD,15));
         preview.setBounds(70, 330, 150,25);
         preview.setForeground(Color.WHITE);
         rightPanel.add(preview);
@@ -140,7 +155,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
 
         create = new JButton("CREATE");
         create.setBounds(85, 550, 100,25);
-        create.setFont(new java.awt.Font(Font.DIALOG_INPUT,Font.BOLD,14));
+        create.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,14));
         create.setForeground(Color.WHITE);
         create.setBackground(Color.BLACK);
         create.addActionListener(this);
