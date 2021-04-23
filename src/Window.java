@@ -93,14 +93,13 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         planetNb = new JLabel();
         planetNb.setText("PLANET:" + currentPlanet + "/" + nbPlanets);
         planetNb.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,32));
-        //planetNb.setBorder(BorderFactory.createLineBorder(Color.white));
         planetNb.setBounds(30,20,165,40);
         planetNb.setForeground(Color.WHITE);
         backPlanetNb.add(planetNb);
 
         fieldName = new JTextField();
         fieldName.setBounds(140, 130, 100, 25);
-        //fieldName.setFont();
+        fieldName.setFont(new Font(Font.SANS_SERIF,Font.BOLD,15));
         rightPanel.add(fieldName);
 
         name = new JLabel("N A M E");
