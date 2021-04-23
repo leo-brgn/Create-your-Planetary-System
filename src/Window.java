@@ -279,7 +279,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
             sizeSelected = slider.getValue(); //value of the slider between 0 and 100 in pixels
             sizeKm = (long) (0.15 * (sizeSelected+7)*4500);
             realSize.setText((int)(sizeKm) + " km");
-            this.celestialPreview.setSize((float) (0.60) * (sizeSelected+7)); //still the added 7 to have a simple relation between the preview and the game (4x)
+            this.celestialPreview.setSize((float) (0.60) * (sizeSelected+7));//still the added 7 to have a simple relation between the preview and the game (4x)
             this.celestialPreview.repaint();
         }
     }
