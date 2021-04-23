@@ -201,20 +201,17 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     public void mouseClicked(MouseEvent mouseEvent) {
         if(mouseEvent.getButton() == MouseEvent.BUTTON1 && planetToAdd) {
             if(mouseEvent.getX() < 780) {
-                if (planetarySystem.getAddedSize() < 10 + 1) {
-                        planetarySystem.addCelestialObject(typeToCreate, mouseEvent.getPoint(), (int) (0.15 * (sizeSelected + 7)), colorSelected, fieldName.getText()); // the added 7 is to avoid nil values for the radius with the slider between 0 and 6 (we add 7 to the value of the slider)
-                        finishPanel.addPlanet(new Planet((int) (0.15 * (sizeSelected + 7)), mouseEvent.getPoint(), colorSelected, typeToCreate, fieldName.getText()));
+                if (currentPlanet <= nbPlanets && canCreate()) {
+                    planetarySystem.addCelestialObject(typeToCreate, mouseEvent.getPoint(), (int) (0.15 * (sizeSelected + 7)), colorSelected, fieldName.getText()); // the added 7 is to avoid nil values for the radius with the slider between 0 and 6 (we add 7 to the value of the slider)
+                    finishPanel.addPlanet(new Planet((int) (0.15 * (sizeSelected + 7)), mouseEvent.getPoint(), colorSelected, typeToCreate, fieldName.getText()));
+                    planetToAdd = false;
                 }
-
-                planetToAdd = false;
-
-                if (currentPlanet < nbPlanets && canCreate()) {
-                    currentPlanet++;
+                if (currentPlanet < nbPlanets){
                     planetNb.setText("PLANET: " + currentPlanet + "/" + nbPlanets);
-                } else if (currentPlanet == nbPlanets && canCreate()) {
-                    currentPlanet++;
+                } else if (currentPlanet == nbPlanets) {
                     finishedCreating();
                 }
+
             }
         }
     }
@@ -309,6 +306,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         } else if(fieldName.getText().equals("") || fieldName.getText() == null){
             return false;
         } else {
+            System.out.println(fieldName.getText());
             return true;
         }
     }
