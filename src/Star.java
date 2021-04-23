@@ -38,6 +38,8 @@ public class Star extends CelestialObject{
         RadialGradientPaint p = new RadialGradientPaint(position, 3*radius, dist, colors);
         g2D.setPaint(p);
         g2D.fillOval(position.x-3*radius-15,position.y-3*radius-15,3*2*radius + 30,3*2*radius + 30);
+        g2D.setColor(new Color(1f,1f,1f,0.1f));
+        g2D.drawOval(position.x-radius,position.y-radius,2*radius,2*radius);
     }
 
     @Override

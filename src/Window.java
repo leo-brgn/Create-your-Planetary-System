@@ -196,8 +196,12 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
         if(mouseEvent.getButton() == MouseEvent.BUTTON1 && planetToAdd && canCreate() && mouseEvent.getX() < 780 && currentPlanet <= nbPlanets ) {
-                planetarySystem.addCelestialObject(typeToCreate, mouseEvent.getPoint(), (int) (0.15 * (sizeSelected + 7)), colorSelected, fieldName.getText()); // the added 7 is to avoid nil values for the radius with the slider between 0 and 6 (we add 7 to the value of the slider)
-                finishPanel.addPlanet(new Planet((int) (0.15 * (sizeSelected + 7)), mouseEvent.getPoint(), colorSelected, typeToCreate, fieldName.getText()));
+                Point point = mouseEvent.getPoint();
+                point.x += 0.15 * (sizeSelected + 7);
+                point.y += 0.15 * (sizeSelected + 7);
+                System.out.println( (int) (0.15 * (sizeSelected + 7)));
+                planetarySystem.addCelestialObject(typeToCreate, point, (int) (0.15 * (sizeSelected + 7)), colorSelected, fieldName.getText()); // the added 7 is to avoid nil values for the radius with the slider between 0 and 6 (we add 7 to the value of the slider)
+                finishPanel.addPlanet(new Planet((int) (0.15 * (sizeSelected + 7)), point, colorSelected, typeToCreate, fieldName.getText()));
                 planetToAdd = false;
                 if (currentPlanet < nbPlanets){
                     planetNb.setText("PLANET: " + currentPlanet + "/" + nbPlanets);
