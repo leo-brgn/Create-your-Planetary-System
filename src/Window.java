@@ -98,26 +98,26 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         backPlanetNb.add(planetNb);
 
         fieldName = new JTextField();
-        fieldName.setBounds(140, 130, 100, 25);
+        fieldName.setBounds(140, 138, 100, 25);
         fieldName.setFont(new Font(Font.SANS_SERIF,Font.BOLD,15));
         fieldName.setHorizontalAlignment(JTextField.CENTER);
         rightPanel.add(fieldName);
 
         name = new JLabel("N A M E");
         name.setFont(new Font(Font.SANS_SERIF,Font.BOLD,15));
-        name.setBounds(42, 130, 100, 25);
+        name.setBounds(42, 138, 100, 25);
         name.setForeground(Color.WHITE);
         rightPanel.add(name);
 
         rocky = new JButton("ROCKY");
-        rocky.setBounds(20,85,100,25);
+        rocky.setBounds(20,90,100,25);
         rocky.setForeground(Color.WHITE);
         rocky.setBackground(Color.BLACK);
         rocky.addActionListener(this);
         rightPanel.add(rocky);
 
         gaseous = new JButton("GASEOUS");
-        gaseous.setBounds(140,85,100,25);
+        gaseous.setBounds(140,90,100,25);
         gaseous.setForeground(Color.WHITE);
         gaseous.setBackground(Color.BLACK);
         gaseous.addActionListener(this);
