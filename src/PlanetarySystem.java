@@ -132,18 +132,6 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
         System.out.println("New planet added: " + celestialObject);
     }
 
-
-    public void removeCelestialObject(CelestialObject celestialObject){
-        celestialObjects.remove(celestialObject);
-        addedCelestialObjects.remove(celestialObject);
-        this.remove(celestialObject);
-        System.out.println("Planet got too far and removed: " + celestialObject);
-    }
-
-    public int getAddedSize(){
-        return this.addedCelestialObjects.size();
-    }
-
     /**
      * Method to determine collisions between celestials objects
      * Collisions between planets
