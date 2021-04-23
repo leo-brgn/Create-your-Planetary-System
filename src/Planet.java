@@ -91,7 +91,7 @@ public class Planet extends CelestialObject {
 
     @Override
     public String toString() {
-        return typeStr + " planet of radius: " + radiusKm + "km and mass: " + mass + " at " + distanceToStarKm + "km from the star.";
+        return typeStr + " planet of radius: " + radiusKm + "km and mass: " + mass + "kg at " + distanceToStarKm + "km from the star.";
     }
 
     /**
