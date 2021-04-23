@@ -53,12 +53,13 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
         slider.addChangeListener(this);
 
         //Distance scale
-        JLabel scaleSizeLabel = new JLabel("2 UA");
-        scaleSizeLabel.setBounds(80, 545, 100,20);
+        JLabel scaleSizeLabel = new JLabel("405_000 km (sun) - 2 UA (distances)");
+        scaleSizeLabel.setBounds(80, 565, 300,20);
         scaleSizeLabel.setForeground(Color.WHITE);
 
+
         //Time scale
-        scaleTimeLabel = new JLabel("Timescale"); //not really, it is 1year/ deltaT
+        scaleTimeLabel = new JLabel("Timescale");
         scaleTimeLabel.setBounds(120, 10, 100,20);
         scaleTimeLabel.setForeground(Color.WHITE);
 
@@ -183,9 +184,10 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         g.setColor(Color.WHITE);
-        g.drawLine(40,560,70,560);
-        g.drawLine(40,560,40,550);
-        g.drawLine(70,560,70,550);
+        g.drawLine(40,580,70,580);
+        g.drawLine(40,580,40,570);
+        g.drawLine(70,580,70,570);
+
     }
 
     public LinkedList<CelestialObject> getAddedCelestialObjects(){
