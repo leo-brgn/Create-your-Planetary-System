@@ -23,10 +23,6 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     private final JButton create;
     private final JSlider slider;
     private final JTextField fieldName;
-    private final JLabel name;
-    private final JLabel size;
-    private final JLabel color;
-    private final JLabel preview;
 
     // System attributes
     private final int nbPlanets;
@@ -103,7 +99,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         fieldName.setHorizontalAlignment(JTextField.CENTER);
         rightPanel.add(fieldName);
 
-        name = new JLabel("N A M E");
+        JLabel name = new JLabel("N A M E");
         name.setFont(new Font(Font.SANS_SERIF,Font.BOLD,15));
         name.setBounds(42, 138, 100, 25);
         name.setForeground(Color.WHITE);
@@ -123,7 +119,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         gaseous.addActionListener(this);
         rightPanel.add(gaseous);
 
-        size = new JLabel("S I Z E");
+        JLabel size = new JLabel("S I Z E");
         size.setFont(new Font(Font.SANS_SERIF,Font.BOLD,15));
         size.setBounds(47, 180, 100, 25);
         size.setForeground(Color.WHITE);
@@ -137,14 +133,14 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         realSize.setForeground(Color.WHITE);
         rightPanel.add(realSize);
 
-        color = new JLabel("C O L O R");
+        JLabel color = new JLabel("C O L O R");
         color.setFont(new Font(Font.SANS_SERIF,Font.BOLD,15));
         color.setBounds(95, 240, 100,25);
         color.setForeground(Color.WHITE);
         rightPanel.add(color);
         colorSelected = 0;
 
-        preview = new JLabel("P R E V I E W    x4 ");
+        JLabel preview = new JLabel("P R E V I E W    x4 ");
         preview.setFont(new Font(Font.SANS_SERIF,Font.BOLD,15));
         preview.setBounds(70, 330, 150,25);
         preview.setForeground(Color.WHITE);
