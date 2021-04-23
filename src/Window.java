@@ -105,7 +105,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
 
         name = new JLabel("N A M E");
         name.setFont(new Font(Font.SANS_SERIF,Font.BOLD,15));
-        name.setBounds(35, 130, 100, 25);
+        name.setBounds(42, 130, 100, 25);
         name.setForeground(Color.WHITE);
         rightPanel.add(name);
 
@@ -125,7 +125,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
 
         size = new JLabel("S I Z E");
         size.setFont(new Font(Font.SANS_SERIF,Font.BOLD,15));
-        size.setBounds(40, 180, 100, 25);
+        size.setBounds(47, 180, 100, 25);
         size.setForeground(Color.WHITE);
         rightPanel.add(size);
 
@@ -133,7 +133,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         realSize = new JLabel(sizeKm + " km");
         realSize.setLayout(null);
         realSize.setFont(new Font(Font.SANS_SERIF,Font.BOLD,15));
-        realSize.setBounds(35, 205, 100, 25);
+        realSize.setBounds(42, 205, 100, 25);
         realSize.setForeground(Color.WHITE);
         rightPanel.add(realSize);
 
