@@ -3,7 +3,7 @@
 Create your planetary system is a java program that allows you to personalize planets in order to simulate your solar system.
 
 ## Installation
-To start the program use the following command
+To start the program use the following command.
 
 ```bash
 javac.Title.java
