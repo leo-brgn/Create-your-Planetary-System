@@ -100,6 +100,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         fieldName = new JTextField();
         fieldName.setBounds(140, 130, 100, 25);
         fieldName.setFont(new Font(Font.SANS_SERIF,Font.BOLD,15));
+        fieldName.setHorizontalAlignment(JTextField.CENTER);
         rightPanel.add(fieldName);
 
         name = new JLabel("N A M E");
