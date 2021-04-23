@@ -19,7 +19,7 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
     private final Star star;
     private final JSlider slider;
     private final JLabel scaleTimeLabel;
-    private boolean isRunning;
+    public boolean isRunning;
 
     /**
      * Constructor

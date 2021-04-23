@@ -4,6 +4,8 @@ import java.awt.*;
  * Class for the each planet inheriting from CelestialObject
  */
 public class Planet extends CelestialObject {
+
+    public boolean state;
     /**
      * Constructor
      */
