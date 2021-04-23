@@ -187,4 +187,8 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
         g.drawLine(40,560,40,550);
         g.drawLine(70,560,70,550);
     }
+
+    public LinkedList<CelestialObject> getAddedCelestialObjects(){
+        return addedCelestialObjects;
+    }
 }

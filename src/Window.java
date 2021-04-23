@@ -304,9 +304,21 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         } else if(fieldName.getText().equals("") || fieldName.getText() == null){
             JOptionPane.showMessageDialog(super.getContentPane(), "Please name your planet.");
             return false;
+        } else if(fieldNameTaken()){
+            JOptionPane.showMessageDialog(super.getContentPane(), "Please choose a different name.");
+            return false;
         } else {
             return true;
         }
+    }
+
+    private boolean fieldNameTaken(){
+        for(CelestialObject co: planetarySystem.getAddedCelestialObjects()){
+            if (fieldName.getText().equals(co.getObjectName())){
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
