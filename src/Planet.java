@@ -5,7 +5,6 @@ import java.awt.*;
  */
 public class Planet extends CelestialObject {
 
-    public boolean state;
     /**
      * Constructor
      */
@@ -25,7 +24,6 @@ public class Planet extends CelestialObject {
         computeMass();
         computeDistanceToStar();
         setInitialVelocity();
-
     }
 
     /**
