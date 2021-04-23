@@ -31,7 +31,6 @@ public class Planet extends CelestialObject {
      */
     public void computeDistanceToStar(){
         this.distanceToStar = Math.sqrt(Math.pow(position.x-390,2)+ Math.pow(position.y-320,2));
-        System.out.println((position.x-390) + " " + (position.y-320) );
         this.distanceToStarKm = scaleDst * distanceToStar;
     }
 
@@ -92,7 +91,7 @@ public class Planet extends CelestialObject {
 
     @Override
     public String toString() {
-        return typeStr + " planet of radius: " + radiusKm + " and mass: " + mass + " at " + distanceToStarKm + "km from the star.";
+        return typeStr + " planet of radius: " + radiusKm + "km and mass: " + mass + " at " + distanceToStarKm + "km from the star.";
     }
 
     /**
@@ -102,7 +101,7 @@ public class Planet extends CelestialObject {
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D) g;
         g2D.setColor(color);
-        g2D.fillOval(position.x - radius, position.y - radius, 2 * radius, 2 * radius);
+        g2D.fillOval(position.x, position.y, 2 * radius, 2 * radius);
     }
 
 }
