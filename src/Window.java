@@ -53,7 +53,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         planetarySystem = new PlanetarySystem();
 
         // Creation of the window
-        this.setTitle("Create your Solar System");
+        this.setTitle("Create your Planetary System");
         this.setSize(1050,640);
         this.setResizable(false);
         this.setLocation(120,20);
