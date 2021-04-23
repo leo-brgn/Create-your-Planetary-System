@@ -100,6 +100,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
 
         fieldName = new JTextField();
         fieldName.setBounds(140, 130, 100, 25);
+        //fieldName.setFont();
         rightPanel.add(fieldName);
 
         name = new JLabel("N A M E");
@@ -132,7 +133,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         realSize = new JLabel(sizeKm + " km");
         realSize.setLayout(null);
         realSize.setFont(new Font(Font.SANS_SERIF,Font.BOLD,15));
-        realSize.setBounds(40, 190, 100, 25);
+        realSize.setBounds(35, 190, 100, 25);
         realSize.setForeground(Color.WHITE);
         rightPanel.add(realSize);
 
@@ -163,7 +164,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         rightPanel.add(create);
 
         slider = new JSlider(JSlider.HORIZONTAL); //slider between 0 and 100
-        slider.setBounds(140,160,100,50);
+        slider.setBounds(140,170,100,50);
         slider.setValue(sizeSelected);
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
