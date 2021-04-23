@@ -104,7 +104,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
 
         name = new JLabel("N A M E");
         name.setFont(new Font(Font.SANS_SERIF,Font.BOLD,15));
-        name.setBounds(40, 130, 100, 25);
+        name.setBounds(35, 130, 100, 25);
         name.setForeground(Color.WHITE);
         rightPanel.add(name);
 
@@ -130,8 +130,9 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
 
         this.sizeKm = (long)( 0.15 * (sizeSelected+7)*4500);
         realSize = new JLabel(sizeKm + " km");
+        realSize.setLayout(null);
         realSize.setFont(new Font(Font.SANS_SERIF,Font.BOLD,15));
-        realSize.setBounds(45, 190, 100, 25);
+        realSize.setBounds(40, 190, 100, 25);
         realSize.setForeground(Color.WHITE);
         rightPanel.add(realSize);
 
