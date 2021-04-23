@@ -14,7 +14,7 @@ pip install foobar
 
 The program will guide you across a succession of window, you just have to start it
 You will choose the number of planets and then personalize them, you will hence be able to watch them evolve around the sun.
-At the end you will 
+At the end you will be able to read accurate scientific data about your planets.
 
 ```python
 import foobar
