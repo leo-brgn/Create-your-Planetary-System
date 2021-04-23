@@ -30,7 +30,9 @@ public class Planet extends CelestialObject {
      * Method to compute the distance from the celestial object to the star
      */
     public void computeDistanceToStar(){
-        this.distanceToStar = Math.sqrt(Math.pow(position.x-390,2)+ Math.pow(position.y-320,2));
+        this.distanceToStar = Math.sqrt(Math.pow(position.x+radius-390,2)+ Math.pow(position.y+radius-320,2));
+        System.out.println(position.x-390);
+        System.out.println(position.y-320);
         this.distanceToStarKm = scaleDst * distanceToStar;
     }
 
