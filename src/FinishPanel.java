@@ -54,14 +54,20 @@ public class FinishPanel extends JPanel {
                     c.setSize(planets.get(j).radius);
                     c.setColor(planets.get(j).colorIndex);
 
+                    JLabel namePlanet = new JLabel("Name: " + planets.get(j).objectName);
+                    namePlanet.setBounds(5 ,25,200,20);
+                    namePlanet.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,13));
+                    namePlanet.setForeground(Color.WHITE);
+                    panels.get(j).add(namePlanet);
+
                     JLabel distance = new JLabel("Radius: " + planets.get(j).radiusKm + " km");
-                    distance.setBounds(5 ,25,200,20);
+                    distance.setBounds(5 ,45,200,20);
                     distance.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,13));
                     distance.setForeground(Color.WHITE);
                     panels.get(j).add(distance);
 
                     JLabel massPlanet = new JLabel("Mass:" + (float)((planets.get(j).mass)*(10^3)) + "kg");
-                    massPlanet.setBounds(5 ,40,200,20);
+                    massPlanet.setBounds(5 ,65,200,20);
                     massPlanet.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,13));
                     massPlanet.setForeground(Color.WHITE);
                     panels.get(j).add(massPlanet);
