@@ -125,7 +125,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
 
         size = new JLabel("S I Z E");
         size.setFont(new Font(Font.SANS_SERIF,Font.BOLD,15));
-        size.setBounds(40, 165, 100, 25);
+        size.setBounds(40, 180, 100, 25);
         size.setForeground(Color.WHITE);
         rightPanel.add(size);
 
@@ -133,13 +133,13 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         realSize = new JLabel(sizeKm + " km");
         realSize.setLayout(null);
         realSize.setFont(new Font(Font.SANS_SERIF,Font.BOLD,15));
-        realSize.setBounds(35, 190, 100, 25);
+        realSize.setBounds(35, 205, 100, 25);
         realSize.setForeground(Color.WHITE);
         rightPanel.add(realSize);
 
         color = new JLabel("C O L O R");
         color.setFont(new Font(Font.SANS_SERIF,Font.BOLD,15));
-        color.setBounds(95, 230, 100,25);
+        color.setBounds(95, 240, 100,25);
         color.setForeground(Color.WHITE);
         rightPanel.add(color);
         colorSelected = 0;
@@ -164,7 +164,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         rightPanel.add(create);
 
         slider = new JSlider(JSlider.HORIZONTAL); //slider between 0 and 100
-        slider.setBounds(140,170,100,50);
+        slider.setBounds(140,185,100,50);
         slider.setValue(sizeSelected);
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
@@ -242,7 +242,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         if (typeToCreate == TypePlanet.GASEOUS){
             for(int i=0; i<6; i++){
                 colorButtonsGaseous[i] = new JButton();
-                colorButtonsGaseous[i].setBounds(i*43,260,43,50);
+                colorButtonsGaseous[i].setBounds(i*43,270,43,50);
                 colorButtonsGaseous[i].setBackground(PlanetColor.getColor( i));
                 colorButtonsGaseous[i].addActionListener(this);
                 rightPanel.add(colorButtonsGaseous[i]);
@@ -252,7 +252,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         } else if (typeToCreate == TypePlanet.ROCKY){
             for(int i=0; i<6; i++){
                 colorButtonsRocky[i] = new JButton();
-                colorButtonsRocky[i].setBounds(i*43,260,43,50);
+                colorButtonsRocky[i].setBounds(i*43,270,43,50);
                 colorButtonsRocky[i].setBackground(PlanetColor.getColor(i+6));
                 colorButtonsRocky[i].addActionListener(this);
                 rightPanel.add(colorButtonsRocky[i]);
