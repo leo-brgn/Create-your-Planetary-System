@@ -99,7 +99,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         backPlanetNb.add(planetNb);
 
         fieldName = new JTextField();
-        fieldName.setBounds(120, 130, 120, 25);
+        fieldName.setBounds(140, 130, 100, 25);
         rightPanel.add(fieldName);
 
         name = new JLabel("N A M E");
@@ -201,8 +201,8 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         if(mouseEvent.getButton() == MouseEvent.BUTTON1 && planetToAdd) {
             if(mouseEvent.getX() < 780) {
                 if (planetarySystem.getAddedSize() < 10 + 1) {
-                    planetarySystem.addCelestialObject(typeToCreate, mouseEvent.getPoint(), (int) (0.15 * (sizeSelected + 7)), colorSelected, "Planet n°=" + (currentPlanet)); // the added 7 is to avoid nil values for the radius with the slider between 0 and 6 (we add 7 to the value of the slider)
-                    finishPanel.addPlanet(new Planet((int) (0.15 * (sizeSelected + 7)), mouseEvent.getPoint(), colorSelected, typeToCreate, "Planet n°=" + (currentPlanet))); //creating an object planet
+                    planetarySystem.addCelestialObject(typeToCreate, mouseEvent.getPoint(), (int) (0.15 * (sizeSelected + 7)), colorSelected, fieldName.getText()); // the added 7 is to avoid nil values for the radius with the slider between 0 and 6 (we add 7 to the value of the slider)
+                    finishPanel.addPlanet(new Planet((int) (0.15 * (sizeSelected + 7)), mouseEvent.getPoint(), colorSelected, typeToCreate, fieldName.getText())); //creating an object planet
 
                 }
 
