@@ -104,10 +104,6 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
                     p.updatePosition((float) (timeScale * deltaT));
                     p.updateVelocity((float) (timeScale * deltaT));
 
-                    if (p.isTooFar()) {
-                        removeCelestialObject(c);
-                        Collections.sort(celestialObjects);
-                    }
                     if (p.isTooClose(star.radiusKm)) {
                         removeCelestialObject(c);
                         JOptionPane.showMessageDialog(this, "The planet collided with the sun !");

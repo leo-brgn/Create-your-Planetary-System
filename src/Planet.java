@@ -90,14 +90,6 @@ public class Planet extends CelestialObject {
 
     }
 
-    /**
-     * Method to verify if the planet has gone too far, the distance chosen is not scientific
-     */
-    public boolean isTooFar(){
-        return distanceToStar >= 505;
-    } //biggest distance in diagonal of the sun
-
-
     public boolean isTooClose(long sunRadius){
         return distanceToStarKm <= (radiusKm+sunRadius*3);
     }
