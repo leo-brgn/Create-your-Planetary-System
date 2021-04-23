@@ -306,6 +306,8 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
             return false;
         } else if(sizeSelected == 0 || sizeKm==0){
             return false;
+        } else if(fieldName.getText().equals("") || fieldName.getText() == null){
+            return false;
         } else {
             return true;
         }

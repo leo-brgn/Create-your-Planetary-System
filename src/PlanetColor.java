@@ -10,7 +10,6 @@ public class PlanetColor {
             new Color(195, 155, 211),
             new Color(165, 105, 189),
 
-
             new Color(247, 220, 111),
             new Color(245, 176, 65),
             new Color(243, 156, 18),

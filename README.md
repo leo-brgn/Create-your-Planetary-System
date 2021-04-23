@@ -6,7 +6,7 @@ Create your planetary system is a java program that allows you to personalize pl
 To start the program use the following command.
 
 ```bash
-javac.Title.java
+javac Title.java
 ```
 
 ## Usage
