@@ -173,7 +173,7 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
     public void stateChanged(ChangeEvent e) {
         if (e.getSource() == slider){
             timeScale = (365.25*24*3600)/1000f *0.5* slider.getValue();
-            scaleTimeLabel.setText(slider.getValue() * 0.5 + " Timescale");
+            scaleTimeLabel.setText("Timescale");
         }
     }
 

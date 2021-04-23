@@ -61,7 +61,6 @@ public class Planet extends CelestialObject {
             velocityX = -magnitude * vectorSunToPlanet[1];
             velocityY = magnitude * vectorSunToPlanet[0];
         }
-
     }
 
     /**
