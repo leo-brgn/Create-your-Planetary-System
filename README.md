@@ -12,6 +12,9 @@ pip install foobar
 
 ## Usage
 
+The program will guide you across a succession of window, you just have to start it
+You will choose the number of planets and then personalize them, you will hence be able to watch them evolve around the sun.
+At the end you will 
 
 ```python
 import foobar
