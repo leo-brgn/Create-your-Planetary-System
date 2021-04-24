@@ -34,7 +34,7 @@ public class BackgroundStars extends JComponent {
     }
 
     /**
-     * Method to paint the stars with different color and sizes
+     * Method to paint the stars with different brightness and sizes to make a realistic background
      */
     public void paintComponent(Graphics g){
         // Low alpha value
