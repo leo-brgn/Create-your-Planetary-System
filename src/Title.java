@@ -29,6 +29,7 @@ public class Title extends JFrame implements ActionListener{
      * Constructor
      */
     public Title() {
+        //Initialize the parameters of the window
         this.setTitle("Create your Planetary System");
         this.setSize(1050,640);
         this.setResizable(false);
@@ -36,16 +37,19 @@ public class Title extends JFrame implements ActionListener{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
 
+        //Principal panel
         JPanel firstPanel = new JPanel();
         firstPanel.setBackground(Color.BLACK);
         firstPanel.setBounds(0,0,1050,640);
         firstPanel.setVisible(true);
         firstPanel.setLayout(null);
 
+        //Image
         JLabel affBackground = new JLabel (new ImageIcon("items/images/diywallpaper-nude.jpg"));
         affBackground.setBounds(0,0,1050,640);
         firstPanel.add(affBackground);
 
+        //Title of the game
         JLabel txtLabel = new JLabel();
         txtLabel.setText("CREATE YOUR PLANETARY SYSTEM");
         txtLabel.setFont(new java.awt.Font(Font.DIALOG_INPUT,Font.BOLD,50));
@@ -53,6 +57,7 @@ public class Title extends JFrame implements ActionListener{
         txtLabel.setBounds(90,65,870,50);
         affBackground.add(txtLabel);
 
+        //Question
         JLabel titleLabel = new JLabel();
         titleLabel.setText("How many planets do you want to add ?");
         titleLabel.setFont(new java.awt.Font(Font.DIALOG_INPUT,Font.BOLD,25));
@@ -60,6 +65,7 @@ public class Title extends JFrame implements ActionListener{
         titleLabel.setBounds(245,425,560,50);
         affBackground.add(titleLabel);
 
+        //Number chosen
         nbPlanetArea= new JTextArea();
         nbPlanetArea.setText(String.valueOf(nbInitial));
         nbPlanetArea.setFont(new java.awt.Font(Font.DIALOG_INPUT,Font.BOLD,20));
@@ -68,6 +74,7 @@ public class Title extends JFrame implements ActionListener{
         nbPlanetArea.setBounds(520,495,15,35);
         affBackground.add(nbPlanetArea);
 
+        //Launch button
         launchButton = new JButton("START");
         launchButton.setBounds(483,535,85,25);
         launchButton.setFont(new java.awt.Font(Font.DIALOG_INPUT,Font.BOLD,13));
@@ -76,6 +83,7 @@ public class Title extends JFrame implements ActionListener{
         launchButton.addActionListener(this);
         affBackground.add(launchButton);
 
+        //Buttons to change the number of planets
         plusButton = new JButton(new ImageIcon("items/images/logo-plus.png"));
         plusButton.setBounds(585,500,25,25);
         plusButton.setBorder(BorderFactory.createEmptyBorder());
@@ -94,6 +102,9 @@ public class Title extends JFrame implements ActionListener{
         this.setVisible(true);
     }
 
+    /**
+     * Method to update the number of planet the player wants to create
+     */
     public void actionPerformed(ActionEvent e){
         if(e.getSource()==plusButton && nbInitial<5){
             nbInitial++;
