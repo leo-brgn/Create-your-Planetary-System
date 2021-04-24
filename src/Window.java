@@ -180,9 +180,17 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         if(e.getSource() == gaseous){
             typeToCreate = TypePlanet.GASEOUS;
             updateColorButtons();
+            rocky.setForeground(Color.WHITE);
+            rocky.setBackground(Color.BLACK);
+            gaseous.setForeground(Color.WHITE);
+            gaseous.setBackground(Color.GRAY);
         }else if(e.getSource() == rocky){
             typeToCreate = TypePlanet.ROCKY;
             updateColorButtons();
+            gaseous.setForeground(Color.WHITE);
+            gaseous.setBackground(Color.BLACK);
+            rocky.setForeground(Color.WHITE);
+            rocky.setBackground(Color.GRAY);
         }else if(e.getSource()==create){
             planetToAdd = true;
         }
