@@ -52,7 +52,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         this.setTitle("Create your Planetary System");
         this.setSize(1050,640);
         this.setResizable(false);
-        this.setLocation(120,20);
+        this.setLocationRelativeTo(null);
         this.setLayout(null);
         this.setBackground(Color.BLUE);
         this.getContentPane().addMouseListener(this);
