@@ -67,6 +67,9 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
         this.add(scaleTimeLabel);
     }
 
+    /**
+     * Method to compute the deltaT
+     */
     @Override
     public void run() {
         long deltaT;
@@ -105,13 +108,16 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
                     p.updateVelocity((float) (timeScale * deltaT));
 
                     Collections.sort(celestialObjects);
+                    //test collisions
                     isColliding(p, celestialObjects.indexOf(p));
                 }
             }
-
         }
     }
 
+    /**
+     * Method to repaint the planetary system
+     */
     public void render(){
         if(!celestialObjects.isEmpty()) {
             for (CelestialObject c : celestialObjects) {
@@ -120,10 +126,16 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
         }
     }
 
+    /**
+     * Method to add a new celestial object
+     */
     public void addCelestialObject(TypePlanet typePlanet, Point position, float size, int colorIndex, String name){
         celestialObjects.add(new Planet((int) size,position, colorIndex, typePlanet, name));
     }
 
+    /**
+     * Method to draw the new celestial object
+     */
     public void drawCelestialObject(CelestialObject celestialObject) {
         this.add(celestialObject);
         addedCelestialObjects.add(celestialObject);
@@ -136,19 +148,21 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
      * Collisions between planets
      * Collisions between the sun and a planet
      */
-
     public void isColliding(Planet p, int index){
 
+        //we compare a planet and the one before
         Point positionP = p.getPosition();
-
         CelestialObject celestialObjectBefore = celestialObjects.get(index-1);
         Point positionQ = celestialObjectBefore.getPosition();
 
+        //test of it is too close to the star
         if (index == 1 && p.getDistanceToStar() <= (star.getRadius() + p.getRadius())){
-            isRunning = false;
+            isRunning = false; //the game has stopped
             JOptionPane.showMessageDialog(this, p.getObjectName()+ " is colliding with the Sun !" +"\n"+ "Close the game and try again ! ");
+
+        //test if planets are too close between each other
         } else if (index > 1 && getPointDistance(positionP, positionQ) <= (p.getRadius() + celestialObjectBefore.getRadius())) {
-            isRunning = false;
+            isRunning = false; //the game has stopped
             JOptionPane.showMessageDialog(this, (p.getObjectName() + " is colliding with " + celestialObjectBefore.getObjectName() +"\n"+ "Close the game and try again ! "));
         }
     }
@@ -160,6 +174,9 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
         return Math.sqrt((p.getX()-q.getX())*(p.getX()-q.getX())+(p.getY()-q.getY())*(p.getY()-q.getY()));
     }
 
+    /**
+     * Method to change the timescale
+     */
     @Override
     public void stateChanged(ChangeEvent e) {
         if (e.getSource() == slider){
@@ -180,6 +197,9 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
 
     }
 
+    /**
+     * Getters
+     */
     public LinkedList<CelestialObject> getAddedCelestialObjects(){
         return addedCelestialObjects;
     }
