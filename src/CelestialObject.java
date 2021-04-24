@@ -3,7 +3,7 @@ import java.awt.*;
 
 /**
  * Abstract class that defines the general idea of a celestial object.
- * It allows for the creation of stars, planets and maybe later satellites.
+ * It allows for the creation of the central sun and planets
  */
 public abstract class CelestialObject extends JComponent implements Comparable<CelestialObject> {
 
@@ -11,24 +11,23 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
      * Attributes
      */
     final protected double G; // Universal gravity constant in m3/kg/s2
-    final protected long scaleDst; // Scale of distances km/px
-    final protected long scalePlanetSizes;
-    final protected long scaleSunSize;
-    protected int radius; // Radius of the planet in px
-    protected long radiusKm; // Radius of the planet in px
-    protected double density; // Density of the planet in kg/m3
+    final protected long scaleDst; // Scale of distances between celestial objects in km/px
+    final protected long scalePlanetSizes; //Scale of the size of the planets in km/px
+    final protected long scaleSunSize; //Scale of the size of the sun in km/px
+    protected long radiusKm; // Radius of the planet in km
+    protected double density; // Density of the planet in g/cm^3
     protected double mass; // Mass of the planet in kg
-    protected double gravitationalForce; // Gravitational force in N
+    protected double gravitationalForce; // Gravitational force in N/m
     protected double distanceToStar; // Distance to star in px
     protected double distanceToStarKm; // Distance to star in km
-    protected double velocityX; // Speed of the planet in m/s
-    protected double velocityY; // Speed of the planet in m/s
-    protected int count; // To track the amount of time in which the planet has stopped moving
+    protected double velocityX; // Coordinate x of the speed of the planet in m/s
+    protected double velocityY; // Coordinate y of the speed of the planet in m/s
     protected int colorIndex; // Color index of the planet
-    protected String objectName;
-    protected Color color;
+    protected int radius; // Radius of the planet in px
+    protected String objectName; //name of the planet
+    protected String typeStr; //Type of the planet
+    protected Color color; //Color of the planet
     protected Point position; // Position of the planet in px
-    protected String typeStr;
 
     /**
      * Constructors
@@ -50,7 +49,6 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
         // Set the JComponent coordinate system
         this.setLocation(0, 0);
         this.setSize(780, 640);
-        this.count = 0;
     }
 
     public CelestialObject(int radius, Point position, int colorIndex) {
