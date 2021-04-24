@@ -13,13 +13,13 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
     /**
      * Attributes
      */
-    private final LinkedList<CelestialObject> addedCelestialObjects;
-    private final LinkedList<CelestialObject> celestialObjects;
-    public double timeScale;
-    private final Star star;
-    private final JSlider slider;
-    private final JLabel scaleTimeLabel;
-    public boolean isRunning;
+    private final LinkedList<CelestialObject> addedCelestialObjects; //list of the celestial objects that appear on the screen
+    private final LinkedList<CelestialObject> celestialObjects; //list of the celestial objects after creation and the sun
+    public double timeScale; //it multiply the time to have a accelerated simulation
+    private final Star star; //the central star
+    private final JSlider slider; //slider for the timescale
+    private final JLabel scaleTimeLabel; //label of the slider
+    public boolean isRunning; //state of the game
 
     /**
      * Constructor
@@ -56,7 +56,6 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
         JLabel scaleSizeLabel = new JLabel("405_000 km (sun) - 2 UA (distances)");
         scaleSizeLabel.setBounds(80, 565, 300,20);
         scaleSizeLabel.setForeground(Color.WHITE);
-
 
         //Time scale
         scaleTimeLabel = new JLabel("Timescale");
