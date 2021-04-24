@@ -203,12 +203,11 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
         if(mouseEvent.getButton() == MouseEvent.BUTTON1 && planetToAdd && canCreate() && mouseEvent.getX() < 780 && currentPlanet <= nbPlanets ) {
-                Point point = mouseEvent.getPoint();
-                System.out.println("radius of the planet " + (int) (0.15 * (sizeSelected + 7)));
+                Point point = mouseEvent.getPoint(); //collect the coordinate of the mouse click
                 planetarySystem.addCelestialObject(typeToCreate, point, (int) (0.15 * (sizeSelected + 7)), colorSelected, fieldName.getText()); // the added 7 is to avoid nil values for the radius with the slider between 0 and 6 (we add 7 to the value of the slider)
                 finishPanel.addPlanet(new Planet((int) (0.15 * (sizeSelected + 7)), point, colorSelected, typeToCreate, fieldName.getText()));
                 planetToAdd = false;
-                if (currentPlanet < nbPlanets){
+                if (currentPlanet < nbPlanets){ //update of the number current planet
                     planetNb.setText("PLANET: " + currentPlanet + "/" + nbPlanets);
                 } else if (currentPlanet == nbPlanets) {
                     finishedCreating();
@@ -217,6 +216,9 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         }
     }
 
+    /**
+     * Method to display to corresponding colors to the given type of planet
+     */
     private void updateColorButtons(){
         if (buttonsAdded) {
             if(typeToCreate == TypePlanet.GASEOUS && currentColorButtons==colorButtonsRocky){
@@ -261,6 +263,9 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         this.rightPanel.repaint();
     }
 
+    /**
+     * Method to set the color of the planet
+     */
     private void colorButtonClicked(ActionEvent e){
         if(typeToCreate == TypePlanet.GASEOUS){
             for(int i=0; i<colorButtonsGaseous.length; i++){
@@ -279,6 +284,9 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         this.celestialPreview.repaint();
     }
 
+    /**
+     * Method to display the real size of the planet next to the slider
+     */
     @Override
     public void stateChanged(ChangeEvent e) {
         if(e.getSource() == slider){
@@ -290,6 +298,9 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         }
     }
 
+    /**
+     * Method to display the finishpanel
+     */
     private void finishedCreating(){
         finishPanel.updateCases();
         this.remove(rightPanel);
@@ -299,17 +310,20 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
 
     }
 
+    /**
+     * Method to avoid having planets with empty parameters
+     */
     private boolean canCreate(){
-        if (colorSelected == 0){
+        if (colorSelected == 0){ //without color
             JOptionPane.showMessageDialog(super.getContentPane(), "Please select a color.");
             return false;
-        } else if(sizeSelected == 0 || sizeKm==0){
+        } else if(sizeSelected == 0 || sizeKm==0){ //without size
             JOptionPane.showMessageDialog(super.getContentPane(), "Please select a size.");
             return false;
-        } else if(fieldName.getText().equals("") || fieldName.getText() == null){
+        } else if(fieldName.getText().equals("") || fieldName.getText() == null){ //without name
             JOptionPane.showMessageDialog(super.getContentPane(), "Please name your planet.");
             return false;
-        } else if(fieldNameTaken()){
+        } else if(fieldNameTaken()){ //with two times the same name
             JOptionPane.showMessageDialog(super.getContentPane(), "Please choose a different name.");
             return false;
         } else {
@@ -317,6 +331,9 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
         }
     }
 
+    /**
+     * Method called to compare all the names of the planets
+     */
     private boolean fieldNameTaken(){
         for(CelestialObject co: planetarySystem.getAddedCelestialObjects()){
             if (fieldName.getText().equals(co.getObjectName())){
