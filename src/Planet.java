@@ -77,17 +77,17 @@ public class Planet extends CelestialObject {
     /**
      * Method to compute the new position using an approximation
      */
-    public void updatePosition(float deltaT2) {
+    public void updatePosition(float deltaT) {
         //cast by an integer if it is negative leads to a nil value so we use the absolute value
         if (velocityX <= 0) {
-            position.x += -(int) Math.abs((deltaT2 * (velocityX)) / (1000 * scaleDst)); // in px
+            position.x += -(int) Math.abs((deltaT * (velocityX)) / (1000 * scaleDst)); // in px
         } else {
-            position.x += (int) Math.abs((deltaT2 * (velocityX)) / (1000 * scaleDst)); // in px
+            position.x += (int) Math.abs((deltaT * (velocityX)) / (1000 * scaleDst)); // in px
         }
         if (velocityY <= 0) {
-            position.y += -(int) Math.abs((deltaT2 * (velocityY)) / (1000 * scaleDst)); // in px
+            position.y += -(int) Math.abs((deltaT * (velocityY)) / (1000 * scaleDst)); // in px
         } else {
-            position.y += (int) Math.abs((deltaT2 * (velocityY)) / (1000 * scaleDst)); // in px
+            position.y += (int) Math.abs((deltaT * (velocityY)) / (1000 * scaleDst)); // in px
         }
     }
 
