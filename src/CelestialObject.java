@@ -68,7 +68,7 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
     }
 
     /**
-     * Getters
+     *Getters
      */
     public Point getPosition(){
         return position;
