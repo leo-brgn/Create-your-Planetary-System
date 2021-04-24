@@ -32,7 +32,7 @@ public class Title extends JFrame implements ActionListener{
         this.setTitle("Create your Planetary System");
         this.setSize(1050,640);
         this.setResizable(false);
-        this.setLocation(120,20);
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
 
