@@ -33,15 +33,11 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
      * Constructors
      */
     public CelestialObject(int radius, Point position) {
-        // Scale the distances km/px
         this.scaleDst = 10_000_000;
-        // Scale of the sizes of the planet km/px
         this.scalePlanetSizes = 4500;
-        // Scale of the sizes of the sun km/px
         this.scaleSunSize = 13500;
-        // Set the universal gravity constant
         this.G = 6.674 * Math.pow(10, -11);
-        // Initialize the radius
+        // Initialize the radius and convert it
         this.radius = radius;
         radiusKm = scalePlanetSizes * radius;
         // Initialize the position
@@ -53,6 +49,7 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
 
     public CelestialObject(int radius, Point position, int colorIndex) {
         this(radius, position);
+        //Initialize the color of the planet
         this.colorIndex = colorIndex;
     }
 
@@ -63,6 +60,16 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
         return Double.compare(this.distanceToStar, celestialObject.distanceToStar);
     }
 
+    /**
+     * Method to compute the mass as a function of the density and the radius (in km)
+     */
+    public void computeMass() {
+        this.mass = 1000*density*Math.PI*(4f/3f)*Math.pow(radiusKm * 1000,3); //factor of 1000 to convert g/cm^3 into kg/m^3
+    }
+
+    /**
+     * Getters
+     */
     public Point getPosition(){
         return position;
     }
@@ -73,12 +80,5 @@ public abstract class CelestialObject extends JComponent implements Comparable<C
 
     public String getObjectName(){
         return objectName;
-    }
-    // Method to compute the mass as a function of the density and the radius (in km)
-    /**
-     * Method to compute the mass as a function of the density and the radius (in km)
-     */
-    public void computeMass() {
-        this.mass = 1000*density*Math.PI*(4f/3f)*Math.pow(radiusKm * 1000,3);
     }
 }
