@@ -1,7 +1,13 @@
 import java.awt.*;
 
+/**
+ * Class to list all the colors of the planets
+ */
 public class PlanetColor {
 
+    /**
+     * Attributes
+     */
     private static final Color[] listColor={
             new Color(115, 198, 182),
             new Color(130, 224, 170),
@@ -18,6 +24,9 @@ public class PlanetColor {
             new Color(192, 57, 43)
     };
 
+    /**
+     * Method to return the color at a fixed index
+     */
     public static Color getColor(int index){
         return listColor[index];
     }

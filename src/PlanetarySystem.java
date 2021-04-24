@@ -194,7 +194,6 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
         g.drawLine(40,580,70,580);
         g.drawLine(40,580,40,570);
         g.drawLine(70,580,70,570);
-
     }
 
     /**
