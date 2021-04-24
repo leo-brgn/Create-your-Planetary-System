@@ -141,20 +141,14 @@ public class PlanetarySystem extends JPanel implements Runnable, ChangeListener 
     public void isColliding(Planet p, int index){
 
         Point positionP = p.getPosition();
-        Point positionPRadius = new Point();
-        positionPRadius.x += p.radius;
-        positionPRadius.y += p.radius;
 
         CelestialObject celestialObjectBefore = celestialObjects.get(index-1);
         Point positionQ = celestialObjectBefore.getPosition();
-        Point positionQRadius = new Point();
-        positionQRadius.x += celestialObjectBefore.radius;
-        positionQRadius.y += celestialObjectBefore.radius;
 
         if (index == 1 && p.getDistanceToStar() <= (star.getRadius() + p.getRadius())){
             isRunning = false;
             JOptionPane.showMessageDialog(this, p.getObjectName()+ " is colliding with the Sun !" +"\n"+ "Close the game and try again ! ");
-        } else if (index > 1 && getPointDistance(new Point(positionP.x + positionPRadius.x, positionP.y + positionPRadius.y), new Point(positionQ.x + positionQRadius.x, positionQ.y + positionQRadius.y)) <= (p.getRadius() + celestialObjectBefore.getRadius())) {
+        } else if (index > 1 && getPointDistance(positionP, positionQ) <= (p.getRadius() + celestialObjectBefore.getRadius())) {
             isRunning = false;
             JOptionPane.showMessageDialog(this, (p.getObjectName() + " is colliding with " + celestialObjectBefore.getObjectName() +"\n"+ "Close the game and try again ! "));
         }

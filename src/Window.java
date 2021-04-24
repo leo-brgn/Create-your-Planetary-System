@@ -204,8 +204,8 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     public void mouseClicked(MouseEvent mouseEvent) {
         if(mouseEvent.getButton() == MouseEvent.BUTTON1 && planetToAdd && canCreate() && mouseEvent.getX() < 780 && currentPlanet <= nbPlanets ) {
                 Point point = mouseEvent.getPoint();
-                point.x += -0.15 * (sizeSelected + 7); //center the planet on the mouse
-                point.y += -0.15 * (sizeSelected + 7);
+                /*point.x += -0.15 * (sizeSelected + 7); //center the planet on the mouse
+                point.y += -0.15 * (sizeSelected + 7);*/
                 System.out.println("radius of the planet " + (int) (0.15 * (sizeSelected + 7)));
                 planetarySystem.addCelestialObject(typeToCreate, point, (int) (0.15 * (sizeSelected + 7)), colorSelected, fieldName.getText()); // the added 7 is to avoid nil values for the radius with the slider between 0 and 6 (we add 7 to the value of the slider)
                 finishPanel.addPlanet(new Planet((int) (0.15 * (sizeSelected + 7)), point, colorSelected, typeToCreate, fieldName.getText()));
