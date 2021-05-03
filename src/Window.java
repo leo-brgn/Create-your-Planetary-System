@@ -27,7 +27,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
     // System attributes
     private final int nbPlanets;
     private int currentPlanet=1; // Goes from 1 to nbPlanets
-    private final PlanetarySystem planetarySystem;
+    private PlanetarySystem planetarySystem;
     private final JButton[] colorButtonsGaseous;
     private final JButton[] colorButtonsRocky;
     private JButton[] currentColorButtons=new JButton[6];
@@ -61,6 +61,7 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
 
         this.addWindowListener(new WindowAdapter(){ //allow the game to restart at the end
             public void windowClosing(WindowEvent e){
+                planetarySystem = null;
                 dispose();
                 new Title();
             }
