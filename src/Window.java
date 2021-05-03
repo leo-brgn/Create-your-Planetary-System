@@ -207,12 +207,13 @@ public class Window extends JFrame implements ActionListener, MouseListener, Cha
                 planetarySystem.addCelestialObject(typeToCreate, point, (int) (0.15 * (sizeSelected + 7)), colorSelected, fieldName.getText()); // the added 7 is to avoid nil values for the radius with the slider between 0 and 6 (we add 7 to the value of the slider)
                 finishPanel.addPlanet(new Planet((int) (0.15 * (sizeSelected + 7)), point, colorSelected, typeToCreate, fieldName.getText()));
                 planetToAdd = false;
-                if (currentPlanet < nbPlanets){ //update of the number current planet
-                    planetNb.setText("PLANET: " + currentPlanet + "/" + nbPlanets);
-                } else if (currentPlanet == nbPlanets) {
+                currentPlanet++;
+                if (currentPlanet < nbPlanets+1){ //update of the number current planet
+                    planetNb.setText("PLANET:" + currentPlanet + "/" + nbPlanets);
+                } else if (currentPlanet == nbPlanets+1) {
                     finishedCreating();
                 }
-                currentPlanet++;
+
         }
     }
 
